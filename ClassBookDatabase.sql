@@ -35,11 +35,15 @@ CREATE TABLE IF NOT EXISTS `marks` (
   `number` double(3,2) NOT NULL,
   `subject_id` int(11) NOT NULL,
   `student_id` int(11) NOT NULL,
+  `teacher_id` int(11) NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`mark_id`),
   KEY `fk_marks_subjects` (`subject_id`),
   KEY `fk_marks_students` (`student_id`),
+  KEY `fk_marks_teachers` (`teacher_id`),
   CONSTRAINT `fk_marks_students` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`),
-  CONSTRAINT `fk_marks_subjects` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`)
+  CONSTRAINT `fk_marks_subjects` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
+  CONSTRAINT `fk_marks_teachers` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Изнасянето на данните беше деселектирано.
