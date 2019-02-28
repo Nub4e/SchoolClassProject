@@ -22,8 +22,10 @@ CREATE TABLE IF NOT EXISTS `classes` (
   `grade` int(2) NOT NULL,
   `letter` varchar(2) NOT NULL,
   `head_teacher_id` int(11) NOT NULL,
+  `school_id` int(11) NOT NULL,
   PRIMARY KEY (`class_id`),
   UNIQUE KEY `head_teacher_id` (`head_teacher_id`),
+  KEY `fk_classes_schools` (`school_id`),
   CONSTRAINT `fk_classes_teachers` FOREIGN KEY (`head_teacher_id`) REFERENCES `teachers` (`teacher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
@@ -53,13 +55,25 @@ CREATE TABLE IF NOT EXISTS `students` (
   `first_name` varchar(20) NOT NULL,
   `middle_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
-  `email` varchar(20) DEFAULT NULL,
-  `phone_number` varchar(12) NOT NULL,
   `birthdate` date NOT NULL,
   `class_id` int(11) NOT NULL,
   PRIMARY KEY (`student_id`),
   KEY `fk_students_classes` (`class_id`),
   CONSTRAINT `fk_students_classes` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Изнасянето на данните беше деселектирано.
+-- Дъмп структура за таблица classbook.student_contact_info
+CREATE TABLE IF NOT EXISTS `student_contact_info` (
+  `contact_info_id` int(11) NOT NULL AUTO_INCREMENT,
+  `first_email` varchar(20) NOT NULL,
+  `second_email` varchar(20) DEFAULT NULL,
+  `first_phone_number` varchar(12) NOT NULL,
+  `second_phone_number` varchar(12) DEFAULT NULL,
+  `student_id` int(11) NOT NULL,
+  PRIMARY KEY (`contact_info_id`),
+  UNIQUE KEY `student_id` (`student_id`),
+  CONSTRAINT `fk_student_contact_info` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Изнасянето на данните беше деселектирано.
@@ -78,13 +92,24 @@ CREATE TABLE IF NOT EXISTS `teachers` (
   `first_name` varchar(20) NOT NULL,
   `middle_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `phone_number` varchar(12) NOT NULL,
   `birthdate` date NOT NULL,
   `subject_id` int(11) NOT NULL,
   PRIMARY KEY (`teacher_id`),
   KEY `fk_teachers_subjects` (`subject_id`),
   CONSTRAINT `fk_teachers_subjects` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Изнасянето на данните беше деселектирано.
+-- Дъмп структура за таблица classbook.teacher_contact_info
+CREATE TABLE IF NOT EXISTS `teacher_contact_info` (
+  `contact_info_id` int(11) NOT NULL DEFAULT '0',
+  `first_email` varchar(20) NOT NULL,
+  `second_email` varchar(20) DEFAULT NULL,
+  `first_phone_number` varchar(12) NOT NULL,
+  `second_phone_number` varchar(12) DEFAULT NULL,
+  `teacher_id` int(11) NOT NULL,
+  KEY `fk_teacher_contact_info_teachers` (`teacher_id`),
+  CONSTRAINT `fk_teacher_contact_info_teachers` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Изнасянето на данните беше деселектирано.
