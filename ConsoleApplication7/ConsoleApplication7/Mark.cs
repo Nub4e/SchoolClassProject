@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -63,10 +63,9 @@ namespace ConsoleApplication7
             }
             else return "Wrong mark";
         }
-        public void ReturnMark()
+        public override string ToString()
         {
-            Console.WriteLine(this.Number);
-            Console.WriteLine(this.Description);
+            return string.Format("{0:f2};{1}",this.Number,this.Description);
         }
 
 
