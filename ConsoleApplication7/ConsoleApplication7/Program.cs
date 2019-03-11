@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//TEST
+//TEST + output
 namespace ConsoleApplication7
 {
     class Program
@@ -12,9 +12,22 @@ namespace ConsoleApplication7
         static void Main(string[] args)
         {
             MarksTest();
-            //Console.WriteLine(d.Keys);
-            //Student s = new Student(1, "v", 0,d);
-            //s.Introduce();
+            Dictionary <string ,List<Mark>> n = new Dictionary<string,List<Mark>>();
+            List<Mark> tup = new List<Mark>();
+            Random rnd = new Random();
+            for (int i = 0; i < 20; i++)
+            {
+                Mark m = new Mark(rnd.NextDouble() * (6 - 2) + 2);
+                tup.Add(m);
+            }
+            n.Add("1", tup);
+            foreach (KeyValuePair<string, List<Mark>> kvp in n)
+            {
+                foreach (var item in kvp.Value)
+                {
+                    Console.WriteLine(kvp.Key + " " + item.ToString()  );
+                }
+            }
         }
 
         private static void MarksTest()
@@ -23,7 +36,7 @@ namespace ConsoleApplication7
             for (int i = 0; i < 20; i++)
             {
                 Mark m = new Mark(rnd.NextDouble() * (6 - 2) + 2);
-                m.ReturnMark();
+                Console.WriteLine(m.ToString());
             }
         }
     }
