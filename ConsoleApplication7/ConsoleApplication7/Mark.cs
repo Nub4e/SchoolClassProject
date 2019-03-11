@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//TEST rewritten ToString(), mark
 namespace ConsoleApplication7
 {
     public class Mark
