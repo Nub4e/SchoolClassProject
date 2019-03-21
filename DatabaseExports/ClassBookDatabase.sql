@@ -1,118 +1,93 @@
--- --------------------------------------------------------
--- Хост:                         127.0.0.1
--- Версия на сървъра:            8.0.13 - MySQL Community Server - GPL
--- ОС на сървъра:                Win64
--- HeidiSQL Версия:              10.1.0.5464
--- --------------------------------------------------------
+CREATE DATABASE  IF NOT EXISTS `classbook` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
+USE `classbook`;
+-- MySQL dump 10.13  Distrib 8.0.15, for Win64 (x86_64)
+--
+-- Host: localhost    Database: classbook
+-- ------------------------------------------------------
+-- Server version	8.0.15
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET NAMES utf8 */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+ SET NAMES utf8 ;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Dumping data for table `classes`
+--
 
--- Дъмп на структурата на БД classbook
-CREATE DATABASE IF NOT EXISTS `classbook` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */;
-USE `classbook`;
+LOCK TABLES `classes` WRITE;
+/*!40000 ALTER TABLE `classes` DISABLE KEYS */;
+/*!40000 ALTER TABLE `classes` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Дъмп структура за таблица classbook.classes
-CREATE TABLE IF NOT EXISTS `classes` (
-  `class_id` int(11) NOT NULL AUTO_INCREMENT,
-  `grade` int(2) NOT NULL,
-  `letter` varchar(2) NOT NULL,
-  `head_teacher_id` int(11) NOT NULL,
-  `school_id` int(11) NOT NULL,
-  PRIMARY KEY (`class_id`),
-  UNIQUE KEY `head_teacher_id` (`head_teacher_id`),
-  KEY `fk_classes_schools` (`school_id`),
-  CONSTRAINT `fk_classes_teachers` FOREIGN KEY (`head_teacher_id`) REFERENCES `teachers` (`teacher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+--
+-- Dumping data for table `marks`
+--
 
--- Изнасянето на данните беше деселектирано.
--- Дъмп структура за таблица classbook.marks
-CREATE TABLE IF NOT EXISTS `marks` (
-  `mark_id` int(11) NOT NULL AUTO_INCREMENT,
-  `description` enum('слаб','среден','добър','много добър','отличен') NOT NULL,
-  `number` double(3,2) NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  `student_id` int(11) NOT NULL,
-  `teacher_id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`mark_id`),
-  KEY `fk_marks_subjects` (`subject_id`),
-  KEY `fk_marks_students` (`student_id`),
-  KEY `fk_marks_teachers` (`teacher_id`),
-  CONSTRAINT `fk_marks_students` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`),
-  CONSTRAINT `fk_marks_subjects` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`),
-  CONSTRAINT `fk_marks_teachers` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+LOCK TABLES `marks` WRITE;
+/*!40000 ALTER TABLE `marks` DISABLE KEYS */;
+/*!40000 ALTER TABLE `marks` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Изнасянето на данните беше деселектирано.
--- Дъмп структура за таблица classbook.students
-CREATE TABLE IF NOT EXISTS `students` (
-  `student_id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(20) NOT NULL,
-  `middle_name` varchar(20) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
-  `birthdate` date NOT NULL,
-  `class_id` int(11) NOT NULL,
-  PRIMARY KEY (`student_id`),
-  KEY `fk_students_classes` (`class_id`),
-  CONSTRAINT `fk_students_classes` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+--
+-- Dumping data for table `student_contact_info`
+--
 
--- Изнасянето на данните беше деселектирано.
--- Дъмп структура за таблица classbook.student_contact_info
-CREATE TABLE IF NOT EXISTS `student_contact_info` (
-  `contact_info_id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_email` varchar(20) NOT NULL,
-  `second_email` varchar(20) DEFAULT NULL,
-  `first_phone_number` varchar(12) NOT NULL,
-  `second_phone_number` varchar(12) DEFAULT NULL,
-  `student_id` int(11) NOT NULL,
-  PRIMARY KEY (`contact_info_id`),
-  UNIQUE KEY `student_id` (`student_id`),
-  CONSTRAINT `fk_student_contact_info` FOREIGN KEY (`student_id`) REFERENCES `students` (`student_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+LOCK TABLES `student_contact_info` WRITE;
+/*!40000 ALTER TABLE `student_contact_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `student_contact_info` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Изнасянето на данните беше деселектирано.
--- Дъмп структура за таблица classbook.subjects
-CREATE TABLE IF NOT EXISTS `subjects` (
-  `subject_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`subject_id`),
-  UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+--
+-- Dumping data for table `students`
+--
 
--- Изнасянето на данните беше деселектирано.
--- Дъмп структура за таблица classbook.teachers
-CREATE TABLE IF NOT EXISTS `teachers` (
-  `teacher_id` int(11) NOT NULL AUTO_INCREMENT,
-  `first_name` varchar(20) NOT NULL,
-  `middle_name` varchar(20) NOT NULL,
-  `last_name` varchar(20) NOT NULL,
-  `birthdate` date NOT NULL,
-  `subject_id` int(11) NOT NULL,
-  PRIMARY KEY (`teacher_id`),
-  KEY `fk_teachers_subjects` (`subject_id`),
-  CONSTRAINT `fk_teachers_subjects` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`subject_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+LOCK TABLES `students` WRITE;
+/*!40000 ALTER TABLE `students` DISABLE KEYS */;
+/*!40000 ALTER TABLE `students` ENABLE KEYS */;
+UNLOCK TABLES;
 
--- Изнасянето на данните беше деселектирано.
--- Дъмп структура за таблица classbook.teacher_contact_info
-CREATE TABLE IF NOT EXISTS `teacher_contact_info` (
-  `contact_info_id` int(11) NOT NULL DEFAULT '0',
-  `first_email` varchar(20) NOT NULL,
-  `second_email` varchar(20) DEFAULT NULL,
-  `first_phone_number` varchar(12) NOT NULL,
-  `second_phone_number` varchar(12) DEFAULT NULL,
-  `teacher_id` int(11) NOT NULL,
-  KEY `fk_teacher_contact_info_teachers` (`teacher_id`),
-  CONSTRAINT `fk_teacher_contact_info_teachers` FOREIGN KEY (`teacher_id`) REFERENCES `teachers` (`teacher_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+--
+-- Dumping data for table `subjects`
+--
 
--- Изнасянето на данните беше деселектирано.
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+LOCK TABLES `subjects` WRITE;
+/*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
+INSERT INTO `subjects` VALUES (2,'2 Ime'),(3,'3 Ime'),(4,'4 Ime'),(5,'5 Ime'),(6,'6 Ime'),(1,'Pyrvo Ime');
+/*!40000 ALTER TABLE `subjects` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `teacher_contact_info`
+--
+
+LOCK TABLES `teacher_contact_info` WRITE;
+/*!40000 ALTER TABLE `teacher_contact_info` DISABLE KEYS */;
+/*!40000 ALTER TABLE `teacher_contact_info` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `teachers`
+--
+
+LOCK TABLES `teachers` WRITE;
+/*!40000 ALTER TABLE `teachers` DISABLE KEYS */;
+/*!40000 ALTER TABLE `teachers` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2019-03-21 19:34:11
