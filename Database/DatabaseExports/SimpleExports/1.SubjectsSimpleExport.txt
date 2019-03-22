@@ -1,0 +1,42 @@
+subjectId,name
+13,Ancient Greek
+23,Animal husbandry
+34,Art
+40,Biology
+16,Business studies
+11,Chemistry
+33,Citizenship
+45,Commerce
+27,Computer studies.
+17,Dance
+28,Design & technology
+15,Design technology
+19,Drama
+35,English
+37,Ethic(s)
+31,Food technology
+43,French
+46,Geography
+42,German
+20,Health and hygiene
+14,History
+9,Home economics
+10,ICT
+36,Irish
+22,Italian
+12,Languages
+7,Latin
+30,Literature
+25,Mathematics
+39,Modern studies
+41,Music
+29,Physics
+38,Psychology
+32,Religion
+26,Religious education
+21,Science
+18,Sociology
+47,Spanish
+8,Study skills
+44,Welsh
+24,Woodwork
