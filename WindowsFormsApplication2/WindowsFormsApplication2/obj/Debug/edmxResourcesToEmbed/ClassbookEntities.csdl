@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="classbookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Grade" Type="Int32" Nullable="false" />
+    <Property Name="Letter" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="HeadTeacherId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Teacher" Relationship="Self.classes_fk_classes_teachers" FromRole="Classes" ToRole="Teachers" />
+    <NavigationProperty Name="Students" Relationship="Self.students_fk_students_classes" FromRole="Classes" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Mark">
+    <Key>
+      <PropertyRef Name="MarkId" />
+    </Key>
+    <Property Name="MarkId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Number" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <Property Name="TeacherId" Type="Int32" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Student" Relationship="Self.marks_fk_marks_students" FromRole="Marks" ToRole="Students" />
+    <NavigationProperty Name="Subject" Relationship="Self.marks_fk_marks_subjects" FromRole="Marks" ToRole="Subjects" />
+    <NavigationProperty Name="Teacher" Relationship="Self.marks_fk_marks_teachers" FromRole="Marks" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="StudentContactInfo">
+    <Key>
+      <PropertyRef Name="ContactInfoId" />
+    </Key>
+    <Property Name="ContactInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Student" Relationship="Self.student_contact_info_fk_student_contact_info" FromRole="StudentContactInfo" ToRole="Students" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PersonalNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ClassId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Class" Relationship="Self.students_fk_students_classes" FromRole="Students" ToRole="Classes" />
+    <NavigationProperty Name="Marks" Relationship="Self.marks_fk_marks_students" FromRole="Students" ToRole="Marks" />
+    <NavigationProperty Name="StudentContactInfoes" Relationship="Self.student_contact_info_fk_student_contact_info" FromRole="Students" ToRole="StudentContactInfo" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Marks" Relationship="Self.marks_fk_marks_subjects" FromRole="Subjects" ToRole="Marks" />
+    <NavigationProperty Name="Teachers" Relationship="Self.teachers_fk_teachers_subjects" FromRole="Subjects" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="TeacherContactInfo">
+    <Key>
+      <PropertyRef Name="ContactInfoId" />
+    </Key>
+    <Property Name="ContactInfoId" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TeacherId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Teacher" Relationship="Self.teacher_contact_info_fk_teacher_contact_info_teachers" FromRole="TeacherContactInfo" ToRole="Teachers" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="TeacherId" />
+    </Key>
+    <Property Name="TeacherId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PersonalNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Classes" Relationship="Self.classes_fk_classes_teachers" FromRole="Teachers" ToRole="Classes" />
+    <NavigationProperty Name="Marks" Relationship="Self.marks_fk_marks_teachers" FromRole="Teachers" ToRole="Marks" />
+    <NavigationProperty Name="Subject" Relationship="Self.teachers_fk_teachers_subjects" FromRole="Teachers" ToRole="Subjects" />
+    <NavigationProperty Name="TeacherContactInfoes" Relationship="Self.teacher_contact_info_fk_teacher_contact_info_teachers" FromRole="Teachers" ToRole="TeacherContactInfo" />
+  </EntityType>
+  <Association Name="classes_fk_classes_teachers">
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="Classes" Type="Self.Class" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TeacherId" />
+      </Principal>
+      <Dependent Role="Classes">
+        <PropertyRef Name="HeadTeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="students_fk_students_classes">
+    <End Role="Classes" Type="Self.Class" Multiplicity="1" />
+    <End Role="Students" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Classes">
+        <PropertyRef Name="ClassId" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="marks_fk_marks_students">
+    <End Role="Students" Type="Self.Student" Multiplicity="1" />
+    <End Role="Marks" Type="Self.Mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Marks">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="marks_fk_marks_subjects">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+    <End Role="Marks" Type="Self.Mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="Marks">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="marks_fk_marks_teachers">
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="Marks" Type="Self.Mark" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TeacherId" />
+      </Principal>
+      <Dependent Role="Marks">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="student_contact_info_fk_student_contact_info">
+    <End Role="Students" Type="Self.Student" Multiplicity="1" />
+    <End Role="StudentContactInfo" Type="Self.StudentContactInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="StudentContactInfo">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="teachers_fk_teachers_subjects">
+    <End Role="Subjects" Type="Self.Subject" Multiplicity="1" />
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectId" />
+      </Principal>
+      <Dependent Role="Teachers">
+        <PropertyRef Name="SubjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="teacher_contact_info_fk_teacher_contact_info_teachers">
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="TeacherContactInfo" Type="Self.TeacherContactInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TeacherId" />
+      </Principal>
+      <Dependent Role="TeacherContactInfo">
+        <PropertyRef Name="TeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ClassbookEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Marks" EntityType="Self.Mark" />
+    <EntitySet Name="StudentContactInfoes" EntityType="Self.StudentContactInfo" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
+    <EntitySet Name="TeacherContactInfoes" EntityType="Self.TeacherContactInfo" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <AssociationSet Name="classes_fk_classes_teachers" Association="Self.classes_fk_classes_teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="students_fk_students_classes" Association="Self.students_fk_students_classes">
+      <End Role="Classes" EntitySet="Classes" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="marks_fk_marks_students" Association="Self.marks_fk_marks_students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Marks" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="marks_fk_marks_subjects" Association="Self.marks_fk_marks_subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Marks" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="marks_fk_marks_teachers" Association="Self.marks_fk_marks_teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Marks" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="student_contact_info_fk_student_contact_info" Association="Self.student_contact_info_fk_student_contact_info">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="StudentContactInfo" EntitySet="StudentContactInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="teachers_fk_teachers_subjects" Association="Self.teachers_fk_teachers_subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Teachers" EntitySet="Teachers" />
+    </AssociationSet>
+    <AssociationSet Name="teacher_contact_info_fk_teacher_contact_info_teachers" Association="Self.teacher_contact_info_fk_teacher_contact_info_teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="TeacherContactInfo" EntitySet="TeacherContactInfoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
