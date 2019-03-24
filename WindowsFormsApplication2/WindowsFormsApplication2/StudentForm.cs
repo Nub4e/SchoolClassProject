@@ -26,18 +26,27 @@ namespace WindowsFormsApplication2
         {
             //Add subjects collection to subjectComboBox 
             List<Subject> studentSubjects = new List<Subject>();
+            Class studentClass = new Class();
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 Student student = context.Students.First(w => w.PersonalNumber == LoginId.egn);//Late change to loggedStudent.Id
                 studentSubjects = student.Marks.Select(c => c.Subject).Distinct().ToList();
-                
+                studentClass = student.Class;
+
+                for (int i = 0; i < studentSubjects.Count; i++)
+                {
+                    studentSubjectsComboBox.Items.Add(studentSubjects[i].Name);
+                }
+                //loads all the contact info (except his own) of the class the student is in 
+                for (int i = 0; i < studentClass.Students.Count(); i++)
+                {
+                    if(studentClass.Students.ToList()[i].StudentId != student.StudentId)
+                    classContactInfoListBox.Items.Add(studentClass.Students.ToList()[i].FirstName + ' '+ studentClass.Students.ToList()[i].LastName + " Email: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).Email + "Phone number: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).PhoneNumber);
+                }
+
+
+
             }
-            for (int i = 0; i < studentSubjects.Count; i++)
-            {
-                studentSubjectsComboBox.Items.Add(studentSubjects[i].Name);
-            }
-            
-            
         }  
 
         private void studentSubjectsComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -87,6 +96,11 @@ namespace WindowsFormsApplication2
             }
         }
         private void selectedMarksListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.averageMark = new System.Windows.Forms.Label();
             this.selectedMarkInList = new System.Windows.Forms.Label();
+            this.classContactInfoListBox = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -137,11 +138,21 @@
             this.selectedMarkInList.Text = "selectedMarkInList";
             this.selectedMarkInList.Visible = false;
             // 
+            // classContactInfoListBox
+            // 
+            this.classContactInfoListBox.FormattingEnabled = true;
+            this.classContactInfoListBox.HorizontalScrollbar = true;
+            this.classContactInfoListBox.Location = new System.Drawing.Point(578, 196);
+            this.classContactInfoListBox.Name = "classContactInfoListBox";
+            this.classContactInfoListBox.Size = new System.Drawing.Size(337, 108);
+            this.classContactInfoListBox.TabIndex = 8;
+            // 
             // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 400);
+            this.Controls.Add(this.classContactInfoListBox);
             this.Controls.Add(this.selectedMarkInList);
             this.Controls.Add(this.averageMark);
             this.Controls.Add(this.label2);
@@ -172,5 +183,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label averageMark;
         private System.Windows.Forms.Label selectedMarkInList;
+        private System.Windows.Forms.ListBox classContactInfoListBox;
     }
 }
