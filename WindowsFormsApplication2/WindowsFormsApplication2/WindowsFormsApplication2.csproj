@@ -83,6 +83,7 @@
     <Compile Include="DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LoginId.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -67,6 +67,7 @@
             this.button3.TabIndex = 2;
             this.button3.Text = "Return";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label1
             // 
@@ -93,6 +94,7 @@
             this.insertNameTxtBox.Name = "insertNameTxtBox";
             this.insertNameTxtBox.Size = new System.Drawing.Size(100, 20);
             this.insertNameTxtBox.TabIndex = 5;
+            this.insertNameTxtBox.TextChanged += new System.EventHandler(this.insertNameTxtBox_TextChanged);
             // 
             // insertEGNTxtBox
             // 

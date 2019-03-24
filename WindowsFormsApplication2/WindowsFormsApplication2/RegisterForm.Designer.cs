@@ -151,7 +151,7 @@
             // 
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(381, 114);
+            this.panel2.Location = new System.Drawing.Point(379, 114);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 241);
             this.panel2.TabIndex = 9;
@@ -236,6 +236,7 @@
             this.label11.Size = new System.Drawing.Size(86, 13);
             this.label11.TabIndex = 17;
             this.label11.Text = "More Information";
+            this.label11.Visible = false;
             // 
             // RegisterForm
             // 
@@ -244,13 +245,13 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label5);

@@ -34,6 +34,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.studentSubjectsComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.selectedMarksListBox = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.averageMark = new System.Windows.Forms.Label();
+            this.selectedMarkInList = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,6 +85,7 @@
             this.studentSubjectsComboBox.Name = "studentSubjectsComboBox";
             this.studentSubjectsComboBox.Size = new System.Drawing.Size(121, 21);
             this.studentSubjectsComboBox.TabIndex = 2;
+            this.studentSubjectsComboBox.SelectedValueChanged += new System.EventHandler(this.studentSubjectsComboBox_SelectedValueChanged);
             // 
             // label1
             // 
@@ -91,17 +96,62 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Select subject";
             // 
-            // Form3
+            // selectedMarksListBox
+            // 
+            this.selectedMarksListBox.FormattingEnabled = true;
+            this.selectedMarksListBox.HorizontalScrollbar = true;
+            this.selectedMarksListBox.Items.AddRange(new object[] {
+            "No marks"});
+            this.selectedMarksListBox.Location = new System.Drawing.Point(181, 196);
+            this.selectedMarksListBox.Name = "selectedMarksListBox";
+            this.selectedMarksListBox.Size = new System.Drawing.Size(312, 108);
+            this.selectedMarksListBox.TabIndex = 4;
+            this.selectedMarksListBox.SelectedIndexChanged += new System.EventHandler(this.selectedMarksListBox_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(178, 169);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "All marks";
+            // 
+            // averageMark
+            // 
+            this.averageMark.AutoSize = true;
+            this.averageMark.Location = new System.Drawing.Point(178, 328);
+            this.averageMark.Name = "averageMark";
+            this.averageMark.Size = new System.Drawing.Size(70, 13);
+            this.averageMark.TabIndex = 6;
+            this.averageMark.Text = "averageMark";
+            this.averageMark.Visible = false;
+            // 
+            // selectedMarkInList
+            // 
+            this.selectedMarkInList.AutoSize = true;
+            this.selectedMarkInList.Location = new System.Drawing.Point(178, 305);
+            this.selectedMarkInList.Name = "selectedMarkInList";
+            this.selectedMarkInList.Size = new System.Drawing.Size(96, 13);
+            this.selectedMarkInList.TabIndex = 7;
+            this.selectedMarkInList.Text = "selectedMarkInList";
+            this.selectedMarkInList.Visible = false;
+            // 
+            // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 400);
+            this.Controls.Add(this.selectedMarkInList);
+            this.Controls.Add(this.averageMark);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.selectedMarksListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.studentSubjectsComboBox);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form3";
+            this.Name = "StudentsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
@@ -118,5 +168,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox studentSubjectsComboBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox selectedMarksListBox;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label averageMark;
+        private System.Windows.Forms.Label selectedMarkInList;
     }
 }

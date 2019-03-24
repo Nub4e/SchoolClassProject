@@ -26,7 +26,7 @@ namespace WindowsFormsApplication2
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            SetDeafultValu();
 
 
             //Проверка за избора на  teacher and student 
@@ -43,11 +43,13 @@ namespace WindowsFormsApplication2
                         if (student.FirstName + student.MiddleName + student.LastName == insertNameTxtBox.Text.Replace(" ", string.Empty))//да се погледне
                         {
                             studentNameIsCorrect = true;
+                            LoginId.egn = student.PersonalNumber;
                         }
                     }
                 }
                 if (studentExists && studentNameIsCorrect)
                 {
+
                     this.Hide();
                     StudentsForm studentsForm = new StudentsForm();
                     studentsForm.Show();
@@ -77,6 +79,7 @@ namespace WindowsFormsApplication2
                             if (teacher.FirstName + teacher.MiddleName + teacher.LastName == insertNameTxtBox.Text.Replace(" ", string.Empty))
                             {
                                 teacherNameIsCorrect = true;
+                                LoginId.egn = teacher.PersonalNumber;
                             }
                         }
                     }
@@ -104,6 +107,23 @@ namespace WindowsFormsApplication2
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
             registerForm.Closed += (s, args) => this.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void insertNameTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        void SetDeafultValu()
+        {
+
+            insertNameTxtBox.Text = "ChesterOsborneDixon";
+            insertEGNTxtBox.Text = "3390475302";
+            comboBox1.SelectedIndex = 1;
         }
     }
 }

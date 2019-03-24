@@ -28,14 +28,92 @@ namespace WindowsFormsApplication2
             List<Subject> studentSubjects = new List<Subject>();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                Student student = context.Students.First();//Late change to loggedStudent.Id
-                studentSubjects = student.Marks.Select(c => c.Subject).ToList();
+                Student student = context.Students.First(w => w.PersonalNumber == LoginId.egn);//Late change to loggedStudent.Id
+                studentSubjects = student.Marks.Select(c => c.Subject).Distinct().ToList();
+                
             }
             for (int i = 0; i < studentSubjects.Count; i++)
             {
                 studentSubjectsComboBox.Items.Add(studentSubjects[i].Name);
             }
             
+            
+        }  
+
+        private void studentSubjectsComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            //We get the login.egn and the subject name from the combobox
+            //We search for them in the database
+            //After we search for a mark with the StudentId and the SubjectId and add it to a seperate list
+            selectedMarksListBox.Items.Clear(); 
+            string selectedSubjectName = studentSubjectsComboBox.SelectedItem.ToString();
+            Student loggedInStudent = new Student();
+            Subject selectedSubject = new Subject();
+            List<Mark> allStudentMarksForSubject = new List<Mark>();
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+                loggedInStudent = context.Students.FirstOrDefault(a => a.PersonalNumber == LoginId.egn);
+                selectedSubject = context.Subjects.FirstOrDefault(a => a.Name == selectedSubjectName);
+
+                context.Marks.ToList().ForEach(w =>
+                {
+                    if (w.StudentId == loggedInStudent.StudentId && w.SubjectId == selectedSubject.SubjectId)
+                        allStudentMarksForSubject.Add(w);
+
+                });
+
+
+                for (int i = 0; i < allStudentMarksForSubject.Count(); i++)
+                {
+                    selectedMarksListBox.Items.Add(allStudentMarksForSubject[i].Description + ' ' +
+                        allStudentMarksForSubject[i].Number +
+                        " Teacher: " + allStudentMarksForSubject[i].Teacher.FirstName + ' ' + allStudentMarksForSubject[i].Teacher.MiddleName + ' ' + allStudentMarksForSubject[i].Teacher.LastName);
+                }
+
+                AverageMark(allStudentMarksForSubject);
+            }
+
+        }
+
+        void AverageMark(List<Mark> box)
+        {
+
+            if ( box.Count> 0)
+            {
+                //calculated average mark value 
+                var mark = Math.Round(box.Average(w => w.Number), 2).ToString();
+                averageMark.Text = "Average: " + mark;
+                averageMark.Visible = true;
+            }
+        }
+        private void selectedMarksListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
+/*
+ 
+            string selectedSubjectName = studentSubjectsComboBox.GetItemText(this.studentSubjectsComboBox.SelectedItem);
+            List<Mark> marksForSelectedSubjects = new List<Mark>();
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+                //Selects the marks witg the subject name in studentSubjectsComboBox
+                var selectedSubject = context.Subjects.FirstOrDefault(c => c.Name == selectedSubjectName);               
+                marksForSelectedSubjects = context.Marks.Where(w => w.StudentId==selectedSubject.SubjectId).OrderBy(w => w.Number).ToList();
+            }
+            selectedMarksListBox.Items.Clear();
+            for (int i = 0; i < marksForSelectedSubjects.Count(); i++)
+            {
+                //adds the marks' descriptions and numbers in the selectedMarksListBox as a string
+                selectedMarksListBox.Items.Add(Convert.ToString(marksForSelectedSubjects[i].Description + ' ' + marksForSelectedSubjects[i].Number+" - Teacher: "+ marksForSelectedSubjects[i].TeacherId));
+            }
+
+            if (marksForSelectedSubjects.Count>0)
+            {
+                //calculated average mark value 
+                var mark =Math.Round(marksForSelectedSubjects.Average(w => w.Number), 2).ToString();
+                averageMark.Text = "Average: " +  mark;
+                averageMark.Visible = true;
+            }
+            */
