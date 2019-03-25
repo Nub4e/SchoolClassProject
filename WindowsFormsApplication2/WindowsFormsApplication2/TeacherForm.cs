@@ -12,14 +12,21 @@ namespace WindowsFormsApplication2
 {
     public partial class TeacherForm : Form
     {
-        public TeacherForm()
+        string egnPass;
+        public TeacherForm(string egn)
         {
             InitializeComponent();
+            egnPass = egn;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -39,6 +39,7 @@
             this.averageMark = new System.Windows.Forms.Label();
             this.selectedMarkInList = new System.Windows.Forms.Label();
             this.classContactInfoListBox = new System.Windows.Forms.ListBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +108,7 @@
             this.selectedMarksListBox.Name = "selectedMarksListBox";
             this.selectedMarksListBox.Size = new System.Drawing.Size(312, 108);
             this.selectedMarksListBox.TabIndex = 4;
-            this.selectedMarksListBox.SelectedIndexChanged += new System.EventHandler(this.selectedMarksListBox_SelectedIndexChanged);
+        
             // 
             // label2
             // 
@@ -142,16 +143,26 @@
             // 
             this.classContactInfoListBox.FormattingEnabled = true;
             this.classContactInfoListBox.HorizontalScrollbar = true;
-            this.classContactInfoListBox.Location = new System.Drawing.Point(578, 196);
+            this.classContactInfoListBox.Location = new System.Drawing.Point(549, 196);
             this.classContactInfoListBox.Name = "classContactInfoListBox";
-            this.classContactInfoListBox.Size = new System.Drawing.Size(337, 108);
+            this.classContactInfoListBox.Size = new System.Drawing.Size(371, 108);
             this.classContactInfoListBox.TabIndex = 8;
+           
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(579, 169);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 13);
+            this.label3.TabIndex = 9;
             // 
             // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 400);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.classContactInfoListBox);
             this.Controls.Add(this.selectedMarkInList);
             this.Controls.Add(this.averageMark);
@@ -184,5 +195,6 @@
         private System.Windows.Forms.Label averageMark;
         private System.Windows.Forms.Label selectedMarkInList;
         private System.Windows.Forms.ListBox classContactInfoListBox;
+        private System.Windows.Forms.Label label3;
     }
 }

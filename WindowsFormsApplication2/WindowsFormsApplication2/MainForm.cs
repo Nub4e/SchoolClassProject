@@ -31,7 +31,7 @@ namespace WindowsFormsApplication2
         private void button3_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TeacherForm f = new TeacherForm();
+            TeacherForm f = new TeacherForm("");
             f.Show();
             f.Closed += (s, args) => this.Show();
         }
@@ -45,7 +45,7 @@ namespace WindowsFormsApplication2
         {
 
             //да се погледне  защо е Form3 а не LoginForm
-            StudentsForm f = new StudentsForm();
+            StudentsForm f = new StudentsForm("");
             f.Show();
             f.Closed += (s, args) => this.Show();
         }

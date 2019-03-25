@@ -96,6 +96,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(812, 359);
             this.panel3.TabIndex = 3;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // listBox2
             // 
@@ -115,7 +116,7 @@
             this.listBox1.Size = new System.Drawing.Size(120, 91);
             this.listBox1.TabIndex = 0;
             // 
-            // Form2
+            // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -124,7 +125,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form2";
+            this.Name = "TeacherForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

@@ -18,20 +18,22 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        void SetDeafultValue()
         {
 
+            insertNameTxtBox.Text = "ChesterOsborneDixon";
+            insertEGNTxtBox.Text = "3390475302";
+            comboBox1.SelectedIndex = 1;
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
-            SetDeafultValu();
+            SetDeafultValue();
 
-
+            
             //Проверка за избора на  teacher and student 
             if (comboBox1.SelectedIndex == 1)//Checks if student option is sellected in combo box
             {
+                string egnPass = String.Empty;
                 bool studentExists = false;//Checks if a Student with the stated personal number exists and if he has written the correct name
                 bool studentNameIsCorrect = false;
                 using (ClassbookEntities context = new ClassbookEntities())
@@ -43,7 +45,7 @@ namespace WindowsFormsApplication2
                         if (student.FirstName + student.MiddleName + student.LastName == insertNameTxtBox.Text.Replace(" ", string.Empty))//да се погледне
                         {
                             studentNameIsCorrect = true;
-                            LoginId.egn = student.PersonalNumber;
+                            egnPass = student.PersonalNumber;
                         }
                     }
                 }
@@ -51,7 +53,7 @@ namespace WindowsFormsApplication2
                 {
 
                     this.Hide();
-                    StudentsForm studentsForm = new StudentsForm();
+                    StudentsForm studentsForm = new StudentsForm(egnPass);
                     studentsForm.Show();
                     studentsForm.Closed += (s, args) => this.Show();
                 }
@@ -60,14 +62,13 @@ namespace WindowsFormsApplication2
                     MessageBox.Show("No such student", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-            }
-
-            
+            }    
             else
             {
                 if (comboBox1.SelectedIndex == 0)//Checks if teacher option is sellected in combo box
                 {
                     //Checks if a teacher with the stated personal number exists and if he has written the correct name
+                    string egnPass = String.Empty;
                     bool teacherExists = false;
                     bool teacherNameIsCorrect = false;
                     using (ClassbookEntities context = new ClassbookEntities())
@@ -79,14 +80,14 @@ namespace WindowsFormsApplication2
                             if (teacher.FirstName + teacher.MiddleName + teacher.LastName == insertNameTxtBox.Text.Replace(" ", string.Empty))
                             {
                                 teacherNameIsCorrect = true;
-                                LoginId.egn = teacher.PersonalNumber;
+                                egnPass = teacher.PersonalNumber;
                             }
                         }
                     }
                     if (teacherExists && teacherNameIsCorrect)
                     {
                         this.Hide();
-                        TeacherForm teacherForm = new TeacherForm();
+                        TeacherForm teacherForm = new TeacherForm(egnPass);
                         teacherForm.Show();
                         teacherForm.Closed += (s, args) => this.Show();
                     }
@@ -112,18 +113,6 @@ namespace WindowsFormsApplication2
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void insertNameTxtBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        void SetDeafultValu()
-        {
-
-            insertNameTxtBox.Text = "ChesterOsborneDixon";
-            insertEGNTxtBox.Text = "3390475302";
-            comboBox1.SelectedIndex = 1;
         }
     }
 }

@@ -77,7 +77,7 @@
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "EGN";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+         
             // 
             // label2
             // 
@@ -94,7 +94,7 @@
             this.insertNameTxtBox.Name = "insertNameTxtBox";
             this.insertNameTxtBox.Size = new System.Drawing.Size(100, 20);
             this.insertNameTxtBox.TabIndex = 5;
-            this.insertNameTxtBox.TextChanged += new System.EventHandler(this.insertNameTxtBox_TextChanged);
+         
             // 
             // insertEGNTxtBox
             // 

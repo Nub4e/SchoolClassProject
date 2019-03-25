@@ -12,15 +12,18 @@ namespace WindowsFormsApplication2
 {
     public partial class StudentsForm : Form
     {
-        public StudentsForm()
+        string egnPass;
+        public StudentsForm(string egn)
         {
             InitializeComponent();
+            egnPass = egn;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
 
         private void Form3_Load(object sender, EventArgs e)
         {
@@ -29,7 +32,7 @@ namespace WindowsFormsApplication2
             Class studentClass = new Class();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                Student student = context.Students.First(w => w.PersonalNumber == LoginId.egn);//Late change to loggedStudent.Id
+                Student student = context.Students.First(w => w.PersonalNumber == egnPass);//Late change to loggedStudent.Id
                 studentSubjects = student.Marks.Select(c => c.Subject).Distinct().ToList();
                 studentClass = student.Class;
 
@@ -54,7 +57,7 @@ namespace WindowsFormsApplication2
                     tempList.ForEach(w => classContactInfoListBox.Items.Add(w));
                 }
             }
-        }  
+        }
 
         private void studentSubjectsComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -68,7 +71,7 @@ namespace WindowsFormsApplication2
             List<Mark> allStudentMarksForSubject = new List<Mark>();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                loggedInStudent = context.Students.FirstOrDefault(a => a.PersonalNumber == LoginId.egn);
+                loggedInStudent = context.Students.FirstOrDefault(a => a.PersonalNumber == egnPass);
                 selectedSubject = context.Subjects.FirstOrDefault(a => a.Name == selectedSubjectName);
 
                 context.Marks.ToList().ForEach(w =>
@@ -90,7 +93,7 @@ namespace WindowsFormsApplication2
             }
 
         }
-
+        // Average mark
         void AverageMark(List<Mark> box)
         {
 
@@ -102,39 +105,6 @@ namespace WindowsFormsApplication2
                 averageMark.Visible = true;
             }
         }
-        private void selectedMarksListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
-/*
- 
-            string selectedSubjectName = studentSubjectsComboBox.GetItemText(this.studentSubjectsComboBox.SelectedItem);
-            List<Mark> marksForSelectedSubjects = new List<Mark>();
-            using (ClassbookEntities context = new ClassbookEntities())
-            {
-                //Selects the marks witg the subject name in studentSubjectsComboBox
-                var selectedSubject = context.Subjects.FirstOrDefault(c => c.Name == selectedSubjectName);               
-                marksForSelectedSubjects = context.Marks.Where(w => w.StudentId==selectedSubject.SubjectId).OrderBy(w => w.Number).ToList();
-            }
-            selectedMarksListBox.Items.Clear();
-            for (int i = 0; i < marksForSelectedSubjects.Count(); i++)
-            {
-                //adds the marks' descriptions and numbers in the selectedMarksListBox as a string
-                selectedMarksListBox.Items.Add(Convert.ToString(marksForSelectedSubjects[i].Description + ' ' + marksForSelectedSubjects[i].Number+" - Teacher: "+ marksForSelectedSubjects[i].TeacherId));
-            }
-
-            if (marksForSelectedSubjects.Count>0)
-            {
-                //calculated average mark value 
-                var mark =Math.Round(marksForSelectedSubjects.Average(w => w.Number), 2).ToString();
-                averageMark.Text = "Average: " +  mark;
-                averageMark.Visible = true;
-            }
-            */
