@@ -37,15 +37,22 @@ namespace WindowsFormsApplication2
                 {
                     studentSubjectsComboBox.Items.Add(studentSubjects[i].Name);
                 }
-                //loads all the contact info (except his own) of the class the student is in 
-                for (int i = 0; i < studentClass.Students.Count(); i++)
+                //loads all the contact info (except his own) of the class the student is in and orders it
                 {
-                    if(studentClass.Students.ToList()[i].StudentId != student.StudentId)
-                    classContactInfoListBox.Items.Add(studentClass.Students.ToList()[i].FirstName + ' '+ studentClass.Students.ToList()[i].LastName + " Email: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).Email + "Phone number: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).PhoneNumber);
+                    for (int i = 0; i < studentClass.Students.Count(); i++)
+                    {
+                        if (studentClass.Students.ToList()[i].StudentId != student.StudentId)
+                            classContactInfoListBox.Items.Add(studentClass.Students.ToList()[i].FirstName + ' ' + studentClass.Students.ToList()[i].LastName + " Email: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).Email + " Phone number: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).PhoneNumber);
+                    }
+                    List<string> tempList = new List<string>();
+                    foreach (var item in classContactInfoListBox.Items)
+                    {
+                        tempList.Add(item.ToString());
+                    }
+                    tempList = tempList.OrderBy(w => w).ToList();
+                    classContactInfoListBox.Items.Clear();
+                    tempList.ForEach(w => classContactInfoListBox.Items.Add(w));
                 }
-
-
-
             }
         }  
 
