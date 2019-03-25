@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="classbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="ClassbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Classes">
     <Key>
       <PropertyRef Name="ClassId" />
@@ -53,7 +53,7 @@
     <Key>
       <PropertyRef Name="ContactInfoId" />
     </Key>
-    <Property Name="ContactInfoId" Type="int" Nullable="false" />
+    <Property Name="ContactInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" Nullable="false" />
     <Property Name="TeacherId" Type="int" Nullable="false" />
@@ -166,7 +166,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="classbookModelStoreContainer">
+  <EntityContainer Name="ClassbookModelStoreContainer">
     <EntitySet Name="Classes" EntityType="Self.Classes" Schema="classbook" store:Type="Tables" />
     <EntitySet Name="Marks" EntityType="Self.Marks" Schema="classbook" store:Type="Tables" />
     <EntitySet Name="StudentContactInfo" EntityType="Self.StudentContactInfo" Schema="classbook" store:Type="Tables" />

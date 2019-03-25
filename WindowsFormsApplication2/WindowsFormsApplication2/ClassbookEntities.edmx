@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="classbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ClassbookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Classes">
           <Key>
             <PropertyRef Name="ClassId" />
@@ -58,7 +58,7 @@
           <Key>
             <PropertyRef Name="ContactInfoId" />
           </Key>
-          <Property Name="ContactInfoId" Type="int" Nullable="false" />
+          <Property Name="ContactInfoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="12" Nullable="false" />
           <Property Name="TeacherId" Type="int" Nullable="false" />
@@ -171,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="classbookModelStoreContainer">
+        <EntityContainer Name="ClassbookModelStoreContainer">
           <EntitySet Name="Classes" EntityType="Self.Classes" Schema="classbook" store:Type="Tables" />
           <EntitySet Name="Marks" EntityType="Self.Marks" Schema="classbook" store:Type="Tables" />
           <EntitySet Name="StudentContactInfo" EntityType="Self.StudentContactInfo" Schema="classbook" store:Type="Tables" />
@@ -216,7 +216,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="classbookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ClassbookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Class">
           <Key>
             <PropertyRef Name="ClassId" />
@@ -281,7 +281,7 @@
           <Key>
             <PropertyRef Name="ContactInfoId" />
           </Key>
-          <Property Name="ContactInfoId" Type="Int32" Nullable="false" />
+          <Property Name="ContactInfoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TeacherId" Type="Int32" Nullable="false" />
@@ -445,9 +445,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="classbookModelStoreContainer" CdmEntityContainer="ClassbookEntities">
+        <EntityContainerMapping StorageEntityContainer="ClassbookModelStoreContainer" CdmEntityContainer="ClassbookEntities">
           <EntitySetMapping Name="Classes">
-            <EntityTypeMapping TypeName="classbookModel.Class">
+            <EntityTypeMapping TypeName="ClassbookModel.Class">
               <MappingFragment StoreEntitySet="Classes">
                 <ScalarProperty Name="ClassId" ColumnName="ClassId" />
                 <ScalarProperty Name="Grade" ColumnName="Grade" />
@@ -457,7 +457,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Marks">
-            <EntityTypeMapping TypeName="classbookModel.Mark">
+            <EntityTypeMapping TypeName="ClassbookModel.Mark">
               <MappingFragment StoreEntitySet="Marks">
                 <ScalarProperty Name="MarkId" ColumnName="MarkId" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
@@ -470,7 +470,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="StudentContactInfoes">
-            <EntityTypeMapping TypeName="classbookModel.StudentContactInfo">
+            <EntityTypeMapping TypeName="ClassbookModel.StudentContactInfo">
               <MappingFragment StoreEntitySet="StudentContactInfo">
                 <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -480,7 +480,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="classbookModel.Student">
+            <EntityTypeMapping TypeName="ClassbookModel.Student">
               <MappingFragment StoreEntitySet="Students">
                 <ScalarProperty Name="StudentId" ColumnName="StudentId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -493,7 +493,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Subjects">
-            <EntityTypeMapping TypeName="classbookModel.Subject">
+            <EntityTypeMapping TypeName="ClassbookModel.Subject">
               <MappingFragment StoreEntitySet="Subjects">
                 <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -501,7 +501,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TeacherContactInfoes">
-            <EntityTypeMapping TypeName="classbookModel.TeacherContactInfo">
+            <EntityTypeMapping TypeName="ClassbookModel.TeacherContactInfo">
               <MappingFragment StoreEntitySet="TeacherContactInfo">
                 <ScalarProperty Name="ContactInfoId" ColumnName="ContactInfoId" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -511,7 +511,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Teachers">
-            <EntityTypeMapping TypeName="classbookModel.Teacher">
+            <EntityTypeMapping TypeName="ClassbookModel.Teacher">
               <MappingFragment StoreEntitySet="Teachers">
                 <ScalarProperty Name="TeacherId" ColumnName="TeacherId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />

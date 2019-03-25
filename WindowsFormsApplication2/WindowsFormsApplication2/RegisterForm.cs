@@ -138,7 +138,7 @@ namespace WindowsFormsApplication2
                     ulong z = 1234567890;
                     if (ulong.TryParse(phoneNumberBox.Text, out z) && (phoneNumberBox.Text.Length >= 10 && phoneNumberBox.Text.Length <= 12))
                     {
-                        if (!context.TeacherContactInfoes.Any(w => w.PhoneNumber == phoneNumberBox.Text))
+                        if (!context.StudentContactInfoes.Any(w => w.PhoneNumber == phoneNumberBox.Text))
                         {
                             teacherContactInfo.PhoneNumber = phoneNumberBox.Text;
                         }

@@ -89,11 +89,29 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Mark.cs">
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Student.cs">
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudentContactInfo.cs">
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Subject.cs">
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Teacher.cs">
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherContactInfo.cs">
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="TeacherForm.cs">
       <SubType>Form</SubType>
@@ -113,26 +131,8 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mark.cs">
-      <DependentUpon>ClassbookEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student.cs">
-      <DependentUpon>ClassbookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="StudentContactInfo.cs">
-      <DependentUpon>ClassbookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Subject.cs">
-      <DependentUpon>ClassbookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Teacher.cs">
-      <DependentUpon>ClassbookEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TeacherContactInfo.cs">
-      <DependentUpon>ClassbookEntities.tt</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +179,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Tests\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ClassbookEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ClassbookEntities.edmx</DependentUpon>
@@ -189,12 +195,6 @@
       <DependentUpon>ClassbookEntities.edmx</DependentUpon>
       <LastGenOutput>ClassbookEntities.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tests\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
