@@ -43,7 +43,7 @@ namespace WindowsFormsApplication2
         {
 
 
-            if (comboBox1.SelectedIndex == 0) //0 - Studen ; 1-Teacher
+            if (studentOrTeacherComboBox.SelectedIndex == 0) //0 - Studen ; 1-Teacher
             {
                 panel1.Visible = true;
                 panel2.Visible = false;
@@ -52,7 +52,7 @@ namespace WindowsFormsApplication2
             }
             else
             {
-                if (comboBox1.SelectedIndex == 1)
+                if (studentOrTeacherComboBox.SelectedIndex == 1)
                 {
                     panel1.Visible = false;
                     panel2.Visible = true;
@@ -78,6 +78,10 @@ namespace WindowsFormsApplication2
                 {
                     AddTeacherInBd();
                 }
+                else
+                {
+                    MessageBox.Show("Please select a job!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
         bool IsValidEmail(string email) // chek valid email
@@ -101,38 +105,44 @@ namespace WindowsFormsApplication2
                 TeacherContactInfo teacherContactInfo = new TeacherContactInfo();
                 Teacher teacher = new Teacher();
                 //Name
-                try
                 {
-                    List<string> allName = nameBox.Text.Split(' ').ToList();
-                    teacher.FirstName = allName[0];
-                    teacher.MiddleName = allName[1];
-                    teacher.LastName = allName[2];
-                }
-                catch
-                {
-                    MessageBox.Show("Wrong Name Format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                teacher.Birthdate = dateTimeBox.Value;
-                //Email
-                if (IsValidEmail(emailBox.Text))
-                {
-                    if (!context.TeacherContactInfoes.Any(w => w.Email == emailBox.Text))
+                    try
                     {
-                        teacherContactInfo.Email = emailBox.Text;
+                        List<string> allName = nameBox.Text.Split(' ').ToList();
+                        teacher.FirstName = allName[0];
+                        teacher.MiddleName = allName[1];
+                        teacher.LastName = allName[2];
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Email is already used!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Wrong Name Format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
-                else
+                //BirthDate
                 {
-                    MessageBox.Show("Email is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    teacher.Birthdate = dateTimeBox.Value;
                 }
-
+                //Email
+                {
+                    if (IsValidEmail(emailBox.Text))
+                    {
+                        if (!context.TeacherContactInfoes.Any(w => w.Email == emailBox.Text))
+                        {
+                            teacherContactInfo.Email = emailBox.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Email is already used!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
                 //Phone Number
                 {
                     ulong z = 1234567890;
@@ -155,7 +165,9 @@ namespace WindowsFormsApplication2
                     }
                 }
                 //Class Contact Info
-                teacher.TeacherContactInfoes.Add(teacherContactInfo);
+                {
+                    teacher.TeacherContactInfoes.Add(teacherContactInfo);
+                }
                 //EGN
                 {
                     ulong z = 1234567890;
@@ -177,22 +189,24 @@ namespace WindowsFormsApplication2
                         return;
                     }
                 }
-                
                 //Subject
-                try
                 {
-                    string selectedSubject = subjectCombBox.SelectedItem.ToString(); //.SelectedValue.ToString();
-                    Subject subject = context.Subjects.FirstOrDefault(w => w.Name == selectedSubject);
-                    teacher.Subject = subject;
+                    try
+                    {
+                        string selectedSubject = subjectCombBox.SelectedItem.ToString(); //.SelectedValue.ToString();
+                        Subject subject = context.Subjects.FirstOrDefault(w => w.Name == selectedSubject);
+                        teacher.Subject = subject;
 
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Please select a subject!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
-                catch (Exception)
-                {
-                    MessageBox.Show("Please select a subject!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }      
                 context.Teachers.Add(teacher);
                 context.SaveChanges();
+                MessageBox.Show("Success!", "Operation Completed", MessageBoxButtons.OK);
             }
         }
         //add student in db and checks if info is correct
@@ -204,38 +218,44 @@ namespace WindowsFormsApplication2
                 StudentContactInfo studentContactInfo = new StudentContactInfo();
                 Student student = new Student();
                 //Name
-                try
                 {
-                    List<string> allName = nameBox.Text.Split(' ').ToList();
-                    student.FirstName = allName[0];
-                    student.MiddleName = allName[1];
-                    student.LastName = allName[2];
-                }
-                catch
-                {
-                    MessageBox.Show("Wrong Name Format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-                student.Birthdate = dateTimeBox.Value;
-                //Email
-                if (IsValidEmail(emailBox.Text))
-                {
-                    if (!context.StudentContactInfoes.Any(w => w.Email == emailBox.Text))
+                    try
                     {
-                        studentContactInfo.Email = emailBox.Text;
+                        List<string> allName = nameBox.Text.Split(' ').ToList();
+                        student.FirstName = allName[0];
+                        student.MiddleName = allName[1];
+                        student.LastName = allName[2];
                     }
-                    else
+                    catch
                     {
-                        MessageBox.Show("Email is already used!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Wrong Name Format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
-                else
+                //Birthdate
                 {
-                    MessageBox.Show("Email is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    student.Birthdate = dateTimeBox.Value;
                 }
-
+                //Email
+                {
+                    if (IsValidEmail(emailBox.Text))
+                    {
+                        if (!context.StudentContactInfoes.Any(w => w.Email == emailBox.Text))
+                        {
+                            studentContactInfo.Email = emailBox.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Email is already used!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Email is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
                 //Phone Number
                 {
                     ulong z = 1234567890;
@@ -258,7 +278,9 @@ namespace WindowsFormsApplication2
                     }
                 }
                 //Class Contact Info
-                student.StudentContactInfoes.Add(studentContactInfo);
+                {
+                    student.StudentContactInfoes.Add(studentContactInfo);
+                }
                 //EGN
                 {
                     ulong z = 1234567890;
@@ -294,8 +316,28 @@ namespace WindowsFormsApplication2
                 }
                 context.Students.Add(student);
                 context.SaveChanges();
+                MessageBox.Show("Success!", "Operation Completed", MessageBoxButtons.OK);
             }
         }
 
+        private void classBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void subjectCombBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void nameBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimeBox_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

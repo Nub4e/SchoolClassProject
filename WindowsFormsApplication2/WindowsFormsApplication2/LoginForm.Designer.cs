@@ -35,7 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.insertNameTxtBox = new System.Windows.Forms.TextBox();
             this.insertEGNTxtBox = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.loginSelectComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -77,7 +77,6 @@
             this.label1.Size = new System.Drawing.Size(30, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "EGN";
-         
             // 
             // label2
             // 
@@ -94,7 +93,6 @@
             this.insertNameTxtBox.Name = "insertNameTxtBox";
             this.insertNameTxtBox.Size = new System.Drawing.Size(100, 20);
             this.insertNameTxtBox.TabIndex = 5;
-         
             // 
             // insertEGNTxtBox
             // 
@@ -103,16 +101,16 @@
             this.insertEGNTxtBox.Size = new System.Drawing.Size(100, 20);
             this.insertEGNTxtBox.TabIndex = 6;
             // 
-            // comboBox1
+            // loginSelectComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.loginSelectComboBox.FormattingEnabled = true;
+            this.loginSelectComboBox.Items.AddRange(new object[] {
             "Teacher",
             "Student"});
-            this.comboBox1.Location = new System.Drawing.Point(259, 239);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 7;
+            this.loginSelectComboBox.Location = new System.Drawing.Point(259, 239);
+            this.loginSelectComboBox.Name = "loginSelectComboBox";
+            this.loginSelectComboBox.Size = new System.Drawing.Size(100, 21);
+            this.loginSelectComboBox.TabIndex = 7;
             // 
             // label3
             // 
@@ -129,7 +127,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.loginSelectComboBox);
             this.Controls.Add(this.insertEGNTxtBox);
             this.Controls.Add(this.insertNameTxtBox);
             this.Controls.Add(this.label2);
@@ -152,7 +150,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox insertNameTxtBox;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox loginSelectComboBox;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.TextBox insertEGNTxtBox;
     }

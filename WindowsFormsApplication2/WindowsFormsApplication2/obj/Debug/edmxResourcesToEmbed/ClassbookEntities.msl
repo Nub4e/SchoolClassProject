@@ -75,6 +75,7 @@
           <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
           <ScalarProperty Name="PersonalNumber" ColumnName="PersonalNumber" />
           <ScalarProperty Name="SubjectId" ColumnName="SubjectId" />
+          <ScalarProperty Name="ExtendedPermissions" ColumnName="ExtendedPermissions" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

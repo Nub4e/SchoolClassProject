@@ -69,6 +69,7 @@
     <Property Name="Birthdate" Type="date" Nullable="false" />
     <Property Name="PersonalNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="SubjectId" Type="int" Nullable="false" />
+    <Property Name="ExtendedPermissions" Type="bit" Nullable="false" />
   </EntityType>
   <Association Name="classes$fk_classes_teachers">
     <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />

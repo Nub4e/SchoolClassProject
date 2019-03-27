@@ -18,20 +18,27 @@ namespace WindowsFormsApplication2
         {
             InitializeComponent();
         }
-        void SetDeafultValue()
+        void SetDeafultValueStudent()
         {
 
             insertNameTxtBox.Text = "ChesterOsborneDixon";
             insertEGNTxtBox.Text = "3390475302";
-            comboBox1.SelectedIndex = 1;
+            loginSelectComboBox.SelectedIndex = 1;
         }
+        void SetDeafultValueTeacher()
+        {
+            insertNameTxtBox.Text = "JoyceGreerWood";
+            insertEGNTxtBox.Text = "6561865618";
+            loginSelectComboBox.SelectedIndex = 0;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
-            SetDeafultValue();
 
-            
+            SetDeafultValueStudent();
+          //SetDeafultValueTeacher();
             //Проверка за избора на  teacher and student 
-            if (comboBox1.SelectedIndex == 1)//Checks if student option is sellected in combo box
+            if (loginSelectComboBox.SelectedIndex == 1)//Checks if student option is sellected in combo box
             {
                 string egnPass = String.Empty;
                 bool studentExists = false;//Checks if a Student with the stated personal number exists and if he has written the correct name
@@ -65,7 +72,7 @@ namespace WindowsFormsApplication2
             }    
             else
             {
-                if (comboBox1.SelectedIndex == 0)//Checks if teacher option is sellected in combo box
+                if (loginSelectComboBox.SelectedIndex == 0)//Checks if teacher option is sellected in combo box
                 {
                     //Checks if a teacher with the stated personal number exists and if he has written the correct name
                     string egnPass = String.Empty;

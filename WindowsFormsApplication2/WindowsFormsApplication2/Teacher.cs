@@ -29,6 +29,7 @@ namespace WindowsFormsApplication2
         public System.DateTime Birthdate { get; set; }
         public string PersonalNumber { get; set; }
         public int SubjectId { get; set; }
+        public bool ExtendedPermissions { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Classes { get; set; }

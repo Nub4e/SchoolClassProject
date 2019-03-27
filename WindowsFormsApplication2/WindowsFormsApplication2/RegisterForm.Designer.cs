@@ -34,7 +34,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.studentOrTeacherComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.classBox = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -108,17 +108,17 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "EGN";
             // 
-            // comboBox1
+            // studentOrTeacherComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.studentOrTeacherComboBox.FormattingEnabled = true;
+            this.studentOrTeacherComboBox.Items.AddRange(new object[] {
             "Student",
             "Teacher"});
-            this.comboBox1.Location = new System.Drawing.Point(117, 309);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.studentOrTeacherComboBox.Location = new System.Drawing.Point(117, 309);
+            this.studentOrTeacherComboBox.Name = "studentOrTeacherComboBox";
+            this.studentOrTeacherComboBox.Size = new System.Drawing.Size(121, 21);
+            this.studentOrTeacherComboBox.TabIndex = 6;
+            this.studentOrTeacherComboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -131,12 +131,13 @@
             // 
             // classBox
             // 
-            this.classBox.Location = new System.Drawing.Point(84, 22);
+            this.classBox.Location = new System.Drawing.Point(62, 22);
             this.classBox.Name = "classBox";
             this.classBox.Size = new System.Drawing.Size(100, 20);
             this.classBox.TabIndex = 8;
             this.classBox.Text = "12A";
             this.classBox.Click += new System.EventHandler(this.textBox1_Click);
+            this.classBox.TextChanged += new System.EventHandler(this.classBox_TextChanged);
             // 
             // panel1
             // 
@@ -152,7 +153,7 @@
             // 
             this.panel2.Controls.Add(this.subjectCombBox);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(380, 114);
+            this.panel2.Location = new System.Drawing.Point(379, 114);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 241);
             this.panel2.TabIndex = 9;
@@ -161,10 +162,11 @@
             // subjectCombBox
             // 
             this.subjectCombBox.FormattingEnabled = true;
-            this.subjectCombBox.Location = new System.Drawing.Point(68, 21);
+            this.subjectCombBox.Location = new System.Drawing.Point(79, 22);
             this.subjectCombBox.Name = "subjectCombBox";
             this.subjectCombBox.Size = new System.Drawing.Size(121, 21);
             this.subjectCombBox.TabIndex = 2;
+            this.subjectCombBox.SelectedIndexChanged += new System.EventHandler(this.subjectCombBox_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -195,6 +197,7 @@
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 20);
             this.nameBox.TabIndex = 13;
+            this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
             // egnBox
             // 
@@ -237,6 +240,7 @@
             this.dateTimeBox.Name = "dateTimeBox";
             this.dateTimeBox.Size = new System.Drawing.Size(133, 20);
             this.dateTimeBox.TabIndex = 18;
+            this.dateTimeBox.ValueChanged += new System.EventHandler(this.dateTimeBox_ValueChanged);
             // 
             // RegisterForm
             // 
@@ -253,7 +257,7 @@
             this.Controls.Add(this.emailBox);
             this.Controls.Add(this.phoneNumberBox);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.studentOrTeacherComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -280,7 +284,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox studentOrTeacherComboBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox classBox;
         private System.Windows.Forms.Panel panel1;

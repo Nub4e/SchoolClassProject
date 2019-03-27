@@ -81,6 +81,7 @@
     <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="PersonalNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="SubjectId" Type="Int32" Nullable="false" />
+    <Property Name="ExtendedPermissions" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Classes" Relationship="Self.classes_fk_classes_teachers" FromRole="Teachers" ToRole="Classes" />
     <NavigationProperty Name="Marks" Relationship="Self.marks_fk_marks_teachers" FromRole="Teachers" ToRole="Marks" />
     <NavigationProperty Name="Subject" Relationship="Self.teachers_fk_teachers_subjects" FromRole="Teachers" ToRole="Subjects" />

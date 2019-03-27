@@ -40,6 +40,7 @@
             this.selectedMarkInList = new System.Windows.Forms.Label();
             this.classContactInfoListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.headTeacherTextBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,7 +109,6 @@
             this.selectedMarksListBox.Name = "selectedMarksListBox";
             this.selectedMarksListBox.Size = new System.Drawing.Size(312, 108);
             this.selectedMarksListBox.TabIndex = 4;
-        
             // 
             // label2
             // 
@@ -147,7 +147,6 @@
             this.classContactInfoListBox.Name = "classContactInfoListBox";
             this.classContactInfoListBox.Size = new System.Drawing.Size(371, 108);
             this.classContactInfoListBox.TabIndex = 8;
-           
             // 
             // label3
             // 
@@ -157,11 +156,22 @@
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 9;
             // 
+            // headTeacherTextBox
+            // 
+            this.headTeacherTextBox.Location = new System.Drawing.Point(549, 170);
+            this.headTeacherTextBox.Name = "headTeacherTextBox";
+            this.headTeacherTextBox.ReadOnly = true;
+            this.headTeacherTextBox.Size = new System.Drawing.Size(371, 20);
+            this.headTeacherTextBox.TabIndex = 10;
+            this.headTeacherTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(27)))), ((int)(((byte)(78)))));
             this.ClientSize = new System.Drawing.Size(950, 400);
+            this.Controls.Add(this.headTeacherTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.classContactInfoListBox);
             this.Controls.Add(this.selectedMarkInList);
@@ -196,5 +206,6 @@
         private System.Windows.Forms.Label selectedMarkInList;
         private System.Windows.Forms.ListBox classContactInfoListBox;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox headTeacherTextBox;
     }
 }

@@ -40,13 +40,29 @@ namespace WindowsFormsApplication2
                 {
                     studentSubjectsComboBox.Items.Add(studentSubjects[i].Name);
                 }
-                //loads all the contact info (except his own) of the class the student is in and orders it
+                //loads all the contact info (except his own) of the class the student is in and orders it and its' respective head teacher
                 {
-                    for (int i = 0; i < studentClass.Students.Count(); i++)
+                    
+                        for (int i = 0; i < studentClass.Students.Count(); i++)
+                        {
+                            if (studentClass.Students.ToList()[i].StudentId != student.StudentId)
+                                classContactInfoListBox.Items.Add(studentClass.Students.ToList()[i].FirstName + ' '         //Gets the first name of the i(th) student in the logged student's class
+                                    + studentClass.Students.ToList()[i].LastName //Gets the last name of the i(th) student
+                                    + " Email: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).Email //Gets the email of the i(th) student from the student contact info table
+                                    + " Phone number: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).PhoneNumber); //Gets the phone number of the i(th) student from the student contact info table
+                        }
+                        ;
+                    Teacher headteacher = studentClass.Teacher;
+                    if (context.TeacherContactInfoes.Any(w => w.Teacher.TeacherId == headteacher.TeacherId))
                     {
-                        if (studentClass.Students.ToList()[i].StudentId != student.StudentId)
-                            classContactInfoListBox.Items.Add(studentClass.Students.ToList()[i].FirstName + ' ' + studentClass.Students.ToList()[i].LastName + " Email: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).Email + " Phone number: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).PhoneNumber);
+                        headTeacherTextBox.Text = headteacher.FirstName + ' ' +
+                        headteacher.MiddleName + ' ' +
+                        headteacher.LastName +
+                        " Email: " + headteacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher == student.Class.Teacher).Email +
+                        " Phone number: " + headteacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher == headteacher).PhoneNumber;
                     }
+                    else headTeacherTextBox.Text = "No teacher contact info.";
+
                     List<string> tempList = new List<string>();
                     foreach (var item in classContactInfoListBox.Items)
                     {
@@ -86,7 +102,9 @@ namespace WindowsFormsApplication2
                 {
                     selectedMarksListBox.Items.Add(allStudentMarksForSubject[i].Description + ' ' +
                         allStudentMarksForSubject[i].Number +
-                        " Teacher: " + allStudentMarksForSubject[i].Teacher.FirstName + ' ' + allStudentMarksForSubject[i].Teacher.MiddleName + ' ' + allStudentMarksForSubject[i].Teacher.LastName);
+                        " Teacher: " + allStudentMarksForSubject[i].Teacher.FirstName + ' ' 
+                        + allStudentMarksForSubject[i].Teacher.MiddleName + ' ' 
+                        + allStudentMarksForSubject[i].Teacher.LastName);
                 }
 
                 AverageMark(allStudentMarksForSubject);
@@ -106,5 +124,9 @@ namespace WindowsFormsApplication2
             }
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
