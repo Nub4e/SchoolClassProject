@@ -38,7 +38,6 @@
             this.selectedMarksListBox = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.averageMark = new System.Windows.Forms.Label();
-            this.selectedMarkInList = new System.Windows.Forms.Label();
             this.classContactInfoListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.headTeacherTextBox = new System.Windows.Forms.TextBox();
@@ -136,22 +135,12 @@
             // averageMark
             // 
             this.averageMark.AutoSize = true;
-            this.averageMark.Location = new System.Drawing.Point(178, 328);
+            this.averageMark.Location = new System.Drawing.Point(178, 307);
             this.averageMark.Name = "averageMark";
             this.averageMark.Size = new System.Drawing.Size(70, 13);
             this.averageMark.TabIndex = 6;
             this.averageMark.Text = "averageMark";
             this.averageMark.Visible = false;
-            // 
-            // selectedMarkInList
-            // 
-            this.selectedMarkInList.AutoSize = true;
-            this.selectedMarkInList.Location = new System.Drawing.Point(178, 305);
-            this.selectedMarkInList.Name = "selectedMarkInList";
-            this.selectedMarkInList.Size = new System.Drawing.Size(96, 13);
-            this.selectedMarkInList.TabIndex = 7;
-            this.selectedMarkInList.Text = "selectedMarkInList";
-            this.selectedMarkInList.Visible = false;
             // 
             // classContactInfoListBox
             // 
@@ -196,7 +185,6 @@
             this.Controls.Add(this.headTeacherTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.classContactInfoListBox);
-            this.Controls.Add(this.selectedMarkInList);
             this.Controls.Add(this.averageMark);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.selectedMarksListBox);
@@ -225,7 +213,6 @@
         private System.Windows.Forms.ListBox selectedMarksListBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label averageMark;
-        private System.Windows.Forms.Label selectedMarkInList;
         private System.Windows.Forms.ListBox classContactInfoListBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox headTeacherTextBox;

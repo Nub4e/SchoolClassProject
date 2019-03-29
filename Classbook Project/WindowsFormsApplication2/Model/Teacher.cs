@@ -6,8 +6,7 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace ClassbookProject
+namespace ClassbookProject.Model
 {
     using System;
     using System.Collections.Generic;

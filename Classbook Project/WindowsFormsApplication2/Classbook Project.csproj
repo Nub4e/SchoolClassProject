@@ -90,20 +90,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class.cs">
+    <Compile Include="Model\Class.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="ClassbookEntities.Context.cs">
+    <Compile Include="Model\ClassbookEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassbookEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ClassbookEntities.cs">
+    <Compile Include="Model\ClassbookEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="ClassbookEntities.Designer.cs">
+    <Compile Include="Model\ClassbookEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassbookEntities.edmx</DependentUpon>
@@ -111,69 +111,73 @@
     <Compile Include="DragControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mark.cs">
+    <Compile Include="Model\Mark.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="RegisterForm.cs">
+    <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterForm.Designer.cs">
+    <Compile Include="Forms\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Student.cs">
+    <Compile Include="Model\Student.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="StudentContactInfo.cs">
+    <Compile Include="Model\StudentContactInfo.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Subject.cs">
+    <Compile Include="Model\Subject.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Teacher.cs">
+    <Compile Include="Model\Teacher.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="TeacherContactInfo.cs">
+    <Compile Include="Model\TeacherContactInfo.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="TeacherForm.cs">
+    <Compile Include="Forms\TeacherForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TeacherForm.Designer.cs">
+    <Compile Include="Forms\TeacherForm.Designer.cs">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StudentForm.cs">
+    <Compile Include="Forms\StudentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentForm.Designer.cs">
+    <Compile Include="Forms\StudentForm.Designer.cs">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
+    <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="MainForm.resx">
+    <Compile Include="View\ILoginForm.cs" />
+    <Compile Include="View\IRegisterForm.cs" />
+    <Compile Include="View\IStudentForm.cs" />
+    <Compile Include="View\ITeacherForm.cs" />
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RegisterForm.resx">
+    <EmbeddedResource Include="Forms\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TeacherForm.resx">
+    <EmbeddedResource Include="Forms\TeacherForm.resx">
       <DependentUpon>TeacherForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StudentForm.resx">
+    <EmbeddedResource Include="Forms\StudentForm.resx">
       <DependentUpon>StudentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -186,11 +190,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EntityDeploy Include="ClassbookEntities.edmx">
+    <EntityDeploy Include="Model\ClassbookEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ClassbookEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ClassbookEntities.edmx.diagram">
+    <None Include="Model\ClassbookEntities.edmx.diagram">
       <DependentUpon>ClassbookEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -212,15 +216,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controllers\" />
     <Folder Include="Tests\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClassbookEntities.Context.tt">
+    <Content Include="Model\ClassbookEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ClassbookEntities.edmx</DependentUpon>
       <LastGenOutput>ClassbookEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ClassbookEntities.tt">
+    <Content Include="Model\ClassbookEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ClassbookEntities.edmx</DependentUpon>
       <LastGenOutput>ClassbookEntities.cs</LastGenOutput>

@@ -7,12 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassbookProject;
+using ClassbookProject.Model;
+using ClassbookProject.View;
 
 namespace ClassbookProject
 {
-    public partial class StudentsForm : Form
+    public partial class StudentsForm : Form, IStudentForm
     {
+        // studentSubjectsComboBox
+        // selectedMarksListBox
+        // averageMark (Label)
+        // headTeacherTextBox
+        // classContactInfoListBox
+
         string egnPass;
+
+        public ComboBox StudentSubjects { get { return studentSubjectsComboBox; } set { studentSubjectsComboBox = value; } }
+        public ListBox SelectedMarksList { get { return selectedMarksListBox; } set { selectedMarksListBox = value; } }
+        public string AvarageMark { get { return averageMark.Text ; } set { averageMark.Text = value; } }
+        public string HeadTeacherText { get { return headTeacherTextBox.Text; } set { headTeacherTextBox.Text = value; } }
+        public ListBox ContactInfoList { get { return classContactInfoListBox; } set { classContactInfoListBox = value; } }
+
         public StudentsForm(string egn)
         {
             InitializeComponent();
@@ -38,7 +54,7 @@ namespace ClassbookProject
 
                 for (int i = 0; i < studentSubjects.Count; i++)
                 {
-                    studentSubjectsComboBox.Items.Add(studentSubjects[i].Name);
+                    StudentSubjects.Items.Add(studentSubjects[i].Name);
                 }
                 //loads all the contact info (except his own) of the class the student is in and orders it and its' respective head teacher
                 {
@@ -46,7 +62,7 @@ namespace ClassbookProject
                         for (int i = 0; i < studentClass.Students.Count(); i++)
                         {
                             if (studentClass.Students.ToList()[i].StudentId != student.StudentId)
-                                classContactInfoListBox.Items.Add(studentClass.Students.ToList()[i].FirstName + ' '         //Gets the first name of the i(th) student in the logged student's class
+                            ContactInfoList.Items.Add(studentClass.Students.ToList()[i].FirstName + ' '         //Gets the first name of the i(th) student in the logged student's class
                                     + studentClass.Students.ToList()[i].LastName //Gets the last name of the i(th) student
                                     + " Email: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).Email //Gets the email of the i(th) student from the student contact info table
                                     + " Phone number: " + studentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == studentClass.Students.ToList()[i]).PhoneNumber); //Gets the phone number of the i(th) student from the student contact info table
@@ -55,22 +71,22 @@ namespace ClassbookProject
                     Teacher headteacher = studentClass.Teacher;
                     if (context.TeacherContactInfoes.Any(w => w.Teacher.TeacherId == headteacher.TeacherId))
                     {
-                        headTeacherTextBox.Text = headteacher.FirstName + ' ' +
+                        HeadTeacherText = headteacher.FirstName + ' ' +
                         headteacher.MiddleName + ' ' +
                         headteacher.LastName +
                         " Email: " + headteacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher == student.Class.Teacher).Email +
                         " Phone number: " + headteacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher == headteacher).PhoneNumber;
                     }
-                    else headTeacherTextBox.Text = "No teacher contact info.";
+                    else HeadTeacherText = "No teacher contact info.";
 
                     List<string> tempList = new List<string>();
-                    foreach (var item in classContactInfoListBox.Items)
+                    foreach (var item in ContactInfoList.Items)
                     {
                         tempList.Add(item.ToString());
                     }
                     tempList = tempList.OrderBy(w => w).ToList();
-                    classContactInfoListBox.Items.Clear();
-                    tempList.ForEach(w => classContactInfoListBox.Items.Add(w));
+                    ContactInfoList.Items.Clear();
+                    tempList.ForEach(w => ContactInfoList.Items.Add(w));
                 }
             }
         }
@@ -80,8 +96,8 @@ namespace ClassbookProject
             //We get the login.egn and the subject name from the combobox
             //We search for them in the database
             //After we search for a mark with the StudentId and the SubjectId and add it to a seperate list
-            selectedMarksListBox.Items.Clear(); 
-            string selectedSubjectName = studentSubjectsComboBox.SelectedItem.ToString();
+            SelectedMarksList.Items.Clear(); 
+            string selectedSubjectName = StudentSubjects.SelectedItem.ToString();
             Student loggedInStudent = new Student();
             Subject selectedSubject = new Subject();
             List<Mark> allStudentMarksForSubject = new List<Mark>();
@@ -100,7 +116,7 @@ namespace ClassbookProject
 
                 for (int i = 0; i < allStudentMarksForSubject.Count(); i++)
                 {
-                    selectedMarksListBox.Items.Add(allStudentMarksForSubject[i].Description + ' ' +
+                    SelectedMarksList.Items.Add(allStudentMarksForSubject[i].Description + ' ' +
                         allStudentMarksForSubject[i].Number +
                         " Teacher: " + allStudentMarksForSubject[i].Teacher.FirstName + ' ' 
                         + allStudentMarksForSubject[i].Teacher.MiddleName + ' ' 
@@ -119,7 +135,7 @@ namespace ClassbookProject
             {
                 //calculated average mark value 
                 var mark = Math.Round(box.Average(w => w.Number), 2).ToString();
-                averageMark.Text = "Average: " + mark;
+                AvarageMark = "Average: " + mark;
                 averageMark.Visible = true;
             }
         }

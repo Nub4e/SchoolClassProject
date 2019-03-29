@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using System.Diagnostics;
+using ClassbookProject;
+using ClassbookProject.Model;
+
 
 namespace ClassbookProject
 {

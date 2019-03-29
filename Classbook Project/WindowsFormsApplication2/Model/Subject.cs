@@ -6,33 +6,26 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace ClassbookProject
+namespace ClassbookProject.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Subject
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public Subject()
         {
             this.Marks = new HashSet<Mark>();
-            this.StudentContactInfoes = new HashSet<StudentContactInfo>();
+            this.Teachers = new HashSet<Teacher>();
         }
     
-        public int StudentId { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public System.DateTime Birthdate { get; set; }
-        public string PersonalNumber { get; set; }
-        public int ClassId { get; set; }
+        public int SubjectId { get; set; }
+        public string Name { get; set; }
     
-        public virtual Class Class { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mark> Marks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentContactInfo> StudentContactInfoes { get; set; }
+        public virtual ICollection<Teacher> Teachers { get; set; }
     }
 }

@@ -6,24 +6,18 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
-
-namespace ClassbookProject
+namespace ClassbookProject.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Mark
+    public partial class StudentContactInfo
     {
-        public int MarkId { get; set; }
-        public string Description { get; set; }
-        public decimal Number { get; set; }
-        public int SubjectId { get; set; }
+        public int ContactInfoId { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
         public int StudentId { get; set; }
-        public int TeacherId { get; set; }
-        public System.DateTime Date { get; set; }
     
         public virtual Student Student { get; set; }
-        public virtual Subject Subject { get; set; }
-        public virtual Teacher Teacher { get; set; }
     }
 }

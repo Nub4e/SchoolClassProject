@@ -7,13 +7,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassbookProject;
+using ClassbookProject.Model;
+using ClassbookProject.View;
 
 namespace ClassbookProject
 {
-    public partial class RegisterForm : Form
+    public partial class RegisterForm : Form, IRegisterForm
     {
         bool isStudent ;
         bool isTeacher ;
+
+
+        public string FullName { get { return nameBox.Text; } set { nameBox.Text = value; } }
+        public DateTime Date { get { return dateTimeBox.Value ; } set {dateTimeBox.Value = value;} }
+        public string Email { get { return emailBox.Text ; } set { emailBox.Text = value; } }
+        public string PhoneNumber { get {return phoneNumberBox.Text ; } set {phoneNumberBox.Text = value ; } }
+        public string EGN { get {return egnBox.Text ; } set {egnBox.Text = value ; } }
+        public int RegisterStudentTeacherIndex { get { return studentOrTeacherComboBox.SelectedIndex; } set {studentOrTeacherComboBox.SelectedIndex = value ; } }
+        public ComboBox Subject { get {return subjectCombBox; } set { subjectCombBox = value; } }
+        public string Class { get { return classBox.Text; } set { classBox.Text = value; } }
+
         public RegisterForm()
         {
             InitializeComponent();
@@ -32,9 +46,9 @@ namespace ClassbookProject
                 subjects = context.Subjects.Select(c => c.Name).ToList<string>();
                 
             }
-            for (int  i = 0;  i <subjects.Count;  i++)
+            for (int i = 0; i < subjects.Count; i++)
             {
-                subjectCombBox.Items.Add(subjects[i]);
+                Subject.Items.Add(subjects[i]);
             }
             
 
@@ -43,7 +57,7 @@ namespace ClassbookProject
         {
 
 
-            if (studentOrTeacherComboBox.SelectedIndex == 0) //0 - Studen ; 1-Teacher
+            if (RegisterStudentTeacherIndex == 0) //0 - Studen ; 1-Teacher
             {
                 panel1.Visible = true;
                 panel2.Visible = false;
@@ -52,7 +66,7 @@ namespace ClassbookProject
             }
             else
             {
-                if (studentOrTeacherComboBox.SelectedIndex == 1)
+                if (RegisterStudentTeacherIndex == 1)
                 {
                     panel1.Visible = false;
                     panel2.Visible = true;
@@ -108,7 +122,7 @@ namespace ClassbookProject
                 {
                     try
                     {
-                        List<string> allName = nameBox.Text.Split(' ').ToList();
+                        List<string> allName = FullName.Split(' ').ToList();
                             teacher.FirstName = allName[0];
                             teacher.MiddleName = allName[1];
                             teacher.LastName = allName[2];
@@ -126,15 +140,15 @@ namespace ClassbookProject
                 }
                 //BirthDate
                 {
-                    teacher.Birthdate = dateTimeBox.Value;
+                    teacher.Birthdate = Date;
                 }
                 //Email
                 {
-                    if (IsValidEmail(emailBox.Text))
+                    if (IsValidEmail(Email))
                     {
-                        if (!context.TeacherContactInfoes.Any(w => w.Email == emailBox.Text))
+                        if (!context.TeacherContactInfoes.Any(w => w.Email == Email))
                         {
-                            teacherContactInfo.Email = emailBox.Text;
+                            teacherContactInfo.Email = Email;
                         }
                         else
                         {
@@ -151,11 +165,11 @@ namespace ClassbookProject
                 //Phone Number
                 {
                     ulong z = 1234567890;
-                    if (ulong.TryParse(phoneNumberBox.Text, out z) && (phoneNumberBox.Text.Length >= 10 && phoneNumberBox.Text.Length <= 12))
+                    if (ulong.TryParse(PhoneNumber, out z) && (PhoneNumber.Length >= 10 && PhoneNumber.Length <= 12))
                     {
-                        if (!context.StudentContactInfoes.Any(w => w.PhoneNumber == phoneNumberBox.Text))
+                        if (!context.StudentContactInfoes.Any(w => w.PhoneNumber == PhoneNumber))
                         {
-                            teacherContactInfo.PhoneNumber = phoneNumberBox.Text;
+                            teacherContactInfo.PhoneNumber = PhoneNumber;
                         }
                         else
                         {
@@ -176,11 +190,11 @@ namespace ClassbookProject
                 //EGN
                 {
                     ulong z = 1234567890;
-                    if (ulong.TryParse(egnBox.Text, out z) && (egnBox.Text.Length == 10))
+                    if (ulong.TryParse(EGN, out z) && (EGN.Length == 10))
                     {
-                        if (!context.Teachers.Any(w => w.PersonalNumber == egnBox.Text))
+                        if (!context.Teachers.Any(w => w.PersonalNumber == EGN))
                         {
-                            teacher.PersonalNumber = egnBox.Text;
+                            teacher.PersonalNumber = EGN;
                         }
                         else
                         {
@@ -198,7 +212,7 @@ namespace ClassbookProject
                 {
                     try
                     {
-                        string selectedSubject = subjectCombBox.SelectedItem.ToString(); //.SelectedValue.ToString();
+                        string selectedSubject = Subject.Text; // subjectCombBox.SelectedItem.ToString(); //.SelectedValue.ToString();
                         Subject subject = context.Subjects.FirstOrDefault(w => w.Name == selectedSubject);
                         teacher.Subject = subject;
 
@@ -226,7 +240,7 @@ namespace ClassbookProject
                 {
                     try
                     {
-                        List<string> allName = nameBox.Text.Split(' ').ToList();
+                        List<string> allName = FullName.Split(' ').ToList();
                         student.FirstName = allName[0];
                         student.MiddleName = allName[1];
                         student.LastName = allName[2];
@@ -244,15 +258,15 @@ namespace ClassbookProject
                 }
                 //Birthdate
                 {
-                    student.Birthdate = dateTimeBox.Value;
+                    student.Birthdate = Date;
                 }
                 //Email
                 {
-                    if (IsValidEmail(emailBox.Text))
+                    if (IsValidEmail(Email))
                     {
-                        if (!context.StudentContactInfoes.Any(w => w.Email == emailBox.Text))
+                        if (!context.StudentContactInfoes.Any(w => w.Email == Email))
                         {
-                            studentContactInfo.Email = emailBox.Text;
+                            studentContactInfo.Email = Email;
                         }
                         else
                         {
@@ -269,11 +283,11 @@ namespace ClassbookProject
                 //Phone Number
                 {
                     ulong z = 1234567890;
-                    if (ulong.TryParse(phoneNumberBox.Text, out z) && (phoneNumberBox.Text.Length >= 10 && phoneNumberBox.Text.Length <= 12))
+                    if (ulong.TryParse(PhoneNumber, out z) && (PhoneNumber.Length >= 10 && PhoneNumber.Length <= 12))
                     {
-                        if (!context.StudentContactInfoes.Any(w => w.PhoneNumber == phoneNumberBox.Text))
+                        if (!context.StudentContactInfoes.Any(w => w.PhoneNumber == PhoneNumber))
                         {
-                            studentContactInfo.PhoneNumber = phoneNumberBox.Text;
+                            studentContactInfo.PhoneNumber = PhoneNumber;
                         }
                         else
                         {
@@ -294,11 +308,11 @@ namespace ClassbookProject
                 //EGN
                 {
                     ulong z = 1234567890;
-                    if (ulong.TryParse(egnBox.Text, out z) && (egnBox.Text.Length == 10))
+                    if (ulong.TryParse(EGN, out z) && (EGN.Length == 10))
                     {
-                        if (!context.Students.Any(w => w.PersonalNumber == egnBox.Text))
+                        if (!context.Students.Any(w => w.PersonalNumber == EGN))
                         {
-                            student.PersonalNumber = egnBox.Text;
+                            student.PersonalNumber = EGN;
                         }
                         else
                         {
@@ -314,9 +328,9 @@ namespace ClassbookProject
                 }
                 //Class
                 {
-                    if (context.Classes.Any(w => w.Grade + w.Letter == classBox.Text))
+                    if (context.Classes.Any(w => w.Grade + w.Letter == Class))
                     {
-                        student.Class = context.Classes.FirstOrDefault(w => w.Grade + w.Letter == classBox.Text);
+                        student.Class = context.Classes.FirstOrDefault(w => w.Grade + w.Letter == Class);
                     }
                     else
                     {

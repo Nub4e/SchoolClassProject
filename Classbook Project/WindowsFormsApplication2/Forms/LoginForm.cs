@@ -9,11 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
+using ClassbookProject;
+using ClassbookProject.Model;
+using ClassbookProject.View;
 
 namespace ClassbookProject
 {
-    public partial class LoginForm : Form
+    public partial class LoginForm : Form, ILoginForm
     {
+        public string EGN { get { return insertEGNTxtBox.Text; } set { insertEGNTxtBox.Text = value; } }
+        public string FullName { get { return insertNameTxtBox.Text; } set { insertNameTxtBox.Text = value; } }
+        public int Index { get { return loginSelectComboBox.SelectedIndex; } set { loginSelectComboBox.SelectedIndex = value; } }
+
         public LoginForm()
         {
             InitializeComponent();
@@ -44,18 +51,18 @@ namespace ClassbookProject
             // SetDefaultValueStudent();
              SetDefaultValueTeacher();
             // Проверка за избора на  teacher and student 
-            if (loginSelectComboBox.SelectedIndex == 1)// Checks if student option is sellected in combo box
+            if (Index == 1)// Checks if student option is sellected in combo box
             {
                 string egnPass = String.Empty;
                 bool studentExists = false;// Checks if a Student with the stated personal number exists and if he has written the correct name
                 bool studentNameIsCorrect = false;
                 using (ClassbookEntities context = new ClassbookEntities())
                 {
-                    if (context.Students.Any(c => c.PersonalNumber == insertEGNTxtBox.Text))
+                    if (context.Students.Any(c => c.PersonalNumber == EGN))
                     {
                         studentExists = true;
-                        Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == insertEGNTxtBox.Text);
-                        if (student.FirstName + student.MiddleName + student.LastName == insertNameTxtBox.Text.Replace(" ", string.Empty))// да се погледне
+                        Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
+                        if (student.FirstName + student.MiddleName + student.LastName == FullName.Replace(" ", string.Empty))// да се погледне
                         {
                             studentNameIsCorrect = true;
                             egnPass = student.PersonalNumber;
@@ -81,7 +88,7 @@ namespace ClassbookProject
             else
             {
                 // Checks if teacher option is sellected in combo box
-                if (loginSelectComboBox.SelectedIndex == 0)
+                if (Index == 0)
                 {
                     // Checks if a teacher with the stated personal number exists and if he has written the correct name
                     string egnPass = String.Empty;
@@ -89,11 +96,11 @@ namespace ClassbookProject
                     bool teacherNameIsCorrect = false;
                     using (ClassbookEntities context = new ClassbookEntities())
                     {
-                        if (context.Teachers.Any(c => c.PersonalNumber == insertEGNTxtBox.Text))
+                        if (context.Teachers.Any(c => c.PersonalNumber == EGN))
                         {
                             teacherExists = true;
-                            Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == insertEGNTxtBox.Text);
-                            if (teacher.FirstName + teacher.MiddleName + teacher.LastName == insertNameTxtBox.Text.Replace(" ", string.Empty))
+                            Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == EGN);
+                            if (teacher.FirstName + teacher.MiddleName + teacher.LastName == FullName.Replace(" ", string.Empty))
                             {
                                 teacherNameIsCorrect = true;
                                 egnPass = teacher.PersonalNumber;

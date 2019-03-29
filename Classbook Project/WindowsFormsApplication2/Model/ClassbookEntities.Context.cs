@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ClassbookProject
+namespace ClassbookProject.Model
 {
     using System;
     using System.Data.Entity;

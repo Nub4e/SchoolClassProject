@@ -7,15 +7,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClassbookProject;
+using ClassbookProject.Model;
+using ClassbookProject.View;
 
 namespace ClassbookProject
 {
-    public partial class TeacherForm : Form
+    public partial class TeacherForm : Form, ITeacherForm
     {
         string egnPass;
-      
 
-
+        public ComboBox SelectedClass { get{ return selectClassComboBox; } set { selectClassComboBox = value; } }
+        public ComboBox SelectStudent { get { return selectStudentComboBox; } set { selectStudentComboBox = value; } }
+        public string AddMark { get { return addMarkTextBox.Text; } set { addMarkTextBox.Text = value; } }
+        public DateTime MarkDateTime { get { return markDateTimePicker.Value; } set { markDateTimePicker.Value = value; } }
+        public ComboBox Permissions { get { return permissionsComboBox; } set { permissionsComboBox = value; } }
+        public ComboBox Grade { get { return gradeComboBox; } set { gradeComboBox = value; } }
+        public string Letter { get { return letterTextBox.Text; } set { letterTextBox.Text = value; } }
+        public ComboBox NonHeadTeacher { get { return nonHeadTeacherComboBox; } set { nonHeadTeacherComboBox = value; } }
+        public ComboBox NonPrincipalTeacher { get { return nonPrincipalTeacherComboBox; } set { nonPrincipalTeacherComboBox = value; } }
+        public string SubjectName { get { return subjectNameTxtBox.Text; } set { subjectNameTxtBox.Text = value; } }
 
         public TeacherForm(string egn)
         {
@@ -28,7 +39,7 @@ namespace ClassbookProject
             }
             for (int i = 0; i < classes.Count; i++)
             {
-                selectClassComboBox.Items.Add(classes[i]);
+                SelectedClass.Items.Add(classes[i]);
             }
 
         }
@@ -43,10 +54,10 @@ namespace ClassbookProject
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 Subject currentSubject = new Subject();
-                if (!context.Subjects.Any(w => w.Name == subjectNameTxtBox.Text))
+                if (!context.Subjects.Any(w => w.Name == SubjectName))
                 {
-                    if(subjectNameTxtBox.Text.Length != 0)
-                    currentSubject.Name = subjectNameTxtBox.Text;
+                    if(SubjectName.Length != 0)
+                    currentSubject.Name = SubjectName;
                     else
                     {
                         MessageBox.Show("Please add a subject name!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -72,12 +83,13 @@ namespace ClassbookProject
             using (ClassbookEntities context = new ClassbookEntities())
             {
 
+               
                 Class currentClass = new Class();
                 // Grade
                 {
-                    if (gradeComboBox.SelectedItem != null)
+                    if (Grade.SelectedValue != null)
                     {
-                        currentClass.Grade = Convert.ToInt32(gradeComboBox.SelectedItem.ToString());
+                        currentClass.Grade = Convert.ToInt32(Grade.SelectedItem.ToString());
                     }
                     else
                     {
@@ -87,11 +99,11 @@ namespace ClassbookProject
                 }
                 // Letter
                 {
-                    if (letterTextBox.Text.Length <= 2 && letterTextBox.Text.Length >= 1)
+                    if (Letter.Length <= 2 && Letter.Length >= 1)
                     {
-                        if (letterTextBox.Text.Length == 1 && letterTextBox.Text[0] >= 'A' && letterTextBox.Text[0] <= 'Z')
+                        if (Letter.Length == 1 && Letter[0] >= 'A' && Letter[0] <= 'Z')
                         {
-                            currentClass.Letter = letterTextBox.Text;
+                            currentClass.Letter = Letter;
 
                             if (context.Classes.Any(w => w.Grade == currentClass.Grade && w.Letter == currentClass.Letter))
                             {
@@ -101,9 +113,9 @@ namespace ClassbookProject
                         }
                         else
                         {
-                            if (letterTextBox.Text.Length == 2 && letterTextBox.Text[0] >= 'A' && letterTextBox.Text[0] <= 'Z' && letterTextBox.Text[1] >= 'A' && letterTextBox.Text[1] <= 'Z')
+                            if (Letter.Length == 2 && Letter[0] >= 'A' && Letter[0] <= 'Z' && Letter[1] >= 'A' && Letter[1] <= 'Z')
                             {
-                                currentClass.Letter = letterTextBox.Text;
+                                currentClass.Letter = Letter;
 
                                 if(context.Classes.Any(w => w.Grade == currentClass.Grade && w.Letter == currentClass.Letter))
                                 {
@@ -125,15 +137,15 @@ namespace ClassbookProject
                         MessageBox.Show("Invalid Format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                    
 
+                    ;
                 }
                 // HeadTeacher
                 {
 
-                    if (nonHeadTeacherComboBox.SelectedItem != null)
+                    if (NonHeadTeacher.SelectedItem != null)
                     {
-                        string testString = nonHeadTeacherComboBox.SelectedItem.ToString();
+                        string testString = NonHeadTeacher.SelectedItem.ToString();
                         currentClass.Teacher = context.Teachers.ToList().FirstOrDefault(w => w.FirstName + ' ' + w.LastName == testString);
                     }
                     else
@@ -148,13 +160,13 @@ namespace ClassbookProject
                 MessageBox.Show("Success!", "Operation Completed", MessageBoxButtons.OK);
                 // Load default values for gradeComboBox, letterTextBox and nonHeadTeacherComboBox
                 {
-                    gradeComboBox.SelectedItem = null;
-                    letterTextBox.Text = "AA";
-                    nonHeadTeacherComboBox.Items.Clear();
+                    Grade.SelectedItem = null;
+                    Letter = "AA";
+                    NonHeadTeacher.Items.Clear();
                     List<int> headTeacherIds = new List<int>();
                     context.Classes.ToList().ForEach(w => headTeacherIds.Add(w.HeadTeacherId));
-                    context.Teachers.OrderBy(w =>w.FirstName).ThenBy(w => w.LastName).Where(w => !headTeacherIds.Contains(w.TeacherId)).ToList().ForEach(z => nonHeadTeacherComboBox.Items.Add(z.FirstName + ' ' + z.LastName));
-                    nonHeadTeacherComboBox.Text = String.Empty;
+                    context.Teachers.OrderBy(w =>w.FirstName).ThenBy(w => w.LastName).Where(w => !headTeacherIds.Contains(w.TeacherId)).ToList().ForEach(z => NonHeadTeacher.Items.Add(z.FirstName + ' ' + z.LastName));
+                    NonHeadTeacher.Text = String.Empty;
                 }
 
             }
@@ -165,9 +177,9 @@ namespace ClassbookProject
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 Teacher teacher = new Teacher();
-                if(nonPrincipalTeacherComboBox.SelectedItem!=null)
+                if(NonPrincipalTeacher.SelectedItem!=null)
                 { 
-                    string testString = nonPrincipalTeacherComboBox.SelectedItem.ToString();
+                    string testString = NonPrincipalTeacher.SelectedItem.ToString();
                     context.Teachers.ToList().FirstOrDefault(w => w.FirstName + ' ' + w.LastName == testString).ExtendedPermissions = true;
 
                 }
@@ -182,9 +194,10 @@ namespace ClassbookProject
 
                 // Resets the value of non nonPrincipalTeacherComboBox for the next time it's needed
                 {
-                    nonPrincipalTeacherComboBox.SelectedItem = null;
-                    nonPrincipalTeacherComboBox.Items.Clear();
-                    context.Teachers.OrderBy(w => w.FirstName).ThenBy(w => w.LastName).Where(w => w.ExtendedPermissions == false).ToList().ForEach(w => nonPrincipalTeacherComboBox.Items.Add(w.FirstName + ' ' + w.LastName));
+                    NonPrincipalTeacher.SelectedItem = null;
+                    NonPrincipalTeacher.Items.Clear();
+                    context.Teachers.OrderBy(w => w.FirstName).ThenBy(w => w.LastName).Where(w => w.ExtendedPermissions == false)
+                        .ToList().ForEach(w => NonPrincipalTeacher.Items.Add(w.FirstName + ' ' + w.LastName));
                 }
             }
         }
@@ -201,15 +214,15 @@ namespace ClassbookProject
         private void selectClassComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
 
-            selectStudentComboBox.Items.Clear();
+            SelectStudent.Items.Clear();
             panel5.Visible = true;
 
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 context.Students.Where(w => w.Class == context.Classes
-                .FirstOrDefault(c => c.Grade + c.Letter == selectClassComboBox.SelectedItem.ToString()))
+                .FirstOrDefault(c => c.Grade + c.Letter == SelectedClass.SelectedItem.ToString()))
                 .ToList<Student>()
-                .ForEach(z => selectStudentComboBox.Items.Add(z.FirstName + ' ' + z.MiddleName + ' ' + z.LastName));
+                .ForEach(z => SelectStudent.Items.Add(z.FirstName + ' ' + z.MiddleName + ' ' + z.LastName));
             }
 
 
@@ -228,7 +241,7 @@ namespace ClassbookProject
                     try
                     {
                         
-                        newmark.Number = decimal.Parse(addMarkTextBox.Text);
+                        newmark.Number = decimal.Parse(AddMark);
                         {
                             if (newmark.Number >= 2m && newmark.Number <= 6m)
                             {
@@ -269,7 +282,7 @@ namespace ClassbookProject
                 }
                 //Mark date
                 {
-                    newmark.Date = markDateTimePicker.Value;
+                    newmark.Date = MarkDateTime;
                 }
                 //Mark subject
                 {
@@ -279,10 +292,11 @@ namespace ClassbookProject
                 {
                     List<Student> students = new List<Student>();
                     context.Students.Where(w => w.Class == context.Classes
-                    .FirstOrDefault(c => c.Grade + c.Letter == selectClassComboBox.SelectedItem.ToString()))
+                    .FirstOrDefault(c => c.Grade + c.Letter == SelectedClass.SelectedItem.ToString()))
                     .ToList<Student>()
                     .ForEach(z => students.Add(z));
-                    newmark.Student = students.FirstOrDefault(w => String.Concat(w.FirstName, ' ', w.MiddleName, ' ', w.LastName) == selectStudentComboBox.SelectedItem.ToString());
+                    newmark.Student = students.FirstOrDefault(w => String.Concat(w.FirstName, ' ', w.MiddleName, ' ', w.LastName) == SelectStudent.SelectedItem
+                    .ToString());
                     List<string> strings = new List<string>();
                 }
                 //Mark teacher
@@ -324,7 +338,7 @@ namespace ClassbookProject
 
         private void permissionsComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
-            if(permissionsComboBox.SelectedItem.ToString() == "Add a class")
+            if(Permissions.SelectedItem.ToString() == "Add a class")
             {
                 addClassPanel.Visible = true;
                 addSubjectPanel.Visible = false;
@@ -333,18 +347,19 @@ namespace ClassbookProject
                 {
                     using (ClassbookEntities context = new ClassbookEntities())
                     {
-                        nonHeadTeacherComboBox.Items.Clear();
+                        NonHeadTeacher.Items.Clear();
                         List<int> headTeacherIds = new List<int>();
                         context.Classes.ToList().ForEach(w => headTeacherIds.Add(w.HeadTeacherId));
 
-                        context.Teachers.OrderBy(w => w.FirstName).ThenBy(w => w.LastName).Where(w => !headTeacherIds.Contains(w.TeacherId)).ToList().ForEach(z => nonHeadTeacherComboBox.Items.Add(z.FirstName + ' ' + z.LastName));
+                        context.Teachers.OrderBy(w => w.FirstName).ThenBy(w => w.LastName).Where(w => !headTeacherIds.Contains(w.TeacherId))
+                            .ToList().ForEach(z => NonHeadTeacher.Items.Add(z.FirstName + ' ' + z.LastName));
 
                     }
                 }
             }
             else
             {
-                if (permissionsComboBox.SelectedItem.ToString() == "Add a subject")
+                if (Permissions.SelectedItem.ToString() == "Add a subject")
                 {
                     addSubjectPanel.Visible = true;
                     addClassPanel.Visible = false;
@@ -352,7 +367,7 @@ namespace ClassbookProject
                 }
                 else
                 {
-                    if (permissionsComboBox.SelectedItem.ToString() == "Add a vice-principal")
+                    if (Permissions.SelectedItem.ToString() == "Add a vice-principal")
                     {
                         addSubjectPanel.Visible = false;
                         addClassPanel.Visible = false;
@@ -360,32 +375,20 @@ namespace ClassbookProject
                         // Load nonPrincipalTeacherComboBox
                         {
                             using (ClassbookEntities context = new ClassbookEntities())
-                                context.Teachers.OrderBy(w => w.FirstName).ThenBy(w => w.LastName).Where(w => w.ExtendedPermissions == false).ToList().ForEach(w => nonPrincipalTeacherComboBox.Items.Add(w.FirstName + ' ' + w.LastName));
+                                context.Teachers.OrderBy(w => w.FirstName).ThenBy(w => w.LastName).Where(w => w.ExtendedPermissions == false)
+                                    .ToList().ForEach(w => nonPrincipalTeacherComboBox.Items.Add(w.FirstName + ' ' + w.LastName));
                         }
                     }
                 }
             }
         }
 
-        private void addClassBtn_Click(object sender, EventArgs e)
-        {
-            AddClass();
-        }
-
+  
         private void letterTextBox_Click(object sender, EventArgs e)
         {
             letterTextBox.Clear();
         }
 
-        private void addSubjectPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void addSubjectBtn_Click(object sender, EventArgs e)
         {
@@ -397,9 +400,10 @@ namespace ClassbookProject
             AddPrincipal();
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
 
+        private void addClassBtn_Click_1(object sender, EventArgs e)
+        {
+            AddClass();
         }
     }
 }
