@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e6587ed6827444ca986553d88c391bb2" Name="Diagram1">
+        <EntityTypeShape EntityType="ClassbookModel.Class" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Mark" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.StudentContactInfo" Width="1.5" PointX="9.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Student" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Subject" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.TeacherContactInfo" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Teacher" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="ClassbookModel.classes_fk_classes_teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassbookModel.students_fk_students_classes" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassbookModel.marks_fk_marks_students" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassbookModel.marks_fk_marks_subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassbookModel.marks_fk_marks_teachers" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassbookModel.student_contact_info_fk_student_contact_info" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassbookModel.teachers_fk_teachers_subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassbookModel.teacher_contact_info_fk_teacher_contact_info_teachers" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

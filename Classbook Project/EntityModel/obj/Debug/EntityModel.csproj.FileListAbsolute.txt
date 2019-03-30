@@ -1,0 +1,12 @@
+D:\SchoolClassProject-master\Classbook Project\EntityModel\bin\Debug\EntityModel.dll.config
+D:\SchoolClassProject-master\Classbook Project\EntityModel\bin\Debug\EntityModel.dll
+D:\SchoolClassProject-master\Classbook Project\EntityModel\bin\Debug\EntityModel.pdb
+D:\SchoolClassProject-master\Classbook Project\EntityModel\bin\Debug\EntityFramework.dll
+D:\SchoolClassProject-master\Classbook Project\EntityModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\SchoolClassProject-master\Classbook Project\EntityModel\bin\Debug\EntityFramework.xml
+D:\SchoolClassProject-master\Classbook Project\EntityModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\SchoolClassProject-master\Classbook Project\EntityModel\obj\Debug\EntityModel.csprojAssemblyReference.cache
+D:\SchoolClassProject-master\Classbook Project\EntityModel\obj\Debug\EntityModel.csproj.CoreCompileInputs.cache
+D:\SchoolClassProject-master\Classbook Project\EntityModel\obj\Debug\EntityModel.csproj.CopyComplete
+D:\SchoolClassProject-master\Classbook Project\EntityModel\obj\Debug\EntityModel.dll
+D:\SchoolClassProject-master\Classbook Project\EntityModel\obj\Debug\EntityModel.pdb

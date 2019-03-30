@@ -48,3 +48,65 @@ D:\SchoolClassProject\Classbook Project\WindowsFormsApplication2\obj\Debug\Windo
 D:\SchoolClassProject\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
 D:\SchoolClassProject\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csprojAssemblyReference.cache
 D:\SchoolClassProject\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.Properties.Resources.resources
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.manifest
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.application
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.pdb
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFramework.dll
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFramework.SqlServer.dll
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\System.Data.Common.dll
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\System.Data.SqlClient.dll
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFramework.xml
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFramework.SqlServer.xml
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csprojAssemblyReference.cache
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.MainForm.resources
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.RegisterForm.resources
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.TeacherForm.resources
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.StudentsForm.resources
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.LoginForm.resources
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.Properties.Resources.resources
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csproj.GenerateResource.cache
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csproj.CoreCompileInputs.cache
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe.manifest
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.application
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csproj.CopyComplete
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFrameworkModel.dll
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFrameworkModel.pdb
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFrameworkModel.dll.config
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\AllController.dll
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\AllController.pdb
+D:\SchoolClassProject-master\Classbook Project\WindowsFormsApplication2\bin\Debug\AllController.dll.config
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csprojAssemblyReference.cache
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.MainForm.resources
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.RegisterForm.resources
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.TeacherForm.resources
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.StudentsForm.resources
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.LoginForm.resources
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\ClassbookProject.Properties.Resources.resources
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csproj.GenerateResource.cache
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csproj.CoreCompileInputs.cache
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.pdb
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.config
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe.manifest
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.application
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.exe
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\WindowsFormsApplication2.pdb
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\AllController.dll
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFramework.dll
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFramework.SqlServer.dll
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFrameworkModel.dll
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\System.Data.Common.dll
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\System.Data.SqlClient.dll
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\AllController.pdb
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\AllController.dll.config
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFrameworkModel.pdb
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFrameworkModel.dll.config
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFramework.xml
+D:\Classbook Project\WindowsFormsApplication2\bin\Debug\EntityFramework.SqlServer.xml
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.exe.manifest
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\WindowsFormsApplication2.application
+D:\Classbook Project\WindowsFormsApplication2\obj\Debug\Classbook Project.csproj.CopyComplete

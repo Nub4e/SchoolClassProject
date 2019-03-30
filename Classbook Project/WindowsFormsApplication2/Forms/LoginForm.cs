@@ -10,8 +10,9 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using ClassbookProject;
-using ClassbookProject.Model;
 using ClassbookProject.View;
+using EntityFrameworkModel.Model;
+using AllController;
 
 namespace ClassbookProject
 {
@@ -28,8 +29,8 @@ namespace ClassbookProject
         void SetDefaultValueStudent()
         {
 
-            insertNameTxtBox.Text = "ChesterOsborneDixon";
-            insertEGNTxtBox.Text = "3390475302";
+            insertNameTxtBox.Text = "UchenikDaDa";
+            insertEGNTxtBox.Text = "0987654321";
             loginSelectComboBox.SelectedIndex = 1;
         }
         void SetDefaultValueTeacher()
@@ -38,40 +39,27 @@ namespace ClassbookProject
             insertEGNTxtBox.Text = "6561865618";
             loginSelectComboBox.SelectedIndex = 0;
         }
-        void SetDefaultValueTeacherNonPrincipal()
-        {
-            insertNameTxtBox.Text = "CarlHardingGrimes";
-            insertEGNTxtBox.Text = "4873648736";
-            loginSelectComboBox.SelectedIndex = 0;
-        }
+      void SetDefaultValueTeacherNonPrincipal()
+      {
+          insertNameTxtBox.Text = "CarlHardingGrimes";
+          insertEGNTxtBox.Text = "4873648736";
+          loginSelectComboBox.SelectedIndex = 0;
+       }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // SetDefaultValueTeacherNonPrincipal();
             // SetDefaultValueStudent();
-             SetDefaultValueTeacher();
+            // SetDefaultValueTeacher();
+
             // Проверка за избора на  teacher and student 
+            LoginController loginController = new LoginController();
             if (Index == 1)// Checks if student option is sellected in combo box
             {
                 string egnPass = String.Empty;
-                bool studentExists = false;// Checks if a Student with the stated personal number exists and if he has written the correct name
-                bool studentNameIsCorrect = false;
-                using (ClassbookEntities context = new ClassbookEntities())
+                if (loginController.CheckIfStudentExists(EGN, FullName))
                 {
-                    if (context.Students.Any(c => c.PersonalNumber == EGN))
-                    {
-                        studentExists = true;
-                        Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
-                        if (student.FirstName + student.MiddleName + student.LastName == FullName.Replace(" ", string.Empty))// да се погледне
-                        {
-                            studentNameIsCorrect = true;
-                            egnPass = student.PersonalNumber;
-                        }
-                    }
-                }
-                if (studentExists && studentNameIsCorrect)
-                {
-
+                    egnPass = loginController.egnPassSetForStudent(EGN, FullName, egnPass);
                     this.Hide();
                     StudentsForm studentsForm = new StudentsForm(egnPass);
                     studentsForm.Show();
@@ -92,23 +80,10 @@ namespace ClassbookProject
                 {
                     // Checks if a teacher with the stated personal number exists and if he has written the correct name
                     string egnPass = String.Empty;
-                    bool teacherExists = false;
-                    bool teacherNameIsCorrect = false;
-                    using (ClassbookEntities context = new ClassbookEntities())
+
+                    if (loginController.CheckIfTeacherExists(EGN, FullName))
                     {
-                        if (context.Teachers.Any(c => c.PersonalNumber == EGN))
-                        {
-                            teacherExists = true;
-                            Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == EGN);
-                            if (teacher.FirstName + teacher.MiddleName + teacher.LastName == FullName.Replace(" ", string.Empty))
-                            {
-                                teacherNameIsCorrect = true;
-                                egnPass = teacher.PersonalNumber;
-                            }
-                        }
-                    }
-                    if (teacherExists && teacherNameIsCorrect)
-                    {
+                        egnPass = loginController.egnPassSetForTeacher(EGN, FullName, egnPass);
                         this.Hide();
                         TeacherForm teacherForm = new TeacherForm(egnPass);
                         teacherForm.Show();

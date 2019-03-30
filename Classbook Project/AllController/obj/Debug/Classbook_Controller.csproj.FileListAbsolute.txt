@@ -1,0 +1,15 @@
+D:\Classbook Project\AllController\bin\Debug\AllController.dll.config
+D:\Classbook Project\AllController\bin\Debug\AllController.dll
+D:\Classbook Project\AllController\bin\Debug\AllController.pdb
+D:\Classbook Project\AllController\bin\Debug\EntityFramework.dll
+D:\Classbook Project\AllController\bin\Debug\EntityFramework.SqlServer.dll
+D:\Classbook Project\AllController\bin\Debug\EntityFrameworkModel.dll
+D:\Classbook Project\AllController\bin\Debug\EntityFrameworkModel.pdb
+D:\Classbook Project\AllController\bin\Debug\EntityFrameworkModel.dll.config
+D:\Classbook Project\AllController\bin\Debug\EntityFramework.xml
+D:\Classbook Project\AllController\bin\Debug\EntityFramework.SqlServer.xml
+D:\Classbook Project\AllController\obj\Debug\Classbook_Controller.csproj.CoreCompileInputs.cache
+D:\Classbook Project\AllController\obj\Debug\Classbook_Controller.csproj.CopyComplete
+D:\Classbook Project\AllController\obj\Debug\AllController.dll
+D:\Classbook Project\AllController\obj\Debug\AllController.pdb
+D:\Classbook Project\AllController\obj\Debug\Classbook_Controller.csprojAssemblyReference.cache

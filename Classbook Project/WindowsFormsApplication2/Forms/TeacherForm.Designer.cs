@@ -126,7 +126,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(589, 436);
             this.panel3.TabIndex = 3;
-          
             // 
             // principalPanel
             // 
@@ -195,7 +194,6 @@
             this.addSubjectPanel.Size = new System.Drawing.Size(200, 164);
             this.addSubjectPanel.TabIndex = 13;
             this.addSubjectPanel.Visible = false;
-         
             // 
             // addSubjectBtn
             // 
@@ -222,7 +220,6 @@
             this.label7.Size = new System.Drawing.Size(106, 16);
             this.label7.TabIndex = 9;
             this.label7.Text = "Subject name:";
-           
             // 
             // subjectNameTxtBox
             // 
