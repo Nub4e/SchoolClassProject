@@ -232,7 +232,7 @@ namespace ClassbookProject
             //Birthdate
             studentRegisterController.AddBirthdate(Date);
             //Email
-            if (studentRegisterController.IsValidEmail(Email))
+            if (studentRegisterController.StudentValidEmail(Email))
             {
                 if (studentRegisterController.CheckEmailExists(Email))
                 {

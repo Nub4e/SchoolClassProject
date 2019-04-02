@@ -51,7 +51,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\StudentRegisterController.cs" />
     <Compile Include="Controllers\TeacherRegisterController.cs" />

@@ -29,7 +29,10 @@ namespace AllController.Controllers
                 {
                     return true;
                 }
-                else return false;
+                else
+                {
+                    return false;
+                }
             }
         }
 
@@ -186,8 +189,8 @@ namespace AllController.Controllers
                 .ToList<Student>();
             }
         }
-
-
+    
+     
 
         Mark newmark = new Mark();
         int newmarkSubjectID = 0;

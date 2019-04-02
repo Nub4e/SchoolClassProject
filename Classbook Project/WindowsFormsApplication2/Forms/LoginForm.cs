@@ -57,9 +57,9 @@ namespace ClassbookProject
             if (Index == 1)// Checks if student option is sellected in combo box
             {
                 string egnPass = String.Empty;
-                if (loginController.CheckIfStudentExists(EGN, FullName))
+                if (loginController.StudentExists(EGN) && loginController.StudentNameIsCorrect(EGN , FullName))
                 {
-                    egnPass = loginController.egnPassSetForStudent(EGN, FullName, egnPass);
+                    egnPass = loginController.EgnPassSetForStudent(EGN);
                     this.Hide();
                     StudentsForm studentsForm = new StudentsForm(egnPass);
                     studentsForm.Show();
@@ -81,9 +81,9 @@ namespace ClassbookProject
                     // Checks if a teacher with the stated personal number exists and if he has written the correct name
                     string egnPass = String.Empty;
 
-                    if (loginController.CheckIfTeacherExists(EGN, FullName))
+                    if (loginController.TeacherExists(EGN) && loginController.TeacherNameIsCorrect(EGN, FullName))
                     {
-                        egnPass = loginController.egnPassSetForTeacher(EGN, FullName, egnPass);
+                        egnPass = loginController.EgnPassSetForTeacher(EGN);
                         this.Hide();
                         TeacherForm teacherForm = new TeacherForm(egnPass);
                         teacherForm.Show();

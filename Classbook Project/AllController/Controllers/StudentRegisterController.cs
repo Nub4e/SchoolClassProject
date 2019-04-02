@@ -25,20 +25,6 @@ namespace AllController
             student.LastName = allName[2];
 
         }
-        // Check Email
-        public bool IsValidEmail(string email) // chek valid email
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        //Check for name exists
         public bool StudentNameExists(string FullName)
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -95,7 +81,7 @@ namespace AllController
             using (ClassbookEntities context = new ClassbookEntities())
             {
 
-                if (!context.TeacherContactInfoes.Any(w => w.Email == Email))
+                if (!context.StudentContactInfoes.Any(w => w.Email == Email))
                 {
                     return true;
                 }

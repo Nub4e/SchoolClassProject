@@ -56,7 +56,7 @@ namespace AllController
                 Teacher teacher = new Teacher();
                 //Name
                 {
-
+                   
                     List<string> allName = FullName.Split(' ').ToList();
                     teacher.FirstName = allName[0];
                     teacher.MiddleName = allName[1];
@@ -195,8 +195,6 @@ namespace AllController
                 }
             }
         }
-
-
 
     }
 }
