@@ -14,15 +14,36 @@ namespace AllController
         StudentContactInfo studentContactInfo = new StudentContactInfo();
         Student student = new Student();
         int selectedClassId = 0;
+        public string StudentFirstName { get; set; }
+        public string StudentMidleName { get; set; }
+        public string StudentLastName { get; set; }
+        public string StudentEmail { get; set; }
+        public string StudentPhoneNumber { get; set; }
+        public string StudentEGN{ get; set; }
+        public DateTime StudentData { get; set; }
 
         // Set Name
+        public void PushStudent()
+        {
+            student.FirstName = StudentFirstName;
+            student.MiddleName = StudentMidleName;
+            student.LastName = StudentLastName;
+            student.PersonalNumber = StudentEGN;
+            student.Birthdate = StudentData;
+        }
+        public void PushStudentContactInfo()
+        {
+            studentContactInfo.Email = StudentEmail;
+            studentContactInfo.PhoneNumber = StudentPhoneNumber;
+        }
         public void SetName(string FullName)
         {
-
+           
             List<string> allName = FullName.Split(' ').ToList();
-            student.FirstName = allName[0];
-            student.MiddleName = allName[1];
-            student.LastName = allName[2];
+            StudentFirstName  = allName[0];
+            StudentMidleName = allName[1];
+            StudentLastName = allName[2];
+           
 
         }
         public bool StudentNameExists(string FullName)
@@ -54,13 +75,13 @@ namespace AllController
         // Add birthdate
         public void AddBirthdate(DateTime Date)
         {
-            student.Birthdate = Date;
+            StudentData = Date;
 
         }
         // Set Email
         public void SetEmail(string Email)
         {
-            studentContactInfo.Email = Email;
+            StudentEmail = Email;
         }
         // Check for valid email
         public bool StudentValidEmail(string email)
@@ -96,7 +117,7 @@ namespace AllController
         // Set Phone
         public void SetPhone(string PhoneNumber)
         {
-            studentContactInfo.PhoneNumber = PhoneNumber;
+            StudentPhoneNumber = PhoneNumber;
         }
         // Check for phonenumber is valid
         public bool PhoneIsValid(string PhoneNumber)
@@ -133,7 +154,7 @@ namespace AllController
         // Set EGN
         public void SetEGN(string EGN)
         {
-            student.PersonalNumber = EGN;
+            StudentEGN = EGN;
         }
         // Check egn is valid
         public bool IsValidEGN(string EGN)
