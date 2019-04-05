@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using System.Diagnostics;
 using ClassbookProject;
-using EntityFrameworkModel.Model;
+
 
 
 namespace ClassbookProject

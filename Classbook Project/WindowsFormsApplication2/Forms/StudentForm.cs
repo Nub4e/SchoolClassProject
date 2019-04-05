@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClassbookProject;
 using ClassbookProject.View;
-using EntityFrameworkModel.Model;
 using AllController;
 
 namespace ClassbookProject

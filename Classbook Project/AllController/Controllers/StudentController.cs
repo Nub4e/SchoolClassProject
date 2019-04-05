@@ -10,34 +10,47 @@ namespace AllController
 {
     public class StudentFormController
     {
+     
         public Student student = new Student();
         List<Subject> studentSubjects = new List<Subject>();
-        Class studentClass = new Class();
+        int studentClassId = 0;
         Teacher headteacher = new Teacher();
         int studentId = 1;
 
         Subject selectedSubject = new Subject();
 
+        public Student CurrentStudent{ get; set; }
+        public List<Subject> StudentSubjects { get; set; }
+        public int StudentClassId { get; set; }
+        public Teacher HeadTeacher { get; set; }
+        public int StudentId { get; set; }
+
+        public void PushStudent()
+        {
+            this.student = CurrentStudent;
+            this.studentSubjects = StudentSubjects;
+            this.studentClassId = StudentClassId;
+            this.headteacher = HeadTeacher;
+            this.studentId = StudentId;
+
+        }
         public void InitializeStudent(string egnPass)
         {
-            student = new Student();
-
-
             using (ClassbookEntities context = new ClassbookEntities())
             {
 
-                student = context.Students.First(w => w.PersonalNumber == egnPass);
-                studentSubjects = student.Marks.Select(c => c.Subject).Distinct().ToList();
-                studentClass = student.Class;
-                headteacher = studentClass.Teacher;
-                studentId = student.StudentId;
+                CurrentStudent = context.Students.First(w => w.PersonalNumber == egnPass);
+                StudentSubjects = CurrentStudent.Marks.Select(c => c.Subject).Distinct().ToList();
+                StudentClassId = CurrentStudent.Class.ClassId;
+                HeadTeacher = CurrentStudent.Class.Teacher;
+                StudentId = CurrentStudent.StudentId;
             }
         }
         public List<string> SubjectsToInsert()
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                return studentSubjects.Select(w => w.Name).ToList();
+                return StudentSubjects.Select(w => w.Name).ToList();
             }
 
         }
@@ -46,15 +59,17 @@ namespace AllController
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 List<string> ContactInfoList = new List<string>();
-                var currentStudentClass = context.Classes.First(w => w.ClassId == studentClass.ClassId);
+                var currentStudentClass = context.Classes.First(w => w.ClassId == StudentClassId);
                 for (int i = 0; i < currentStudentClass.Students.Count(); i++)
                 {
                     if (currentStudentClass.Students.ToList()[i].StudentId != student.StudentId)
-                        ContactInfoList.Add(currentStudentClass.Students.ToList()[i].FirstName + ' '         //Gets the first name of the i(th) student in the logged student's class
+                        ContactInfoList.Add(
+                            currentStudentClass.Students.ToList()[i].FirstName + ' '         //Gets the first name of the i(th) student in the logged student's class
                          + currentStudentClass.Students.ToList()[i].LastName //Gets the last name of the i(th) student
                          + " Email: " + currentStudentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i]).Email //Gets the email of the i(th) student from the student contact info table
-                          + " Phone number: " + currentStudentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i]).PhoneNumber); //Gets the phone number of the i(th) student from the student contact info table
-                }
+                         + " Phone number: " + currentStudentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i]).PhoneNumber  //Gets the phone number of the i(th) student from the student contact info table
+                         + " Birthdate: " + currentStudentClass.Students.ToList()[i].Birthdate.ToShortDateString());
+                         }
                 return ContactInfoList;
             }
 
@@ -70,7 +85,8 @@ namespace AllController
                     currentHeadTeacher.MiddleName + ' ' +
                     currentHeadTeacher.LastName +
                     " Email: " + currentHeadTeacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher.TeacherId == student.Class.Teacher.TeacherId).Email +
-                    " Phone number: " + currentHeadTeacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher.TeacherId == currentHeadTeacher.TeacherId).PhoneNumber;
+                    " Phone number: " + currentHeadTeacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher.TeacherId == currentHeadTeacher.TeacherId).PhoneNumber +
+                    " Birthdate: " + currentHeadTeacher.Birthdate.ToShortDateString();
                 }
                 else return "No teacher contact info.";
             }
@@ -90,7 +106,8 @@ namespace AllController
             {
                 
                 List<Mark> allStudentMarksForSubject = new List<Mark>();
-                var currentStudent = student;
+                var currentStudent = CurrentStudent;
+                // Fills allStudentMarksForSubject
                 context.Marks.ToList().ForEach(w =>
                 {
                     if (w.SubjectId == selectedSubject.SubjectId && currentStudent.StudentId == w.StudentId)
@@ -99,6 +116,7 @@ namespace AllController
                 
                 List<string> SelectedMarksList = new List<string>();
                 
+                // Converts allStudentMarksForSubject's items into a string and puts them into SelectedMarksList
                 for (int i = 0; i < allStudentMarksForSubject.Count(); i++)
                 {
 
@@ -107,7 +125,8 @@ namespace AllController
                            allStudentMarksForSubject[i].Number +
                            " Teacher: " + allStudentMarksForSubject[i].Teacher.FirstName + ' '
                            + allStudentMarksForSubject[i].Teacher.MiddleName + ' '
-                           + allStudentMarksForSubject[i].Teacher.LastName);
+                           + allStudentMarksForSubject[i].Teacher.LastName + " Date: " 
+                           + allStudentMarksForSubject[i].Date.ToShortDateString());
                 }
                 return SelectedMarksList;
                 
@@ -121,7 +140,7 @@ namespace AllController
             {
                 
                 List<Mark> allStudentMarksForSubject = new List<Mark>();
-                var currentStudent = student;
+                var currentStudent = CurrentStudent;
                 context.Marks.ToList().ForEach(w =>
                 {
                     if (w.SubjectId == selectedSubject.SubjectId && currentStudent.StudentId == w.StudentId)

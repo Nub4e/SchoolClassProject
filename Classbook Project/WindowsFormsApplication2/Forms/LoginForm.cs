@@ -11,7 +11,6 @@ using System.Data.SqlClient;
 using System.Data.SqlTypes;
 using ClassbookProject;
 using ClassbookProject.View;
-using EntityFrameworkModel.Model;
 using AllController;
 
 namespace ClassbookProject
@@ -29,8 +28,8 @@ namespace ClassbookProject
         void SetDefaultValueStudent()
         {
 
-            insertNameTxtBox.Text = "UchenikDaDa";
-            insertEGNTxtBox.Text = "0987654321";
+            insertNameTxtBox.Text = "LydiaGilmoreKelley";
+            insertEGNTxtBox.Text = "3376299241";
             loginSelectComboBox.SelectedIndex = 1;
         }
         void SetDefaultValueTeacher()
@@ -50,7 +49,7 @@ namespace ClassbookProject
         {
             // SetDefaultValueTeacherNonPrincipal();
             // SetDefaultValueStudent();
-            // SetDefaultValueTeacher();
+             SetDefaultValueTeacher();
 
             // Проверка за избора на  teacher and student 
             LoginController loginController = new LoginController();

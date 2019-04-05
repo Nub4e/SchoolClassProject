@@ -180,17 +180,17 @@ namespace AllController.Controllers
             }
         }
 
-        public List<Student> SelectStudent(string SelectedClass)
+        public List<string> SelectStudent(string SelectedClass)
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 return context.Students.Where(w => w.Class == context.Classes
                 .FirstOrDefault(c => c.Grade + c.Letter == SelectedClass))
-                .ToList<Student>();
+                .ToList<Student>()
+                .Select(z => z.FirstName + ' ' + z.MiddleName + ' ' + z.LastName)
+                .ToList<string>();
             }
         }
-    
-     
 
         Mark newmark = new Mark();
         int newmarkSubjectID = 0;

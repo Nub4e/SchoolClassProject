@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClassbookProject;
 using ClassbookProject.View;
-using EntityFrameworkModel.Model;
 using AllController;
 using AllController.Controllers;
 
@@ -203,12 +202,12 @@ namespace ClassbookProject
 
             SelectStudentComboBox.Items.Clear();
             panel5.Visible = true;
-                string SelectedClass = SelectedClassComboBox.SelectedItem.ToString();
-                teacherController.SelectStudent(SelectedClass)
-                .ForEach(z => SelectStudentComboBox.Items.Add(z.FirstName + ' ' + z.MiddleName + ' ' + z.LastName));
+            string SelectedClass = SelectedClassComboBox.SelectedItem.ToString();
+            teacherController.SelectStudent(SelectedClass)
+            .ForEach(z => SelectStudentComboBox.Items.Add(z));
             selectStudentComboBox.Text = String.Empty;
 
-        } // R
+        }
 
 
         private void button2_Click(object sender, EventArgs e)
@@ -244,7 +243,7 @@ namespace ClassbookProject
 
             // Student ID
             {
-                List<Student> students = new List<Student>();
+               
                 string selectedStudent = SelectStudentComboBox.SelectedItem.ToString();
                 teacherController.SetStudentId(selectedStudent);              
             }

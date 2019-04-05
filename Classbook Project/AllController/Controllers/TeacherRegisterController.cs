@@ -81,9 +81,9 @@ namespace AllController
                 {
                    
                     List<string> allName = FullName.Split(' ').ToList();
-                    teacher.FirstName = allName[0];
-                    teacher.MiddleName = allName[1];
-                    teacher.LastName = allName[2];
+                    TeacherFirstName = allName[0];
+                    TeacherMidleName = allName[1];
+                    TeacherLastName = allName[2];
 
                     if (context.Teachers.Any(w => w.FirstName + w.MiddleName + w.LastName == teacher.FirstName + teacher.MiddleName + teacher.LastName))
                     {
@@ -127,14 +127,16 @@ namespace AllController
         // Last Commit Changed
         public void CommitChanged()
         {
+            PushTeacher();
+            PushTeacherContactInfo();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                ;
+               
                 teacher.TeacherContactInfoes.Add(teacherContactInfo);
                 teacher.Subject = context.Subjects.FirstOrDefault(w => w.Name == subject);
                 context.Teachers.Add(teacher);
                 context.SaveChanges();
-                ;
+               
             }
         }
         public void SetSubject(string SubjectText)

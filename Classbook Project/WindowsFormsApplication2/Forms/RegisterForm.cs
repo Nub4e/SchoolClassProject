@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using ClassbookProject;
 using AllController;
 using ClassbookProject.View;
-using EntityFrameworkModel.Model;
+
 
 namespace ClassbookProject
 {

@@ -56,9 +56,9 @@ namespace AllController
                 {
 
                     List<string> allName = FullName.Split(' ').ToList();
-                    student.FirstName = allName[0];
-                    student.MiddleName = allName[1];
-                    student.LastName = allName[2];
+                    StudentFirstName = allName[0];
+                    StudentMidleName = allName[1];
+                    StudentLastName = allName[2];
 
                     if (context.Students.Any(w => w.FirstName + w.MiddleName + w.LastName == student.FirstName + student.MiddleName + student.LastName))
                     {
@@ -213,6 +213,8 @@ namespace AllController
         // Commit
         public void CommitChanged()
         {
+            PushStudent();
+            PushStudentContactInfo();
             using (ClassbookEntities context = new ClassbookEntities())
             {
 

@@ -190,10 +190,6 @@
       <Project>{b1074707-7319-4345-8b2b-85ff5a806f68}</Project>
       <Name>Classbook_Controller</Name>
     </ProjectReference>
-    <ProjectReference Include="..\EntityFrameworkModel\Classbook_Model.csproj">
-      <Project>{1f8c080a-7b13-4750-b3d3-059298952e89}</Project>
-      <Name>Classbook_Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
