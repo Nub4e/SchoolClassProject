@@ -1,15 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Data.SqlTypes;
-using ClassbookProject;
 using ClassbookProject.View;
 using AllController;
 
@@ -48,12 +38,13 @@ namespace ClassbookProject
         private void button2_Click(object sender, EventArgs e)
         {
             // SetDefaultValueTeacherNonPrincipal();
-             //SetDefaultValueStudent();
-             SetDefaultValueTeacher();
+            // SetDefaultValueStudent();
+            // SetDefaultValueTeacher();
 
             // Проверка за избора на  teacher and student 
             LoginController loginController = new LoginController();
-            if (Index == 1)// Checks if student option is sellected in combo box
+            // Checks if student option is sellected in combo box
+            if (Index == 1)
             {
                 string egnPass = String.Empty;
                 if (loginController.StudentExists(EGN) && loginController.StudentNameIsCorrect(EGN , FullName))

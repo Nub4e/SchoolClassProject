@@ -121,17 +121,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LKw2AglkdDiOC927pmfJ00NWzl35oTQrAxjLeecRjHE=</dsig:DigestValue>
+        <dsig:DigestValue>9JPSiDRX71y8UW2WDQDxiqkqrciJSJPHFTNTbhjnmUM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="WindowsFormsApplication2.exe.config" size="1461">
+  <file name="WindowsFormsApplication2.exe.config" size="1439">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>2Kf/B6BitTqAKVj9PLdUgSe6KhYkawcHiB1UaGnHBCo=</dsig:DigestValue>
+      <dsig:DigestValue>0IP8XVEUzf2SYMR2XCk0sxsPisMwm5EzJRmlvR7lakw=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
