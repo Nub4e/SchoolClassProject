@@ -1,9 +1,0 @@
-D:\Csharp\ProjectForm\ProjectForm\bin\Debug\ProjectForm.exe.config
-D:\Csharp\ProjectForm\ProjectForm\bin\Debug\ProjectForm.exe
-D:\Csharp\ProjectForm\ProjectForm\bin\Debug\ProjectForm.pdb
-D:\Csharp\ProjectForm\ProjectForm\obj\Debug\ProjectForm.csprojResolveAssemblyReference.cache
-D:\Csharp\ProjectForm\ProjectForm\obj\Debug\ProjectForm.Form1.resources
-D:\Csharp\ProjectForm\ProjectForm\obj\Debug\ProjectForm.Properties.Resources.resources
-D:\Csharp\ProjectForm\ProjectForm\obj\Debug\ProjectForm.csproj.GenerateResource.Cache
-D:\Csharp\ProjectForm\ProjectForm\obj\Debug\ProjectForm.exe
-D:\Csharp\ProjectForm\ProjectForm\obj\Debug\ProjectForm.pdb
