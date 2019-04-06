@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classbook_View", "WindowsFormsApplication2\Classbook_View.csproj", "{1DF407C6-794C-478F-99C0-938D74D30EA2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classbook.View", "WindowsFormsApplication2\Classbook.View.csproj", "{1DF407C6-794C-478F-99C0-938D74D30EA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classbook_Model", "EntityFrameworkModel\Classbook_Model.csproj", "{1F8C080A-7B13-4750-B3D3-059298952E89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classbook.Model", "EntityFrameworkModel\Classbook.Model.csproj", "{1F8C080A-7B13-4750-B3D3-059298952E89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classbook_Controller", "AllController\Classbook_Controller.csproj", "{B1074707-7319-4345-8B2B-85FF5A806F68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classbook.Controller", "AllController\Classbook.Controller.csproj", "{B1074707-7319-4345-8B2B-85FF5A806F68}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Classbook.Tests", "Classbook.Tests\Classbook.Tests.csproj", "{F9E07EE0-03E3-4EC9-B632-E8AEB80C8D52}"
 EndProject

@@ -186,9 +186,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AllController\Classbook_Controller.csproj">
+    <ProjectReference Include="..\AllController\Classbook.Controller.csproj">
       <Project>{b1074707-7319-4345-8b2b-85ff5a806f68}</Project>
-      <Name>Classbook_Controller</Name>
+      <Name>Classbook.Controller</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
