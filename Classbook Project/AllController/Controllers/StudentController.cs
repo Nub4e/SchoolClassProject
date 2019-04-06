@@ -19,6 +19,7 @@ namespace AllController
 
         Subject selectedSubject = new Subject();
 
+        public Subject CurrentselectedSubject { get; set; }
         public Student CurrentStudent{ get; set; }
         public List<Subject> StudentSubjects { get; set; }
         public int StudentClassId { get; set; }
@@ -32,8 +33,10 @@ namespace AllController
             this.studentClassId = StudentClassId;
             this.headteacher = HeadTeacher;
             this.studentId = StudentId;
+            this.selectedSubject = CurrentselectedSubject;
 
         }
+        // Initialize Student in CurrentStudent
         public void InitializeStudent(string egnPass)
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -46,6 +49,7 @@ namespace AllController
                 StudentId = CurrentStudent.StudentId;
             }
         }
+        // Add all visible subject 
         public List<string> SubjectsToInsert()
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -54,15 +58,17 @@ namespace AllController
             }
 
         }
+        // Add all students in Contact Info
         public List<string> ContactInfo()
         {
+          
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 List<string> ContactInfoList = new List<string>();
                 var currentStudentClass = context.Classes.First(w => w.ClassId == StudentClassId);
                 for (int i = 0; i < currentStudentClass.Students.Count(); i++)
                 {
-                    if (currentStudentClass.Students.ToList()[i].StudentId != student.StudentId)
+                    if (currentStudentClass.Students.ToList()[i].StudentId != CurrentStudent.StudentId)
                         ContactInfoList.Add(
                             currentStudentClass.Students.ToList()[i].FirstName + ' '         //Gets the first name of the i(th) student in the logged student's class
                          + currentStudentClass.Students.ToList()[i].LastName //Gets the last name of the i(th) student
@@ -78,13 +84,13 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                if (context.TeacherContactInfoes.Any(w => w.Teacher.TeacherId == headteacher.TeacherId))
+                if (context.TeacherContactInfoes.Any(w => w.Teacher.TeacherId == HeadTeacher.TeacherId))
                 {
-                    Teacher currentHeadTeacher =context.Teachers.First(w => w.TeacherId == headteacher .TeacherId);
+                    Teacher currentHeadTeacher =context.Teachers.First(w => w.TeacherId == HeadTeacher.TeacherId);
                     return currentHeadTeacher.FirstName + ' ' +
                     currentHeadTeacher.MiddleName + ' ' +
                     currentHeadTeacher.LastName +
-                    " Email: " + currentHeadTeacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher.TeacherId == student.Class.Teacher.TeacherId).Email +
+                    " Email: " + currentHeadTeacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher.TeacherId == currentHeadTeacher.TeacherId).Email +
                     " Phone number: " + currentHeadTeacher.TeacherContactInfoes.FirstOrDefault(w => w.Teacher.TeacherId == currentHeadTeacher.TeacherId).PhoneNumber +
                     " Birthdate: " + currentHeadTeacher.Birthdate.ToShortDateString();
                 }
@@ -92,16 +98,19 @@ namespace AllController
             }
 
         }
-
+        // Initialize Subject and add in  CurrentselectedSubject
         public void InitializeSubject(string selectedSubjectName)
         {
+            
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                selectedSubject = context.Subjects.FirstOrDefault(a => a.Name == selectedSubjectName);
+                CurrentselectedSubject = context.Subjects.FirstOrDefault(a => a.Name == selectedSubjectName);
             }
         }
-        public List<String> StudentMarksToInsert()
+        // Return all marks and teacher name 
+        public List<string> StudentMarksToInsert()
         {
+            PushAllMarks();
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 
@@ -110,7 +119,7 @@ namespace AllController
                 // Fills allStudentMarksForSubject
                 context.Marks.ToList().ForEach(w =>
                 {
-                    if (w.SubjectId == selectedSubject.SubjectId && currentStudent.StudentId == w.StudentId)
+                    if (w.SubjectId == CurrentselectedSubject.SubjectId && CurrentStudent.StudentId == w.StudentId)
                         allStudentMarksForSubject.Add(w);
                 });
                 
@@ -134,19 +143,29 @@ namespace AllController
 
         }
 
+        List<Mark> allStudentMarksForSubject = new List<Mark>();
+        public List<Mark> AllStudentMarksForSubject { get; set; }
+
+
+        public void PushAllMarks()
+        {
+            this.allStudentMarksForSubject = AllStudentMarksForSubject;
+        }
         public string AvarageMark()
         {
+            PushAllMarks();
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 
-                List<Mark> allStudentMarksForSubject = new List<Mark>();
+                List<Mark> AllStudentMarkSubject = new List<Mark>();
                 var currentStudent = CurrentStudent;
                 context.Marks.ToList().ForEach(w =>
                 {
-                    if (w.SubjectId == selectedSubject.SubjectId && currentStudent.StudentId == w.StudentId)
-                        allStudentMarksForSubject.Add(w);
+                    if (w.SubjectId == CurrentselectedSubject.SubjectId && currentStudent.StudentId == w.StudentId)
+                        AllStudentMarkSubject.Add(w);
                 });
-                return Math.Round(allStudentMarksForSubject.Select(w => w.Number).ToList().Average(), 2).ToString();
+                AllStudentMarksForSubject = AllStudentMarkSubject;
+                return Math.Round(AllStudentMarkSubject.Select(w => w.Number).ToList().Average(), 2).ToString();
                 
 
             }

@@ -11,6 +11,14 @@ namespace AllController.Controllers
     public class TeacherController
     {
         Subject currentSubject = new Subject();
+        public string CurrentName { get; set; }
+
+
+
+        public void PushCurrentSubject()
+        {
+            currentSubject.Name = CurrentName;
+        }
 
         public List<string> LoadClasses()
         {
@@ -36,6 +44,7 @@ namespace AllController.Controllers
             }
         }
 
+        // Correct written text for subject
         public bool CheckIfSubjectIsWritten(string SubjectName)
         {
             if (SubjectName.Length != 0)
@@ -47,11 +56,12 @@ namespace AllController.Controllers
 
         public void SetCurrentSubjectName(string SubjectName)
         {
-            currentSubject.Name = SubjectName;
+            CurrentName = SubjectName;
         }
 
         public void CommitChangedSubject()
         {
+            PushCurrentSubject();
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 context.Subjects.Add(currentSubject);
@@ -96,19 +106,36 @@ namespace AllController.Controllers
 
         Class currentClass = new Class();
         int currentClassTeacherId = 0;
+      
 
+
+
+        public int CurrentGrade { get; set; }
+        public string CurrentLetter { get; set; }
+        public int CurrentClassTeacherId { get; set; }
+        public void SetTeacherId()
+        {
+            this.currentClassTeacherId = CurrentClassTeacherId;
+        }
+        public void PushClass()
+        {        
+            currentClass.Grade = CurrentGrade;
+            currentClass.Letter = CurrentLetter;
+        }
+        // Set CurrentGrade
         public void SetCurrentClassGrade(string SelectedGrade)
         {
-            currentClass.Grade = Convert.ToInt32(SelectedGrade);
+            CurrentGrade = Convert.ToInt32(SelectedGrade);
         }
-
+        // Set CurrentLeter
         public void SetCurrentClassLetter(string Letter)
         {
-            currentClass.Letter = Letter;
+            CurrentLetter = Letter;
         }
-
+        // Check Email in DB
         public bool CheckIfClassAlreadyExists()
         {
+            PushClass();
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 if (context.Classes.Any(w => w.Grade == currentClass.Grade && w.Letter == currentClass.Letter))
@@ -119,16 +146,18 @@ namespace AllController.Controllers
             }
         }
 
-        public void SetCurrentClassTeacherId(string testString)
+        public void SetCurrentClassTeacherId(string teacherName)
         {
+            SetTeacherId();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                currentClassTeacherId = context.Teachers.ToList().FirstOrDefault(w => w.FirstName + ' ' + w.LastName == testString).TeacherId;
+                CurrentClassTeacherId = context.Teachers.ToList().FirstOrDefault(w => w.FirstName + ' ' + w.LastName == teacherName).TeacherId;
             }
         }
 
         public void CommitChangedCurrentClassed()
         {
+            PushClass();
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 currentClass.Teacher = context.Teachers.FirstOrDefault(w => w.TeacherId == currentClassTeacherId);
@@ -136,7 +165,7 @@ namespace AllController.Controllers
                 context.SaveChanges();
             }
         }
-
+        // Add HeadTeachersIds
         public List<int> HeadTeacherIds()
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -146,6 +175,8 @@ namespace AllController.Controllers
                 return headTeacherIds;
             }
         }
+
+
         public List<string> NonHeadTeachers()
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -165,6 +196,7 @@ namespace AllController.Controllers
                 return nonHeadTeachers.OrderBy(w => w).ToList();
             }
         }
+        // Check for teacher permission
         public bool LoggedTeacherHasPermission(string egnPass)
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -179,7 +211,7 @@ namespace AllController.Controllers
                 }
             }
         }
-
+        // Select Student
         public List<string> SelectStudent(string SelectedClass)
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -197,16 +229,39 @@ namespace AllController.Controllers
         int newmarkStudentID = 0;
         int newmarkTeacherID = 0;
 
+        public int NewmarkSubjectID { get; set; }
+        public int NewmarkStudentID { get; set; }
+        public int NewmarkTeacherID { get; set; }
+
+
+        public decimal  CurrentNumber { get; set; }
+        public string CurrentDescription { get; set; }
+        public System.DateTime CurrentDate { get; set; }
+     
+        public void PushIds()
+        {
+            this.newmarkSubjectID = NewmarkSubjectID;
+            this.newmarkStudentID = NewmarkStudentID;
+            this.newmarkTeacherID = NewmarkTeacherID;
+        }
+        public void PushMark()
+        {
+            newmark.Number = CurrentNumber;
+            newmark.Description = CurrentDescription;
+            newmark.Date = CurrentDate;
+        }
+
+        // Set Mark Number
         public void SetMarkNumber(decimal Number)
         {
             if (Number >= 2m && Number <= 6m)
             {
-                newmark.Number = Number;
+                CurrentNumber = Number;
             }
             else throw new Exception();
         }
 
-
+        // Return Mark value
         public string MarkValue(decimal Number)
         {
 
@@ -244,25 +299,26 @@ namespace AllController.Controllers
             }
         }
             
-
+        // Set Mark drscliption
         public void SetMarkDescription()
         {
-            newmark.Description = MarkValue(newmark.Number);
+            CurrentDescription = MarkValue(CurrentNumber);
         }
-
+        // Set CurrentDate
         public void SetMarkDate(DateTime MarkDateTime)
         {
-            newmark.Date = MarkDateTime;
+            CurrentDate  = MarkDateTime;
         }
-        
+
+        // Set mark subjectId in NewmarkSubjectID
         public void SetMarkSubjectId(string egnPass)
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                newmarkSubjectID = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).SubjectId;
+                NewmarkSubjectID = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).SubjectId;
             }
         }
-
+        // Set student Id in  NewmarkStudentID 
         public void SetStudentId(string SelectedStudent)
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -270,19 +326,22 @@ namespace AllController.Controllers
                 Student student = new Student();
                 List<Student> students = context.Students.ToList();
                 student = students.First( w => (w.FirstName + ' ' + w.MiddleName + ' ' + w.LastName) == SelectedStudent);
-                newmarkStudentID = student.StudentId;
+                NewmarkStudentID = student.StudentId;
             }
         }
-
+        // Set mark teacher id in NewmarkTeacherID
         public void SetMarkTeacherID(string egnPass)
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                newmarkTeacherID = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).TeacherId;
+                NewmarkTeacherID = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).TeacherId;
             }
         }
         public void CommitChangedMark()
         {
+            PushClass();
+            PushMark();
+            PushIds();
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 newmark.Student = context.Students.FirstOrDefault(w => w.StudentId == newmarkStudentID);
