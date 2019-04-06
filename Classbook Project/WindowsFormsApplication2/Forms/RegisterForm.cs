@@ -34,7 +34,6 @@ namespace ClassbookProject
         public RegisterForm()
         {
             InitializeComponent();
-
         }
 
         private void RegisterForm_Load(object sender, EventArgs e)
@@ -55,7 +54,7 @@ namespace ClassbookProject
         {
 
 
-            if (RegisterStudentTeacherIndex == 0) //0 - Studen ; 1-Teacher
+            if (RegisterStudentTeacherIndex == 0) //0 - Student ; 1-Teacher
             {
                 panel1.Visible = true;
                 panel2.Visible = false;

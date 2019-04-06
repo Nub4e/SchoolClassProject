@@ -23,31 +23,30 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             { 
-                Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
+            Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
             if (student.FirstName + student.MiddleName + student.LastName == FullName.Replace(" ", string.Empty))// да се погледне
             {
                     return true;
-
             }
             else
                 {
                     return false;
                 }
-        }
+            }
         }
         public bool StudentExists(string EGN)
         {
             using (ClassbookEntities context = new ClassbookEntities())
                 {
-                if (context.Students.Any(c => c.PersonalNumber == EGN))
-                {
+                    if (context.Students.Any(c => c.PersonalNumber == EGN))
+                    {
                     return true;
-                }
-                else
-                {
+                    }
+                    else
+                    {
                     return false;
+                    }
                 }
-            }
         }
         public string EgnPassSetForTeacher(string EGN)
         {
@@ -63,10 +62,9 @@ namespace AllController
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == EGN);
-                if (teacher.FirstName + teacher.MiddleName + teacher.LastName == FullName.Replace(" ", string.Empty))// да се погледне
+                if (teacher.FirstName + teacher.MiddleName + teacher.LastName == FullName.Replace(" ", string.Empty))
                 {
                     return true;
-
                 }
                 else
                 {

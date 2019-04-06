@@ -163,7 +163,7 @@
             // 
             this.panel2.Controls.Add(this.subjectCombBox);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(107, 289);
+            this.panel2.Location = new System.Drawing.Point(107, 291);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 44);
             this.panel2.TabIndex = 9;

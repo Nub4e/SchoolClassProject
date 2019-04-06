@@ -32,26 +32,9 @@ namespace ClassbookProject
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            TeacherForm f = new TeacherForm("");
-            f.Show();
-            f.Closed += (s, args) => this.Show();
-        }
-
         private void button2_Click_1(object sender, EventArgs e)
         {
             Process.Start("https://github.com/Nub4e/SchoolClassProject.git");
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-            //да се погледне  защо е Form3 а не LoginForm
-            StudentsForm f = new StudentsForm("");
-            f.Show();
-            f.Closed += (s, args) => this.Show();
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

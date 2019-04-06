@@ -47,7 +47,6 @@ namespace AllController
             TeacherFirstName = allName[0];
             TeacherMidleName = allName[1];
             TeacherLastName = allName[2];
-
         }
         // Check valid email
         public bool IsValidEmail(string email)
@@ -67,7 +66,6 @@ namespace AllController
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 return context.Subjects.Select(c => c.Name).ToList<string>();
-
             }
         }
         //Add Name

@@ -160,7 +160,7 @@ namespace AllController.Controllers
             PushClass();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                currentClass.Teacher = context.Teachers.FirstOrDefault(w => w.TeacherId == currentClassTeacherId);
+                currentClass.Teacher = context.Teachers.FirstOrDefault(w => w.TeacherId == CurrentClassTeacherId);
                 context.Classes.Add(currentClass);
                 context.SaveChanges();
             }

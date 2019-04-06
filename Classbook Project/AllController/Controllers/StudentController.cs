@@ -41,7 +41,6 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-
                 CurrentStudent = context.Students.First(w => w.PersonalNumber == egnPass);
                 StudentSubjects = CurrentStudent.Marks.Select(c => c.Subject).Distinct().ToList();
                 StudentClassId = CurrentStudent.Class.ClassId;
@@ -70,13 +69,12 @@ namespace AllController
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 List<string> ContactInfoList = new List<string>();
-                var currentStudentClass = context.Classes.First(w => w.ClassId == StudentClassId);
+                Class currentStudentClass = context.Classes.First(w => w.ClassId == StudentClassId);
                 for (int i = 0; i < currentStudentClass.Students.Count(); i++)
                 {
                     if (currentStudentClass.Students.ToList()[i].StudentId != CurrentStudent.StudentId)
                         ContactInfoList.Add(
-                            currentStudentClass.Students.ToList()[i].FirstName + ' '         
-                        
+                            currentStudentClass.Students.ToList()[i].FirstName + ' '           
                             + currentStudentClass.Students.ToList()[i].LastName
                          + " Email: " + currentStudentClass
                          .Students.ToList()[i]

@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rLGDedznrr7b0tvX7xIC9jO7nHkUyQrvSBnNGqkxqKw=</dsig:DigestValue>
+        <dsig:DigestValue>wcA5pLAGmaRnIP/BJ2Wx0ss55bQuuTnfFkQOfRDzr1Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,14 +78,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFrameworkModel.dll" size="41472">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="EntityFrameworkModel.dll" size="40960">
       <assemblyIdentity name="EntityFrameworkModel" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>G8+Vr4kDZicYFqWEST1ExmXOB8mYv3Ey2GiUNYyQwjg=</dsig:DigestValue>
+        <dsig:DigestValue>7W2EScfQ+OP4zRMMLgIvJ8+X06PHqtMuTq02rKSwWBc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -114,14 +114,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WindowsFormsApplication2.exe" size="113120">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="WindowsFormsApplication2.exe" size="112608">
       <assemblyIdentity name="WindowsFormsApplication2" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9JPSiDRX71y8UW2WDQDxiqkqrciJSJPHFTNTbhjnmUM=</dsig:DigestValue>
+        <dsig:DigestValue>jmgnL9SR62Ak70vZXIBD/Koba5vZ1dLnzt8Gga8cYJM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
