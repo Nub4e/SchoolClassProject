@@ -61,7 +61,12 @@ namespace AllController
         // Add all students in Contact Info
         public List<string> ContactInfo()
         {
-          
+            // In the for loop if the student isn't the logged in student:
+            // 1.Gets the first name of the i(th) student in the logged student's class
+            // 2.Gets the last name of the i(th) student
+            // 3.Gets the email of the i(th) student from the student contact info table
+            // 4.Gets the phone number of the i(th) student from the student contact info table
+            // 5.Adds them to the ContactInfoList which will later be transfered to the classContactInfoListBox in the Student Form
             using (ClassbookEntities context = new ClassbookEntities())
             {
                 List<string> ContactInfoList = new List<string>();
@@ -70,11 +75,23 @@ namespace AllController
                 {
                     if (currentStudentClass.Students.ToList()[i].StudentId != CurrentStudent.StudentId)
                         ContactInfoList.Add(
-                            currentStudentClass.Students.ToList()[i].FirstName + ' '         //Gets the first name of the i(th) student in the logged student's class
-                         + currentStudentClass.Students.ToList()[i].LastName //Gets the last name of the i(th) student
-                         + " Email: " + currentStudentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i]).Email //Gets the email of the i(th) student from the student contact info table
-                         + " Phone number: " + currentStudentClass.Students.ToList()[i].StudentContactInfoes.FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i]).PhoneNumber  //Gets the phone number of the i(th) student from the student contact info table
-                         + " Birthdate: " + currentStudentClass.Students.ToList()[i].Birthdate.ToShortDateString());
+                            currentStudentClass.Students.ToList()[i].FirstName + ' '         
+                        
+                            + currentStudentClass.Students.ToList()[i].LastName
+                         + " Email: " + currentStudentClass
+                         .Students.ToList()[i]
+                         .StudentContactInfoes
+                         .FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i])
+                         .Email 
+                         + " Phone number: " + currentStudentClass
+                         .Students.ToList()[i]
+                         .StudentContactInfoes
+                         .FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i])
+                         .PhoneNumber  
+                         + " Birthdate: " + currentStudentClass
+                         .Students.ToList()[i]
+                         .Birthdate
+                         .ToShortDateString());
                          }
                 return ContactInfoList;
             }

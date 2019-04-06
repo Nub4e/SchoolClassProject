@@ -1,0 +1,11 @@
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFrameworkModel.dll.config
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFrameworkModel.dll
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFrameworkModel.pdb
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.dll
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.xml
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook_Model.csproj.CoreCompileInputs.cache
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook_Model.csproj.CopyComplete
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.dll
+C:\Users\Georgi\Desktop\Project\IT-KARIERA\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.pdb

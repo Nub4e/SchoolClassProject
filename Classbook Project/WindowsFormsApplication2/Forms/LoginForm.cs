@@ -48,8 +48,8 @@ namespace ClassbookProject
         private void button2_Click(object sender, EventArgs e)
         {
             // SetDefaultValueTeacherNonPrincipal();
-             SetDefaultValueStudent();
-             //SetDefaultValueTeacher();
+             //SetDefaultValueStudent();
+             SetDefaultValueTeacher();
 
             // Проверка за избора на  teacher and student 
             LoginController loginController = new LoginController();

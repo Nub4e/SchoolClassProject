@@ -121,7 +121,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gKEPF7316kIzPLNoUdZa/ejOGmotiT9Rix5VM1d/qDo=</dsig:DigestValue>
+        <dsig:DigestValue>Ub/k0lIZCd5rZzyC1KGMcumv9DshEMw5AlJItFehypw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
