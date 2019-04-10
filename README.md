@@ -1,5 +1,8 @@
   # SchoolClassProject
 
+
+Проектът е по MVC структура , като се използва EntityFramework
+
 Credit
 Originally developed by:
 
