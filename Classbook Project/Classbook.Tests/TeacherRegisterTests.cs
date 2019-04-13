@@ -18,7 +18,7 @@ namespace Classbook.Tests
             register.SetName(FullName);
 
             var resultFirst = register.TeacherFirstName;
-            var resultMiddle = register.TeacherMidleName;
+            var resultMiddle = register.TeacherMiddleName;
             var resultLast = register.TeacherLastName;
 
             Assert.AreEqual("Joyce", resultFirst, "Correct set teacher FirstName");
@@ -67,7 +67,7 @@ namespace Classbook.Tests
             var teacher = new TeacherRegisterController();
             string FullName = "Joyce Greer Wood";
             bool result = teacher.TeacherNameExists(FullName);
-            Assert.IsFalse(result, "This name exists  and can not add in Database");
+            Assert.IsTrue(result, "This name exists and can not be added in Database");
 
         }
         [TestMethod]
@@ -76,7 +76,7 @@ namespace Classbook.Tests
             var teacher = new TeacherRegisterController();
             string FullName = "AAAAAA BBBBBBB CCCCCCC";
             bool result = teacher.TeacherNameExists(FullName);
-            Assert.IsFalse(result, "This name exists  and can not add in Database");
+            Assert.IsFalse(result, "This name does not exist and can be added in Database");
 
         }
         [TestMethod]

@@ -76,7 +76,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(126, 110);
+            this.label1.Location = new System.Drawing.Point(120, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -85,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(120, 159);
+            this.label2.Location = new System.Drawing.Point(114, 166);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 2;
@@ -94,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(129, 185);
+            this.label3.Location = new System.Drawing.Point(120, 189);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 3;
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(104, 214);
+            this.label4.Location = new System.Drawing.Point(104, 215);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 4;
@@ -112,7 +112,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(126, 136);
+            this.label5.Location = new System.Drawing.Point(120, 241);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 5;
@@ -124,7 +124,7 @@
             this.studentOrTeacherComboBox.Items.AddRange(new object[] {
             "Student",
             "Teacher"});
-            this.studentOrTeacherComboBox.Location = new System.Drawing.Point(199, 249);
+            this.studentOrTeacherComboBox.Location = new System.Drawing.Point(199, 107);
             this.studentOrTeacherComboBox.Name = "studentOrTeacherComboBox";
             this.studentOrTeacherComboBox.Size = new System.Drawing.Size(100, 21);
             this.studentOrTeacherComboBox.TabIndex = 6;
@@ -133,7 +133,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 13);
+            this.label6.Location = new System.Drawing.Point(13, 6);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(32, 13);
             this.label6.TabIndex = 7;
@@ -141,7 +141,7 @@
             // 
             // classBox
             // 
-            this.classBox.Location = new System.Drawing.Point(92, 9);
+            this.classBox.Location = new System.Drawing.Point(92, 3);
             this.classBox.Name = "classBox";
             this.classBox.Size = new System.Drawing.Size(100, 20);
             this.classBox.TabIndex = 8;
@@ -153,7 +153,7 @@
             // 
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.classBox);
-            this.panel1.Location = new System.Drawing.Point(107, 291);
+            this.panel1.Location = new System.Drawing.Point(107, 259);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(201, 44);
             this.panel1.TabIndex = 9;
@@ -163,7 +163,7 @@
             // 
             this.panel2.Controls.Add(this.subjectCombBox);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(107, 291);
+            this.panel2.Location = new System.Drawing.Point(107, 258);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 44);
             this.panel2.TabIndex = 9;
@@ -172,7 +172,7 @@
             // subjectCombBox
             // 
             this.subjectCombBox.FormattingEnabled = true;
-            this.subjectCombBox.Location = new System.Drawing.Point(92, 7);
+            this.subjectCombBox.Location = new System.Drawing.Point(92, 5);
             this.subjectCombBox.Name = "subjectCombBox";
             this.subjectCombBox.Size = new System.Drawing.Size(100, 21);
             this.subjectCombBox.TabIndex = 2;
@@ -181,7 +181,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 10);
+            this.label7.Location = new System.Drawing.Point(7, 8);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 0;
@@ -189,21 +189,21 @@
             // 
             // phoneNumberBox
             // 
-            this.phoneNumberBox.Location = new System.Drawing.Point(199, 211);
+            this.phoneNumberBox.Location = new System.Drawing.Point(199, 212);
             this.phoneNumberBox.Name = "phoneNumberBox";
             this.phoneNumberBox.Size = new System.Drawing.Size(100, 20);
             this.phoneNumberBox.TabIndex = 10;
             // 
             // emailBox
             // 
-            this.emailBox.Location = new System.Drawing.Point(199, 185);
+            this.emailBox.Location = new System.Drawing.Point(199, 186);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(100, 20);
             this.emailBox.TabIndex = 11;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(199, 107);
+            this.nameBox.Location = new System.Drawing.Point(199, 134);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 20);
             this.nameBox.TabIndex = 13;
@@ -211,7 +211,7 @@
             // 
             // egnBox
             // 
-            this.egnBox.Location = new System.Drawing.Point(199, 133);
+            this.egnBox.Location = new System.Drawing.Point(199, 238);
             this.egnBox.Name = "egnBox";
             this.egnBox.Size = new System.Drawing.Size(100, 20);
             this.egnBox.TabIndex = 14;
@@ -219,7 +219,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(104, 257);
+            this.label8.Location = new System.Drawing.Point(96, 110);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 13);
             this.label8.TabIndex = 15;
@@ -236,7 +236,7 @@
             // 
             // dateTimeBox
             // 
-            this.dateTimeBox.Location = new System.Drawing.Point(199, 159);
+            this.dateTimeBox.Location = new System.Drawing.Point(199, 160);
             this.dateTimeBox.Name = "dateTimeBox";
             this.dateTimeBox.Size = new System.Drawing.Size(100, 20);
             this.dateTimeBox.TabIndex = 18;

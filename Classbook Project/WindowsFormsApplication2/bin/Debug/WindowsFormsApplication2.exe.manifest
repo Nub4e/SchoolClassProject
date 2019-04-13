@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AllController.dll" size="36864">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AllController.dll" size="37888">
       <assemblyIdentity name="AllController" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kYFhUDX6aKGOTc5kbPGf1CNWT+HWdpDx6S6aZwl5pZ0=</dsig:DigestValue>
+        <dsig:DigestValue>zajt/HAwlJwuqNLADfcB8f4I+1fv3Ti3DHYq+9e5qfw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Rkx7stYImVHHrGUH0OGXulQ/AkDra/lT0X34TKK4Vrg=</dsig:DigestValue>
+        <dsig:DigestValue>Uo2sI66axBPTc2IMOFAjszswnQuDuRtwoFXcMVzhUMY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -121,7 +121,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9PjeWI+PP9e8NBRsn1gbwozuGOD5MkX0Ogxx+jjwTWU=</dsig:DigestValue>
+        <dsig:DigestValue>PQUYnS4a2OxxYAfxv/PJlLeIGqhJL/DSaDhVpcWr3HU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

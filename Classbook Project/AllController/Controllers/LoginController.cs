@@ -8,27 +8,29 @@ using EntityFrameworkModel.Model;
 
 namespace AllController
 {
-    public class LoginController 
+    public class LoginController : ConnectionString
     {
         public string EgnPassSetForStudent(string EGN)
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                    Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
-                    return student.PersonalNumber;
+                context.Database.Connection.ConnectionString = connectionString;
+                Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
+                return student.PersonalNumber;
             }
         }
 
-        public bool StudentNameIsCorrect(string EGN , string FullName)
+        public bool StudentNameIsCorrect(string EGN, string FullName)
         {
             using (ClassbookEntities context = new ClassbookEntities())
-            { 
-            Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
-            if (student.FirstName + student.MiddleName + student.LastName == FullName.Replace(" ", string.Empty))// да се погледне
             {
+                context.Database.Connection.ConnectionString = connectionString;
+                Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
+                if (student.FirstName + student.MiddleName + student.LastName == FullName.Replace(" ", string.Empty))// да се погледне
+                {
                     return true;
-            }
-            else
+                }
+                else
                 {
                     return false;
                 }
@@ -37,21 +39,23 @@ namespace AllController
         public bool StudentExists(string EGN)
         {
             using (ClassbookEntities context = new ClassbookEntities())
+            {
+                context.Database.Connection.ConnectionString = connectionString;
+                if (context.Students.Any(c => c.PersonalNumber == EGN))
                 {
-                    if (context.Students.Any(c => c.PersonalNumber == EGN))
-                    {
                     return true;
-                    }
-                    else
-                    {
-                    return false;
-                    }
                 }
+                else
+                {
+                    return false;
+                }
+            }
         }
         public string EgnPassSetForTeacher(string EGN)
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == EGN);
                 return teacher.PersonalNumber;
             }
@@ -61,6 +65,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == EGN);
                 if (teacher.FirstName + teacher.MiddleName + teacher.LastName == FullName.Replace(" ", string.Empty))
                 {
@@ -74,9 +79,10 @@ namespace AllController
         }
         public bool TeacherExists(string EGN)
         {
-           
+
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 if (context.Teachers.Any(c => c.PersonalNumber == EGN))
                 {
                     return true;

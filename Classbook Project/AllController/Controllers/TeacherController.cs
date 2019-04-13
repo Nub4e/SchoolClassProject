@@ -8,7 +8,7 @@ using EntityFrameworkModel.Model;
 
 namespace AllController.Controllers
 {
-    public class TeacherController
+    public class TeacherController : ConnectionString
     {
         Subject currentSubject = new Subject();
         public string CurrentName { get; set; }
@@ -24,6 +24,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 List<string> classes = context.Classes.OrderBy(w => w.Grade).ThenBy(w => w.Letter).Select(w => w.Grade + w.Letter).ToList();
                 return classes;
             }
@@ -33,6 +34,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 if (!context.Subjects.Any(w => w.Name == SubjectName))
                 {
                     return true;
@@ -48,6 +50,7 @@ namespace AllController.Controllers
 
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 string firstName = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).FirstName;
                 string lastName = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).LastName;
                 return firstName + " " + lastName;
@@ -74,6 +77,7 @@ namespace AllController.Controllers
             PushCurrentSubject();
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 context.Subjects.Add(currentSubject);
                 context.SaveChanges();
             }
@@ -87,6 +91,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 context.Teachers.ToList().FirstOrDefault(w => w.FirstName + ' ' + w.LastName == testString).ExtendedPermissions = true;
                 context.SaveChanges();
             }
@@ -96,6 +101,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 List<Teacher> teachers = new List<Teacher>();
                 context.Teachers
                     .OrderBy(w => w.FirstName)
@@ -148,6 +154,7 @@ namespace AllController.Controllers
             PushClass();
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 if (context.Classes.Any(w => w.Grade == currentClass.Grade && w.Letter == currentClass.Letter))
                 {
                     return true;
@@ -161,6 +168,7 @@ namespace AllController.Controllers
             SetTeacherId();
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 CurrentClassTeacherId = context.Teachers.ToList().FirstOrDefault(w => w.FirstName + ' ' + w.LastName == teacherName).TeacherId;
             }
         }
@@ -170,6 +178,7 @@ namespace AllController.Controllers
             PushClass();
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 currentClass.Teacher = context.Teachers.FirstOrDefault(w => w.TeacherId == CurrentClassTeacherId);
                 context.Classes.Add(currentClass);
                 context.SaveChanges();
@@ -180,6 +189,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 List<int> headTeacherIds = new List<int>();
                 context.Classes.ToList().ForEach(w => headTeacherIds.Add(w.HeadTeacherId));
                 return headTeacherIds;
@@ -191,18 +201,15 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 List<int> TeacherIds = context.Teachers.Select(w => w.TeacherId).ToList();
                 List<int> nonHeadTeacherIds = TeacherIds.Except(HeadTeacherIds()).ToList();
                 List<string> nonHeadTeachers = new List<string>();
-                foreach (var item in nonHeadTeacherIds)
-                {
                     context.Teachers
-                        .Where(w => w.TeacherId == item)
+                        .Where(w =>nonHeadTeacherIds.Contains(w.TeacherId))
                         .ToList()
                         .ForEach(w => nonHeadTeachers
                         .Add(w.FirstName + ' ' + w.LastName));
-                }
-
                 return nonHeadTeachers.OrderBy(w => w).ToList();
             }
         }
@@ -211,6 +218,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 if (context.Teachers.First(w => w.PersonalNumber == egnPass).ExtendedPermissions == true)
                 {
                     return true;
@@ -226,6 +234,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 return context.Students.Where(w => w.Class == context.Classes
                 .FirstOrDefault(c => c.Grade + c.Letter == SelectedClass))
                 .ToList<Student>()
@@ -325,6 +334,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 NewmarkSubjectID = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).SubjectId;
             }
         }
@@ -333,6 +343,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 Student student = new Student();
                 List<Student> students = context.Students.ToList();
                 student = students.First( w => (w.FirstName + ' ' + w.MiddleName + ' ' + w.LastName) == SelectedStudent);
@@ -344,6 +355,7 @@ namespace AllController.Controllers
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 NewmarkTeacherID = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).TeacherId;
             }
         }
@@ -354,6 +366,7 @@ namespace AllController.Controllers
             PushIds();
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 newmark.Student = context.Students.FirstOrDefault(w => w.StudentId == newmarkStudentID);
                 newmark.Teacher = context.Teachers.FirstOrDefault(w => w.TeacherId == newmarkTeacherID);
                 newmark.Subject = context.Subjects.FirstOrDefault(w => w.SubjectId == newmarkSubjectID);

@@ -8,9 +8,9 @@ using EntityFrameworkModel.Model;
 
 namespace AllController
 {
-    public class StudentFormController
+    public class StudentFormController : ConnectionString
     {
-     
+
         public Student student = new Student();
         List<Subject> studentSubjects = new List<Subject>();
         int studentClassId = 0;
@@ -20,7 +20,7 @@ namespace AllController
         Subject selectedSubject = new Subject();
 
         public Subject CurrentselectedSubject { get; set; }
-        public Student CurrentStudent{ get; set; }
+        public Student CurrentStudent { get; set; }
         public List<Subject> StudentSubjects { get; set; }
         public int StudentClassId { get; set; }
         public Teacher HeadTeacher { get; set; }
@@ -41,6 +41,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 CurrentStudent = context.Students.First(w => w.PersonalNumber == egnPass);
                 StudentSubjects = CurrentStudent.Marks.Select(c => c.Subject).Distinct().ToList();
                 StudentClassId = CurrentStudent.Class.ClassId;
@@ -53,11 +54,12 @@ namespace AllController
 
             using (ClassbookEntities context = new ClassbookEntities())
             {
-               string firstName = context.Students.FirstOrDefault(w => w.PersonalNumber == egnPass).FirstName;
-               string lastName = context.Students.FirstOrDefault(w => w.PersonalNumber == egnPass).LastName;
-               return firstName + " " + lastName;
+                context.Database.Connection.ConnectionString = connectionString;
+                string firstName = context.Students.FirstOrDefault(w => w.PersonalNumber == egnPass).FirstName;
+                string lastName = context.Students.FirstOrDefault(w => w.PersonalNumber == egnPass).LastName;
+                return firstName + " " + lastName;
             }
-           
+
         }
 
         // Add all visible subject 
@@ -65,6 +67,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 return StudentSubjects.Select(w => w.Name).ToList();
             }
 
@@ -80,29 +83,30 @@ namespace AllController
             // 5.Adds them to the ContactInfoList which will later be transfered to the classContactInfoListBox in the Student Form
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 List<string> ContactInfoList = new List<string>();
                 Class currentStudentClass = context.Classes.First(w => w.ClassId == StudentClassId);
                 for (int i = 0; i < currentStudentClass.Students.Count(); i++)
                 {
                     if (currentStudentClass.Students.ToList()[i].StudentId != CurrentStudent.StudentId)
                         ContactInfoList.Add(
-                            currentStudentClass.Students.ToList()[i].FirstName + ' '           
+                            currentStudentClass.Students.ToList()[i].FirstName + ' '
                             + currentStudentClass.Students.ToList()[i].LastName
                          + " Email: " + currentStudentClass
                          .Students.ToList()[i]
                          .StudentContactInfoes
                          .FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i])
-                         .Email 
+                         .Email
                          + " Phone number: " + currentStudentClass
                          .Students.ToList()[i]
                          .StudentContactInfoes
                          .FirstOrDefault(w => w.Student == currentStudentClass.Students.ToList()[i])
-                         .PhoneNumber  
+                         .PhoneNumber
                          + " Birthdate: " + currentStudentClass
                          .Students.ToList()[i]
                          .Birthdate
                          .ToShortDateString());
-                         }
+                }
                 return ContactInfoList;
             }
 
@@ -111,9 +115,10 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 if (context.TeacherContactInfoes.Any(w => w.Teacher.TeacherId == HeadTeacher.TeacherId))
                 {
-                    Teacher currentHeadTeacher =context.Teachers.First(w => w.TeacherId == HeadTeacher.TeacherId);
+                    Teacher currentHeadTeacher = context.Teachers.First(w => w.TeacherId == HeadTeacher.TeacherId);
                     return currentHeadTeacher.FirstName + ' ' +
                     currentHeadTeacher.MiddleName + ' ' +
                     currentHeadTeacher.LastName +
@@ -128,9 +133,10 @@ namespace AllController
         // Initialize Subject and add in  CurrentselectedSubject
         public void InitializeSubject(string selectedSubjectName)
         {
-            
+
             using (ClassbookEntities context = new ClassbookEntities())
             {
+                context.Database.Connection.ConnectionString = connectionString;
                 CurrentselectedSubject = context.Subjects.FirstOrDefault(a => a.Name == selectedSubjectName);
             }
         }
@@ -140,7 +146,7 @@ namespace AllController
             PushAllMarks();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                
+                context.Database.Connection.ConnectionString = connectionString;
                 List<Mark> allStudentMarksForSubject = new List<Mark>();
                 var currentStudent = CurrentStudent;
                 // Fills allStudentMarksForSubject
@@ -149,9 +155,11 @@ namespace AllController
                     if (w.SubjectId == CurrentselectedSubject.SubjectId && CurrentStudent.StudentId == w.StudentId)
                         allStudentMarksForSubject.Add(w);
                 });
-                
+
                 List<string> SelectedMarksList = new List<string>();
-                
+
+                CurrentAvarageMark = Math.Round(allStudentMarksForSubject.Select(w => w.Number).ToList().Average(), 2).ToString();
+
                 // Converts allStudentMarksForSubject's items into a string and puts them into SelectedMarksList
                 for (int i = 0; i < allStudentMarksForSubject.Count(); i++)
                 {
@@ -161,11 +169,11 @@ namespace AllController
                            allStudentMarksForSubject[i].Number +
                            " Teacher: " + allStudentMarksForSubject[i].Teacher.FirstName + ' '
                            + allStudentMarksForSubject[i].Teacher.MiddleName + ' '
-                           + allStudentMarksForSubject[i].Teacher.LastName + " Date: " 
+                           + allStudentMarksForSubject[i].Teacher.LastName + " Date: "
                            + allStudentMarksForSubject[i].Date.ToShortDateString());
                 }
                 return SelectedMarksList;
-                
+
             }
 
         }
@@ -178,25 +186,10 @@ namespace AllController
         {
             this.allStudentMarksForSubject = AllStudentMarksForSubject;
         }
+        string CurrentAvarageMark = "";
         public string AvarageMark()
         {
-            PushAllMarks();
-            using (ClassbookEntities context = new ClassbookEntities())
-            {
-                
-                List<Mark> AllStudentMarkSubject = new List<Mark>();
-                var currentStudent = CurrentStudent;
-                context.Marks.ToList().ForEach(w =>
-                {
-                    if (w.SubjectId == CurrentselectedSubject.SubjectId && currentStudent.StudentId == w.StudentId)
-                        AllStudentMarkSubject.Add(w);
-                });
-                AllStudentMarksForSubject = AllStudentMarkSubject;
-                return Math.Round(AllStudentMarkSubject.Select(w => w.Number).ToList().Average(), 2).ToString();
-                
-
-            }
-
+            return CurrentAvarageMark;
         }
     }
 }

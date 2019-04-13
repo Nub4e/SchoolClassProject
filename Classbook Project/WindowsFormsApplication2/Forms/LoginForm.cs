@@ -38,7 +38,7 @@ namespace ClassbookProject
         private void button2_Click(object sender, EventArgs e)
         {
               // SetDefaultValueTeacherNonPrincipal();
-            SetDefaultValueStudent();
+              SetDefaultValueStudent();
             // SetDefaultValueTeacher();
 
             // Проверка за избора на  teacher and student 

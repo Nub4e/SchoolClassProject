@@ -18,7 +18,7 @@ namespace Classbook.Tests
             register.SetName(FullName);
 
             var resultFirst = register.StudentFirstName;
-            var resultMiddle = register.StudentMidleName;
+            var resultMiddle = register.StudentMiddleName;
             var resultLast = register.StudentLastName;
 
             Assert.AreEqual("Lydia", resultFirst, "Correct set student FirstName");
@@ -88,7 +88,7 @@ namespace Classbook.Tests
             var student = new StudentRegisterController();
             bool result = student.StudentNameExists(FullName);
 
-            Assert.IsFalse(result, "This name exists");
+            Assert.IsTrue(result, "This name exists");
         }
         [TestMethod]
         public void IfStudentNameNotExists()
