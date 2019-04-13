@@ -36,6 +36,7 @@ namespace ClassbookProject
             InitializeComponent();
             egnPass = egn;
 
+            teacherName.Text = teacherController.SetFirstLastName(egnPass);
             // Loads all classes into SelectedClassComboBox
             List<string> classes = teacherController.LoadClasses();
             for (int i = 0; i < classes.Count; i++)

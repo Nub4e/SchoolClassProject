@@ -43,7 +43,17 @@ namespace AllController.Controllers
                 }
             }
         }
+        public string SetFirstLastName(string egnPass)
+        {
 
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+                string firstName = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).FirstName;
+                string lastName = context.Teachers.FirstOrDefault(w => w.PersonalNumber == egnPass).LastName;
+                return firstName + " " + lastName;
+            }
+
+        }
         // Correct written text for subject
         public bool CheckIfSubjectIsWritten(string SubjectName)
         {

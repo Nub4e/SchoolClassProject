@@ -43,7 +43,10 @@
             this.headTeacherTextBox = new System.Windows.Forms.TextBox();
             this.dragControl1 = new ClassbookProject.DragControl();
             this.dragControl2 = new ClassbookProject.DragControl();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.studentNameLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -60,6 +63,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
+            this.panel3.Controls.Add(this.studentNameLabel);
+            this.panel3.Controls.Add(this.welcomeLabel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 51);
             this.panel3.Name = "panel3";
@@ -176,11 +181,33 @@
             // 
             this.dragControl2.SelectControl = this.panel2;
             // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.welcomeLabel.ForeColor = System.Drawing.Color.LightPink;
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 20);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(87, 20);
+            this.welcomeLabel.TabIndex = 11;
+            this.welcomeLabel.Text = "Welcome,";
+            // 
+            // studentNameLabel
+            // 
+            this.studentNameLabel.AutoSize = true;
+            this.studentNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studentNameLabel.ForeColor = System.Drawing.Color.LightPink;
+            this.studentNameLabel.Location = new System.Drawing.Point(3, 49);
+            this.studentNameLabel.Name = "studentNameLabel";
+            this.studentNameLabel.Size = new System.Drawing.Size(101, 16);
+            this.studentNameLabel.TabIndex = 12;
+            this.studentNameLabel.Text = "StudentName";
+            // 
             // StudentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(950, 400);
             this.Controls.Add(this.headTeacherTextBox);
             this.Controls.Add(this.label3);
@@ -198,6 +225,8 @@
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +248,7 @@
         private System.Windows.Forms.Panel panel3;
         private DragControl dragControl1;
         private DragControl dragControl2;
+        private System.Windows.Forms.Label studentNameLabel;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

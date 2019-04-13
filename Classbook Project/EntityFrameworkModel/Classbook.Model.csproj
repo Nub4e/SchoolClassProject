@@ -40,6 +40,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,19 +54,19 @@
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ClassbookEntities.Context.cs">
-      <DependentUpon>ClassbookEntities.Context.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>ClassbookEntities.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ClassbookEntities.cs">
-      <DependentUpon>ClassbookEntities.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ClassbookEntities.Designer.cs">
-      <DependentUpon>ClassbookEntities.edmx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>ClassbookEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\Mark.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
@@ -87,10 +89,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <EntityDeploy Include="Model\ClassbookEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ClassbookEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Model\ClassbookEntities.edmx.diagram">
+      <DependentUpon>ClassbookEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\ClassbookEntities.Context.tt">
@@ -103,16 +113,6 @@
       <DependentUpon>ClassbookEntities.edmx</DependentUpon>
       <LastGenOutput>ClassbookEntities.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="Model\ClassbookEntities.edmx.diagram">
-      <DependentUpon>ClassbookEntities.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

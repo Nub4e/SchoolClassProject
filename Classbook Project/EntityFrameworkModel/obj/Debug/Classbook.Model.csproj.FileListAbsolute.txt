@@ -5,7 +5,6 @@ C:\SchoolClassProject\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFra
 C:\SchoolClassProject\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.SqlServer.dll
 C:\SchoolClassProject\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.xml
 C:\SchoolClassProject\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.SqlServer.xml
-C:\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csprojAssemblyReference.cache
 C:\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csproj.CoreCompileInputs.cache
 C:\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csproj.CopyComplete
 C:\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.dll

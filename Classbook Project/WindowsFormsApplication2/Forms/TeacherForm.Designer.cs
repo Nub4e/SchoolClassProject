@@ -65,6 +65,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dragControl1 = new ClassbookProject.DragControl();
             this.dragControl2 = new ClassbookProject.DragControl();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.teacherName = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.principalPanel.SuspendLayout();
@@ -79,6 +81,8 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
+            this.panel2.Controls.Add(this.teacherName);
+            this.panel2.Controls.Add(this.welcomeLabel);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -116,7 +120,7 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.panel3.BackColor = System.Drawing.Color.SteelBlue;
             this.panel3.Controls.Add(this.principalPanel);
             this.panel3.Controls.Add(this.permissionsCheckBox);
             this.panel3.Controls.Add(this.panel6);
@@ -480,6 +484,28 @@
             // 
             this.dragControl2.SelectControl = this.panel1;
             // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.welcomeLabel.ForeColor = System.Drawing.Color.LightPink;
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 65);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(87, 20);
+            this.welcomeLabel.TabIndex = 2;
+            this.welcomeLabel.Text = "Welcome,";
+            // 
+            // teacherName
+            // 
+            this.teacherName.AutoSize = true;
+            this.teacherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.teacherName.ForeColor = System.Drawing.Color.LightPink;
+            this.teacherName.Location = new System.Drawing.Point(13, 88);
+            this.teacherName.Name = "teacherName";
+            this.teacherName.Size = new System.Drawing.Size(107, 16);
+            this.teacherName.TabIndex = 3;
+            this.teacherName.Text = "TeacherName";
+            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,6 +518,7 @@
             this.Name = "TeacherForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.principalPanel.ResumeLayout(false);
@@ -548,5 +575,7 @@
         private System.Windows.Forms.ComboBox nonPrincipalTeacherComboBox;
         private System.Windows.Forms.Button addVicePrincipal;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label teacherName;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

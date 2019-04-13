@@ -15,11 +15,7 @@ namespace ClassbookProject
 {
     public partial class StudentsForm : Form, IStudentForm
     {
-        // studentSubjectsComboBox
-        // selectedMarksListBox
-        // averageMark (Label)
-        // headTeacherTextBox
-        // classContactInfoListBox
+        StudentFormController sfc = new StudentFormController();
 
         string egnPass;
 
@@ -42,8 +38,8 @@ namespace ClassbookProject
 
 
         private void Form3_Load(object sender, EventArgs e) // R
-        {
-            StudentFormController sfc = new StudentFormController();
+        {           
+            studentNameLabel.Text = sfc.SetFirstLastName(egnPass);
             //  Add subjects collection to subjectComboBox 
             {
                 sfc.InitializeStudent(egnPass);

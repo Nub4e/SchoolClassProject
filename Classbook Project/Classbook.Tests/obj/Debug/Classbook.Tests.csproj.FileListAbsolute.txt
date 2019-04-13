@@ -40,7 +40,6 @@ C:\SchoolClassProject\Classbook Project\Classbook.Tests\bin\Debug\EntityFramewor
 C:\SchoolClassProject\Classbook Project\Classbook.Tests\bin\Debug\EntityFrameworkModel.dll.config
 C:\SchoolClassProject\Classbook Project\Classbook.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\SchoolClassProject\Classbook Project\Classbook.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\SchoolClassProject\Classbook Project\Classbook.Tests\bin\Debug\EntityFramework.xml
 C:\SchoolClassProject\Classbook Project\Classbook.Tests\obj\Debug\Classbook.Tests.csprojAssemblyReference.cache
 C:\SchoolClassProject\Classbook Project\Classbook.Tests\obj\Debug\Classbook.Tests.csproj.CoreCompileInputs.cache
 C:\SchoolClassProject\Classbook Project\Classbook.Tests\obj\Debug\Classbook.Tests.csproj.CopyComplete

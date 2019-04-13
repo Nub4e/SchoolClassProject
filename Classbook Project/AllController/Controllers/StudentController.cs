@@ -48,6 +48,18 @@ namespace AllController
                 StudentId = CurrentStudent.StudentId;
             }
         }
+        public string SetFirstLastName(string egnPass)
+        {
+
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+               string firstName = context.Students.FirstOrDefault(w => w.PersonalNumber == egnPass).FirstName;
+               string lastName = context.Students.FirstOrDefault(w => w.PersonalNumber == egnPass).LastName;
+               return firstName + " " + lastName;
+            }
+           
+        }
+
         // Add all visible subject 
         public List<string> SubjectsToInsert()
         {

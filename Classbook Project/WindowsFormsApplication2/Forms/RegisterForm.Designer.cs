@@ -65,7 +65,7 @@
             this.registerButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.registerButton.FlatAppearance.BorderSize = 0;
             this.registerButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.registerButton.Location = new System.Drawing.Point(358, 310);
+            this.registerButton.Location = new System.Drawing.Point(346, 291);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(75, 45);
             this.registerButton.TabIndex = 0;
@@ -76,7 +76,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(116, 114);
+            this.label1.Location = new System.Drawing.Point(126, 110);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 1;
@@ -85,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(116, 143);
+            this.label2.Location = new System.Drawing.Point(120, 159);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(49, 13);
             this.label2.TabIndex = 2;
@@ -94,7 +94,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(116, 173);
+            this.label3.Location = new System.Drawing.Point(129, 185);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 3;
@@ -103,7 +103,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(116, 207);
+            this.label4.Location = new System.Drawing.Point(104, 214);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 13);
             this.label4.TabIndex = 4;
@@ -112,7 +112,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(118, 239);
+            this.label5.Location = new System.Drawing.Point(126, 136);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
             this.label5.TabIndex = 5;
@@ -124,7 +124,7 @@
             this.studentOrTeacherComboBox.Items.AddRange(new object[] {
             "Student",
             "Teacher"});
-            this.studentOrTeacherComboBox.Location = new System.Drawing.Point(199, 265);
+            this.studentOrTeacherComboBox.Location = new System.Drawing.Point(199, 249);
             this.studentOrTeacherComboBox.Name = "studentOrTeacherComboBox";
             this.studentOrTeacherComboBox.Size = new System.Drawing.Size(100, 21);
             this.studentOrTeacherComboBox.TabIndex = 6;
@@ -189,21 +189,21 @@
             // 
             // phoneNumberBox
             // 
-            this.phoneNumberBox.Location = new System.Drawing.Point(199, 207);
+            this.phoneNumberBox.Location = new System.Drawing.Point(199, 211);
             this.phoneNumberBox.Name = "phoneNumberBox";
             this.phoneNumberBox.Size = new System.Drawing.Size(100, 20);
             this.phoneNumberBox.TabIndex = 10;
             // 
             // emailBox
             // 
-            this.emailBox.Location = new System.Drawing.Point(199, 173);
+            this.emailBox.Location = new System.Drawing.Point(199, 185);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(100, 20);
             this.emailBox.TabIndex = 11;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(199, 114);
+            this.nameBox.Location = new System.Drawing.Point(199, 107);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 20);
             this.nameBox.TabIndex = 13;
@@ -211,7 +211,7 @@
             // 
             // egnBox
             // 
-            this.egnBox.Location = new System.Drawing.Point(199, 239);
+            this.egnBox.Location = new System.Drawing.Point(199, 133);
             this.egnBox.Name = "egnBox";
             this.egnBox.Size = new System.Drawing.Size(100, 20);
             this.egnBox.TabIndex = 14;
@@ -219,7 +219,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(104, 268);
+            this.label8.Location = new System.Drawing.Point(104, 257);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 13);
             this.label8.TabIndex = 15;
@@ -228,7 +228,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(164, 65);
+            this.label10.Location = new System.Drawing.Point(196, 58);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(103, 13);
             this.label10.TabIndex = 16;
@@ -236,7 +236,7 @@
             // 
             // dateTimeBox
             // 
-            this.dateTimeBox.Location = new System.Drawing.Point(199, 143);
+            this.dateTimeBox.Location = new System.Drawing.Point(199, 159);
             this.dateTimeBox.Name = "dateTimeBox";
             this.dateTimeBox.Size = new System.Drawing.Size(100, 20);
             this.dateTimeBox.TabIndex = 18;
@@ -292,7 +292,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(433, 355);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
@@ -312,6 +312,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.registerButton);
+            this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
