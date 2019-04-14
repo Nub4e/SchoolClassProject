@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using System.Diagnostics;
-using ClassbookProject;
 
 
 
@@ -22,11 +21,6 @@ namespace ClassbookProject
             InitializeComponent();
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -36,12 +30,6 @@ namespace ClassbookProject
         {
             Process.Start("https://github.com/Nub4e/SchoolClassProject.git");
         }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void loginButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -49,18 +37,12 @@ namespace ClassbookProject
             loginForm.Show();        
             loginForm.Closed += (s, args) => this.Show();
         }
-
         private void RegisterButton_Click(object sender, EventArgs e)
         {
             this.Hide();
             RegisterForm registerForm = new RegisterForm();
             registerForm.Show();
             registerForm.Closed += (s, args) => this.Show();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

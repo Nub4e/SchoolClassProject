@@ -31,20 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentsForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.studentNameLabel = new System.Windows.Forms.Label();
+            this.welcomeLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.studentSubjectsComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.SelectSubjectLabel = new System.Windows.Forms.Label();
             this.selectedMarksListBox = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.AllMarksLabel = new System.Windows.Forms.Label();
             this.averageMark = new System.Windows.Forms.Label();
             this.classContactInfoListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.headTeacherTextBox = new System.Windows.Forms.TextBox();
             this.dragControl1 = new ClassbookProject.DragControl();
             this.dragControl2 = new ClassbookProject.DragControl();
-            this.welcomeLabel = new System.Windows.Forms.Label();
-            this.studentNameLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +70,28 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(138, 349);
             this.panel3.TabIndex = 3;
+            // 
+            // studentNameLabel
+            // 
+            this.studentNameLabel.AutoSize = true;
+            this.studentNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studentNameLabel.ForeColor = System.Drawing.Color.LightPink;
+            this.studentNameLabel.Location = new System.Drawing.Point(3, 49);
+            this.studentNameLabel.Name = "studentNameLabel";
+            this.studentNameLabel.Size = new System.Drawing.Size(101, 16);
+            this.studentNameLabel.TabIndex = 12;
+            this.studentNameLabel.Text = "StudentName";
+            // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.welcomeLabel.ForeColor = System.Drawing.Color.LightPink;
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 20);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(87, 20);
+            this.welcomeLabel.TabIndex = 11;
+            this.welcomeLabel.Text = "Welcome,";
             // 
             // button1
             // 
@@ -108,14 +130,17 @@
             this.studentSubjectsComboBox.TabIndex = 2;
             this.studentSubjectsComboBox.SelectedValueChanged += new System.EventHandler(this.studentSubjectsComboBox_SelectedValueChanged);
             // 
-            // label1
+            // SelectSubjectLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(187, 91);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Select subject";
+            this.SelectSubjectLabel.AutoSize = true;
+            this.SelectSubjectLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.SelectSubjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SelectSubjectLabel.ForeColor = System.Drawing.Color.White;
+            this.SelectSubjectLabel.Location = new System.Drawing.Point(178, 100);
+            this.SelectSubjectLabel.Name = "SelectSubjectLabel";
+            this.SelectSubjectLabel.Size = new System.Drawing.Size(88, 13);
+            this.SelectSubjectLabel.TabIndex = 3;
+            this.SelectSubjectLabel.Text = "Select subject";
             // 
             // selectedMarksListBox
             // 
@@ -128,21 +153,27 @@
             this.selectedMarksListBox.Size = new System.Drawing.Size(312, 108);
             this.selectedMarksListBox.TabIndex = 4;
             // 
-            // label2
+            // AllMarksLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(178, 169);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "All marks";
+            this.AllMarksLabel.AutoSize = true;
+            this.AllMarksLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.AllMarksLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AllMarksLabel.ForeColor = System.Drawing.Color.White;
+            this.AllMarksLabel.Location = new System.Drawing.Point(178, 169);
+            this.AllMarksLabel.Name = "AllMarksLabel";
+            this.AllMarksLabel.Size = new System.Drawing.Size(58, 13);
+            this.AllMarksLabel.TabIndex = 5;
+            this.AllMarksLabel.Text = "All marks";
             // 
             // averageMark
             // 
             this.averageMark.AutoSize = true;
-            this.averageMark.Location = new System.Drawing.Point(178, 307);
+            this.averageMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.averageMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.averageMark.ForeColor = System.Drawing.Color.White;
+            this.averageMark.Location = new System.Drawing.Point(178, 317);
             this.averageMark.Name = "averageMark";
-            this.averageMark.Size = new System.Drawing.Size(70, 13);
+            this.averageMark.Size = new System.Drawing.Size(90, 15);
             this.averageMark.TabIndex = 6;
             this.averageMark.Text = "averageMark";
             this.averageMark.Visible = false;
@@ -171,7 +202,6 @@
             this.headTeacherTextBox.ReadOnly = true;
             this.headTeacherTextBox.Size = new System.Drawing.Size(371, 20);
             this.headTeacherTextBox.TabIndex = 10;
-            this.headTeacherTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dragControl1
             // 
@@ -180,28 +210,6 @@
             // dragControl2
             // 
             this.dragControl2.SelectControl = this.panel2;
-            // 
-            // welcomeLabel
-            // 
-            this.welcomeLabel.AutoSize = true;
-            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.welcomeLabel.ForeColor = System.Drawing.Color.LightPink;
-            this.welcomeLabel.Location = new System.Drawing.Point(12, 20);
-            this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(87, 20);
-            this.welcomeLabel.TabIndex = 11;
-            this.welcomeLabel.Text = "Welcome,";
-            // 
-            // studentNameLabel
-            // 
-            this.studentNameLabel.AutoSize = true;
-            this.studentNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studentNameLabel.ForeColor = System.Drawing.Color.LightPink;
-            this.studentNameLabel.Location = new System.Drawing.Point(3, 49);
-            this.studentNameLabel.Name = "studentNameLabel";
-            this.studentNameLabel.Size = new System.Drawing.Size(101, 16);
-            this.studentNameLabel.TabIndex = 12;
-            this.studentNameLabel.Text = "StudentName";
             // 
             // StudentsForm
             // 
@@ -213,9 +221,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.classContactInfoListBox);
             this.Controls.Add(this.averageMark);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.AllMarksLabel);
             this.Controls.Add(this.selectedMarksListBox);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.SelectSubjectLabel);
             this.Controls.Add(this.studentSubjectsComboBox);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -238,9 +246,9 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox studentSubjectsComboBox;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label SelectSubjectLabel;
         private System.Windows.Forms.ListBox selectedMarksListBox;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label AllMarksLabel;
         private System.Windows.Forms.Label averageMark;
         private System.Windows.Forms.ListBox classContactInfoListBox;
         private System.Windows.Forms.Label label3;

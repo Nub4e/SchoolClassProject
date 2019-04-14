@@ -30,18 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TeacherForm));
             this.panel2 = new System.Windows.Forms.Panel();
+            this.teacherName = new System.Windows.Forms.Label();
+            this.welcomeLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.principalPanel = new System.Windows.Forms.Panel();
-            this.addPrincipalPannel = new System.Windows.Forms.Panel();
-            this.nonPrincipalTeacherComboBox = new System.Windows.Forms.ComboBox();
-            this.addVicePrincipal = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.addSubjectPanel = new System.Windows.Forms.Panel();
             this.addSubjectBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.subjectNameTxtBox = new System.Windows.Forms.TextBox();
+            this.addPrincipalPannel = new System.Windows.Forms.Panel();
+            this.nonPrincipalTeacherComboBox = new System.Windows.Forms.ComboBox();
+            this.addVicePrincipal = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.addClassPanel = new System.Windows.Forms.Panel();
             this.addClassBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -65,13 +67,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dragControl1 = new ClassbookProject.DragControl();
             this.dragControl2 = new ClassbookProject.DragControl();
-            this.welcomeLabel = new System.Windows.Forms.Label();
-            this.teacherName = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.principalPanel.SuspendLayout();
-            this.addPrincipalPannel.SuspendLayout();
             this.addSubjectPanel.SuspendLayout();
+            this.addPrincipalPannel.SuspendLayout();
             this.addClassPanel.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -89,6 +89,28 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(138, 477);
             this.panel2.TabIndex = 1;
+            // 
+            // teacherName
+            // 
+            this.teacherName.AutoSize = true;
+            this.teacherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.teacherName.ForeColor = System.Drawing.Color.LightPink;
+            this.teacherName.Location = new System.Drawing.Point(13, 88);
+            this.teacherName.Name = "teacherName";
+            this.teacherName.Size = new System.Drawing.Size(107, 16);
+            this.teacherName.TabIndex = 3;
+            this.teacherName.Text = "TeacherName";
+            // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.welcomeLabel.ForeColor = System.Drawing.Color.LightPink;
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 65);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(87, 20);
+            this.welcomeLabel.TabIndex = 2;
+            this.welcomeLabel.Text = "Welcome,";
             // 
             // button1
             // 
@@ -133,8 +155,8 @@
             // 
             // principalPanel
             // 
-            this.principalPanel.Controls.Add(this.addPrincipalPannel);
             this.principalPanel.Controls.Add(this.addSubjectPanel);
+            this.principalPanel.Controls.Add(this.addPrincipalPannel);
             this.principalPanel.Controls.Add(this.addClassPanel);
             this.principalPanel.Controls.Add(this.permissionsComboBox);
             this.principalPanel.Location = new System.Drawing.Point(327, 47);
@@ -143,57 +165,12 @@
             this.principalPanel.TabIndex = 13;
             this.principalPanel.Visible = false;
             // 
-            // addPrincipalPannel
-            // 
-            this.addPrincipalPannel.Controls.Add(this.nonPrincipalTeacherComboBox);
-            this.addPrincipalPannel.Controls.Add(this.addVicePrincipal);
-            this.addPrincipalPannel.Controls.Add(this.label8);
-            this.addPrincipalPannel.Location = new System.Drawing.Point(23, 71);
-            this.addPrincipalPannel.Name = "addPrincipalPannel";
-            this.addPrincipalPannel.Size = new System.Drawing.Size(200, 129);
-            this.addPrincipalPannel.TabIndex = 14;
-            this.addPrincipalPannel.Visible = false;
-            // 
-            // nonPrincipalTeacherComboBox
-            // 
-            this.nonPrincipalTeacherComboBox.FormattingEnabled = true;
-            this.nonPrincipalTeacherComboBox.Location = new System.Drawing.Point(35, 38);
-            this.nonPrincipalTeacherComboBox.Name = "nonPrincipalTeacherComboBox";
-            this.nonPrincipalTeacherComboBox.Size = new System.Drawing.Size(121, 21);
-            this.nonPrincipalTeacherComboBox.TabIndex = 15;
-            // 
-            // addVicePrincipal
-            // 
-            this.addVicePrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(8)))), ((int)(((byte)(155)))));
-            this.addVicePrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addVicePrincipal.FlatAppearance.BorderSize = 0;
-            this.addVicePrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addVicePrincipal.Location = new System.Drawing.Point(45, 78);
-            this.addVicePrincipal.Name = "addVicePrincipal";
-            this.addVicePrincipal.Size = new System.Drawing.Size(100, 41);
-            this.addVicePrincipal.TabIndex = 14;
-            this.addVicePrincipal.Text = "Add vice-principal";
-            this.addVicePrincipal.UseVisualStyleBackColor = false;
-            this.addVicePrincipal.Click += new System.EventHandler(this.addVicePrincipal_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label8.Location = new System.Drawing.Point(37, 19);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 16);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Select teacher:";
-            // 
             // addSubjectPanel
             // 
             this.addSubjectPanel.Controls.Add(this.addSubjectBtn);
             this.addSubjectPanel.Controls.Add(this.label7);
             this.addSubjectPanel.Controls.Add(this.subjectNameTxtBox);
-            this.addSubjectPanel.Location = new System.Drawing.Point(24, 70);
+            this.addSubjectPanel.Location = new System.Drawing.Point(20, 72);
             this.addSubjectPanel.Name = "addSubjectPanel";
             this.addSubjectPanel.Size = new System.Drawing.Size(200, 164);
             this.addSubjectPanel.TabIndex = 13;
@@ -201,10 +178,12 @@
             // 
             // addSubjectBtn
             // 
-            this.addSubjectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(8)))), ((int)(((byte)(155)))));
+            this.addSubjectBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
             this.addSubjectBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addSubjectBtn.FlatAppearance.BorderSize = 0;
             this.addSubjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addSubjectBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addSubjectBtn.ForeColor = System.Drawing.Color.White;
             this.addSubjectBtn.Location = new System.Drawing.Point(43, 79);
             this.addSubjectBtn.Name = "addSubjectBtn";
             this.addSubjectBtn.Size = new System.Drawing.Size(100, 41);
@@ -232,6 +211,53 @@
             this.subjectNameTxtBox.Size = new System.Drawing.Size(123, 20);
             this.subjectNameTxtBox.TabIndex = 0;
             // 
+            // addPrincipalPannel
+            // 
+            this.addPrincipalPannel.Controls.Add(this.nonPrincipalTeacherComboBox);
+            this.addPrincipalPannel.Controls.Add(this.addVicePrincipal);
+            this.addPrincipalPannel.Controls.Add(this.label8);
+            this.addPrincipalPannel.Location = new System.Drawing.Point(29, 51);
+            this.addPrincipalPannel.Name = "addPrincipalPannel";
+            this.addPrincipalPannel.Size = new System.Drawing.Size(200, 129);
+            this.addPrincipalPannel.TabIndex = 14;
+            this.addPrincipalPannel.Visible = false;
+            // 
+            // nonPrincipalTeacherComboBox
+            // 
+            this.nonPrincipalTeacherComboBox.FormattingEnabled = true;
+            this.nonPrincipalTeacherComboBox.Location = new System.Drawing.Point(35, 38);
+            this.nonPrincipalTeacherComboBox.Name = "nonPrincipalTeacherComboBox";
+            this.nonPrincipalTeacherComboBox.Size = new System.Drawing.Size(121, 21);
+            this.nonPrincipalTeacherComboBox.TabIndex = 15;
+            // 
+            // addVicePrincipal
+            // 
+            this.addVicePrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
+            this.addVicePrincipal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addVicePrincipal.FlatAppearance.BorderSize = 0;
+            this.addVicePrincipal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addVicePrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addVicePrincipal.ForeColor = System.Drawing.Color.White;
+            this.addVicePrincipal.Location = new System.Drawing.Point(45, 78);
+            this.addVicePrincipal.Name = "addVicePrincipal";
+            this.addVicePrincipal.Size = new System.Drawing.Size(100, 41);
+            this.addVicePrincipal.TabIndex = 14;
+            this.addVicePrincipal.Text = "Add vice-principal";
+            this.addVicePrincipal.UseVisualStyleBackColor = false;
+            this.addVicePrincipal.Click += new System.EventHandler(this.addVicePrincipal_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label8.Location = new System.Drawing.Point(37, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 16);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Select teacher:";
+            // 
             // addClassPanel
             // 
             this.addClassPanel.Controls.Add(this.addClassBtn);
@@ -249,10 +275,12 @@
             // 
             // addClassBtn
             // 
-            this.addClassBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(8)))), ((int)(((byte)(155)))));
+            this.addClassBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
             this.addClassBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addClassBtn.FlatAppearance.BorderSize = 0;
             this.addClassBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addClassBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addClassBtn.ForeColor = System.Drawing.Color.White;
             this.addClassBtn.Location = new System.Drawing.Point(44, 154);
             this.addClassBtn.Name = "addClassBtn";
             this.addClassBtn.Size = new System.Drawing.Size(100, 41);
@@ -342,7 +370,7 @@
             "Add a class",
             "Add a subject",
             "Add a vice-principal"});
-            this.permissionsComboBox.Location = new System.Drawing.Point(57, 24);
+            this.permissionsComboBox.Location = new System.Drawing.Point(-390, 579);
             this.permissionsComboBox.Name = "permissionsComboBox";
             this.permissionsComboBox.Size = new System.Drawing.Size(121, 21);
             this.permissionsComboBox.TabIndex = 0;
@@ -395,10 +423,12 @@
             // 
             // addMarkButton
             // 
-            this.addMarkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(8)))), ((int)(((byte)(155)))));
+            this.addMarkButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
             this.addMarkButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addMarkButton.FlatAppearance.BorderSize = 0;
             this.addMarkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addMarkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.addMarkButton.ForeColor = System.Drawing.Color.White;
             this.addMarkButton.Location = new System.Drawing.Point(44, 98);
             this.addMarkButton.Name = "addMarkButton";
             this.addMarkButton.Size = new System.Drawing.Size(100, 41);
@@ -484,28 +514,6 @@
             // 
             this.dragControl2.SelectControl = this.panel1;
             // 
-            // welcomeLabel
-            // 
-            this.welcomeLabel.AutoSize = true;
-            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.welcomeLabel.ForeColor = System.Drawing.Color.LightPink;
-            this.welcomeLabel.Location = new System.Drawing.Point(12, 65);
-            this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(87, 20);
-            this.welcomeLabel.TabIndex = 2;
-            this.welcomeLabel.Text = "Welcome,";
-            // 
-            // teacherName
-            // 
-            this.teacherName.AutoSize = true;
-            this.teacherName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.teacherName.ForeColor = System.Drawing.Color.LightPink;
-            this.teacherName.Location = new System.Drawing.Point(13, 88);
-            this.teacherName.Name = "teacherName";
-            this.teacherName.Size = new System.Drawing.Size(107, 16);
-            this.teacherName.TabIndex = 3;
-            this.teacherName.Text = "TeacherName";
-            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -522,10 +530,10 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.principalPanel.ResumeLayout(false);
-            this.addPrincipalPannel.ResumeLayout(false);
-            this.addPrincipalPannel.PerformLayout();
             this.addSubjectPanel.ResumeLayout(false);
             this.addSubjectPanel.PerformLayout();
+            this.addPrincipalPannel.ResumeLayout(false);
+            this.addPrincipalPannel.PerformLayout();
             this.addClassPanel.ResumeLayout(false);
             this.addClassPanel.PerformLayout();
             this.panel6.ResumeLayout(false);

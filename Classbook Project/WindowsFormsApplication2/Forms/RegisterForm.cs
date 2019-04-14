@@ -318,28 +318,6 @@ namespace ClassbookProject
             studentRegisterController.CommitChanged();
             MessageBox.Show("Success!", "Operation Completed", MessageBoxButtons.OK);
         }
-
-
-        private void classBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void subjectCombBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nameBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimeBox_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void ReturnButton_Click(object sender, EventArgs e)
         {
             this.Close();

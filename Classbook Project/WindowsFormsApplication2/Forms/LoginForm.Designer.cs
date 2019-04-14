@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LoginEgnLabel = new System.Windows.Forms.Label();
+            this.LoginNameLabel = new System.Windows.Forms.Label();
             this.insertNameTxtBox = new System.Windows.Forms.TextBox();
             this.insertEGNTxtBox = new System.Windows.Forms.TextBox();
             this.loginSelectComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.loginAsLabel = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ReturnButton = new System.Windows.Forms.Button();
@@ -55,9 +55,11 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(3, 205);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 42);
+            this.button1.Size = new System.Drawing.Size(82, 42);
             this.button1.TabIndex = 0;
             this.button1.Text = "Register";
             this.button1.UseVisualStyleBackColor = false;
@@ -69,6 +71,8 @@
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Location = new System.Drawing.Point(321, 205);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 42);
@@ -77,23 +81,27 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label1
+            // LoginEgnLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(134, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(30, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "EGN";
+            this.LoginEgnLabel.AutoSize = true;
+            this.LoginEgnLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginEgnLabel.ForeColor = System.Drawing.Color.White;
+            this.LoginEgnLabel.Location = new System.Drawing.Point(140, 69);
+            this.LoginEgnLabel.Name = "LoginEgnLabel";
+            this.LoginEgnLabel.Size = new System.Drawing.Size(37, 13);
+            this.LoginEgnLabel.TabIndex = 3;
+            this.LoginEgnLabel.Text = "EGN:";
             // 
-            // label2
+            // LoginNameLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(134, 107);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Name:";
+            this.LoginNameLabel.AutoSize = true;
+            this.LoginNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LoginNameLabel.ForeColor = System.Drawing.Color.White;
+            this.LoginNameLabel.Location = new System.Drawing.Point(134, 107);
+            this.LoginNameLabel.Name = "LoginNameLabel";
+            this.LoginNameLabel.Size = new System.Drawing.Size(43, 13);
+            this.LoginNameLabel.TabIndex = 4;
+            this.LoginNameLabel.Text = "Name:";
             // 
             // insertNameTxtBox
             // 
@@ -120,14 +128,16 @@
             this.loginSelectComboBox.Size = new System.Drawing.Size(100, 21);
             this.loginSelectComboBox.TabIndex = 7;
             // 
-            // label3
+            // loginAsLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(185, 151);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Log in as:";
+            this.loginAsLabel.AutoSize = true;
+            this.loginAsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginAsLabel.ForeColor = System.Drawing.Color.White;
+            this.loginAsLabel.Location = new System.Drawing.Point(185, 151);
+            this.loginAsLabel.Name = "loginAsLabel";
+            this.loginAsLabel.Size = new System.Drawing.Size(63, 13);
+            this.loginAsLabel.TabIndex = 8;
+            this.loginAsLabel.Text = "Log in as:";
             // 
             // panel2
             // 
@@ -205,12 +215,12 @@
             this.ClientSize = new System.Drawing.Size(408, 274);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.loginAsLabel);
             this.Controls.Add(this.loginSelectComboBox);
             this.Controls.Add(this.insertEGNTxtBox);
             this.Controls.Add(this.insertNameTxtBox);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.LoginNameLabel);
+            this.Controls.Add(this.LoginEgnLabel);
             this.Controls.Add(this.button2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
@@ -229,11 +239,11 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LoginEgnLabel;
+        private System.Windows.Forms.Label LoginNameLabel;
         private System.Windows.Forms.TextBox insertNameTxtBox;
         private System.Windows.Forms.ComboBox loginSelectComboBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label loginAsLabel;
         public System.Windows.Forms.TextBox insertEGNTxtBox;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
