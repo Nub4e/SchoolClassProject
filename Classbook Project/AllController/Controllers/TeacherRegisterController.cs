@@ -8,7 +8,7 @@ using EntityFrameworkModel.Model;
 
 namespace AllController
 {
-    public class TeacherRegisterController : ConnectionString
+    public class TeacherRegisterController
 
     {
 
@@ -65,7 +65,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 return context.Subjects.Select(c => c.Name).ToList<string>();
             }
         }
@@ -74,7 +74,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 TeacherContactInfo teacherContactInfo = new TeacherContactInfo();
                 Teacher teacher = new Teacher();
                 //Name
@@ -111,7 +111,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (!context.TeacherContactInfoes.Any(w => w.Email == Email))
                 {
                     return true;
@@ -131,7 +131,7 @@ namespace AllController
             PushTeacherContactInfo();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 teacher.TeacherContactInfoes.Add(teacherContactInfo);
                 teacher.Subject = context.Subjects.FirstOrDefault(w => w.Name == subject);
                 context.Teachers.Add(teacher);
@@ -143,7 +143,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 string selectedSubject = SubjectText; // subjectCombBox.SelectedItem.ToString(); //.SelectedValue.ToString();
                 subject = context.Subjects.FirstOrDefault(w => w.Name == selectedSubject).Name;
             }
@@ -165,7 +165,7 @@ namespace AllController
             ulong z = 1234567890;
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (ulong.TryParse(PhoneNumber, out z) && (PhoneNumber.Length >= 10 && PhoneNumber.Length <= 12))
                 {
                     return true;
@@ -181,7 +181,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (context.TeacherContactInfoes.Any(w => w.PhoneNumber == PhoneNumber))
                 {
                     return true;
@@ -198,7 +198,7 @@ namespace AllController
             ulong z = 1234567890;
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (ulong.TryParse(EGN, out z) && (EGN.Length == 10))
                 {
                     return true;
@@ -213,7 +213,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (context.Teachers.Any(w => w.PersonalNumber == EGN))
                 {
                     return true;

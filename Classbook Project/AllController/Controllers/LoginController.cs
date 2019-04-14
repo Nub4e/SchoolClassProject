@@ -8,13 +8,13 @@ using EntityFrameworkModel.Model;
 
 namespace AllController
 {
-    public class LoginController : ConnectionString
+    public class LoginController
     {
         public string EgnPassSetForStudent(string EGN)
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
                 return student.PersonalNumber;
             }
@@ -24,7 +24,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
                 if (student.FirstName + student.MiddleName + student.LastName == FullName.Replace(" ", string.Empty))// да се погледне
                 {
@@ -40,7 +40,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (context.Students.Any(c => c.PersonalNumber == EGN))
                 {
                     return true;
@@ -55,7 +55,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == EGN);
                 return teacher.PersonalNumber;
             }
@@ -65,7 +65,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == EGN);
                 if (teacher.FirstName + teacher.MiddleName + teacher.LastName == FullName.Replace(" ", string.Empty))
                 {
@@ -82,7 +82,7 @@ namespace AllController
 
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (context.Teachers.Any(c => c.PersonalNumber == EGN))
                 {
                     return true;

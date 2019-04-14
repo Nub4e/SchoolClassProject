@@ -21,3 +21,15 @@ D:\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook
 D:\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csproj.CopyComplete
 D:\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.dll
 D:\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.pdb
+D:\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFrameworkModel.dll.config
+D:\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFrameworkModel.dll
+D:\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFrameworkModel.pdb
+D:\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.dll
+D:\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.SqlServer.dll
+D:\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.xml
+D:\Classbook Project\EntityFrameworkModel\bin\Debug\EntityFramework.SqlServer.xml
+D:\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csprojAssemblyReference.cache
+D:\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csproj.CoreCompileInputs.cache
+D:\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csproj.CopyComplete
+D:\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.dll
+D:\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.pdb

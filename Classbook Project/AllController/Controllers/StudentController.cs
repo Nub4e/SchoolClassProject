@@ -8,7 +8,7 @@ using EntityFrameworkModel.Model;
 
 namespace AllController
 {
-    public class StudentFormController : ConnectionString
+    public class StudentFormController
     {
 
         public Student student = new Student();
@@ -41,7 +41,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 CurrentStudent = context.Students.First(w => w.PersonalNumber == egnPass);
                 StudentSubjects = CurrentStudent.Marks.Select(c => c.Subject).Distinct().ToList();
                 StudentClassId = CurrentStudent.Class.ClassId;
@@ -54,7 +54,7 @@ namespace AllController
 
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 string firstName = context.Students.FirstOrDefault(w => w.PersonalNumber == egnPass).FirstName;
                 string lastName = context.Students.FirstOrDefault(w => w.PersonalNumber == egnPass).LastName;
                 return firstName + " " + lastName;
@@ -67,7 +67,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 return StudentSubjects.Select(w => w.Name).ToList();
             }
 
@@ -83,7 +83,7 @@ namespace AllController
             // 5.Adds them to the ContactInfoList which will later be transfered to the classContactInfoListBox in the Student Form
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 List<string> ContactInfoList = new List<string>();
                 Class currentStudentClass = context.Classes.First(w => w.ClassId == StudentClassId);
                 for (int i = 0; i < currentStudentClass.Students.Count(); i++)
@@ -115,7 +115,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (context.TeacherContactInfoes.Any(w => w.Teacher.TeacherId == HeadTeacher.TeacherId))
                 {
                     Teacher currentHeadTeacher = context.Teachers.First(w => w.TeacherId == HeadTeacher.TeacherId);
@@ -136,7 +136,7 @@ namespace AllController
 
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 CurrentselectedSubject = context.Subjects.FirstOrDefault(a => a.Name == selectedSubjectName);
             }
         }
@@ -146,7 +146,7 @@ namespace AllController
             PushAllMarks();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 List<Mark> allStudentMarksForSubject = new List<Mark>();
                 var currentStudent = CurrentStudent;
                 // Fills allStudentMarksForSubject

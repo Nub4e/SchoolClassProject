@@ -9,7 +9,7 @@ using EntityFrameworkModel.Model;
 
 namespace AllController
 {
-    public class StudentRegisterController : ConnectionString
+    public class StudentRegisterController
     {
         StudentContactInfo studentContactInfo = new StudentContactInfo();
         Student student = new Student();
@@ -50,7 +50,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 StudentContactInfo studentContactInfo = new StudentContactInfo();
                 Student student = new Student();
 
@@ -100,7 +100,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (!context.StudentContactInfoes.Any(w => w.Email == Email))
                 {
                     return true;
@@ -124,7 +124,7 @@ namespace AllController
             ulong z = 1234567890;
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (ulong.TryParse(PhoneNumber, out z) && (PhoneNumber.Length >= 10 && PhoneNumber.Length <= 12))
                 {
                     return true;
@@ -140,7 +140,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (context.StudentContactInfoes.Any(w => w.PhoneNumber == PhoneNumber))
                 {
                     return true;
@@ -162,7 +162,7 @@ namespace AllController
             ulong z = 1234567890;
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (ulong.TryParse(EGN, out z) && (EGN.Length == 10))
                 {
                     return true;
@@ -178,7 +178,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (context.Students.Any(w => w.PersonalNumber == EGN))
                 {
                     return true;
@@ -194,7 +194,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 if (context.Classes.Any(w => w.Grade + w.Letter == Class))
                 {
                     return true;
@@ -210,7 +210,7 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 selectedClassId = context.Classes.FirstOrDefault(w => w.Grade + w.Letter == Class).ClassId;
             }
         }
@@ -221,7 +221,7 @@ namespace AllController
             PushStudentContactInfo();
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                context.Database.Connection.ConnectionString = connectionString;
+                
                 student.StudentContactInfoes.Add(studentContactInfo);
                 student.Class = context.Classes.FirstOrDefault(w => w.ClassId == selectedClassId);
                 context.Students.Add(student);
