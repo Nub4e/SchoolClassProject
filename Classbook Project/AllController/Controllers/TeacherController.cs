@@ -11,13 +11,13 @@ namespace AllController.Controllers
     public class TeacherController
     {
         Subject currentSubject = new Subject();
-        public string CurrentName { get; set; }
+        public string CurrentSubjectName { get; set; }
 
 
 
         public void PushCurrentSubject()
         {
-            currentSubject.Name = CurrentName;
+            currentSubject.Name = CurrentSubjectName;
         }
 
         public List<string> LoadClasses()
@@ -29,7 +29,7 @@ namespace AllController.Controllers
                 return classes;
             }
         }
-
+        
         public bool CheckIfSubjectExists(string SubjectName)
         {
             using (ClassbookEntities context = new ClassbookEntities())
@@ -69,7 +69,7 @@ namespace AllController.Controllers
 
         public void SetCurrentSubjectName(string SubjectName)
         {
-            CurrentName = SubjectName;
+            CurrentSubjectName = SubjectName;
         }
 
         public void CommitChangedSubject()
@@ -269,7 +269,32 @@ namespace AllController.Controllers
             newmark.Description = CurrentDescription;
             newmark.Date = CurrentDate;
         }
+        //ADD UNIT TESTS
+        public void DeleteMark(string markId)
+        {
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+                Mark mark = context.Marks.FirstOrDefault(w => w.MarkId.ToString() == markId);
+                context.Marks.Remove(mark);
+                context.SaveChanges();
+            }
+        }
+        public List<string> SetTeacherMarks(string StudentName, string EGN)
+        {
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+                int studentId = context.Students.FirstOrDefault(a => a.FirstName + " " + a.MiddleName + " " + a.LastName == StudentName).StudentId;
+                int teacherId = context.Teachers.FirstOrDefault(z => z.PersonalNumber == EGN).TeacherId;
 
+                return context.Marks
+                    .ToList<Mark>()
+                    .Where(a => a.StudentId == studentId && a.TeacherId == teacherId)
+                    .OrderBy(a => a.MarkId)
+                    .Select(b => b.MarkId.ToString() + " - "  + b.Description + ' ' + b.Number + " - " + b.Date.ToShortDateString())
+                    .ToList<string>();
+                ;
+            }
+        }
         // Set Mark Number
         public void SetMarkNumber(decimal Number)
         {

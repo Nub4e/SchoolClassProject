@@ -191,13 +191,6 @@ namespace ClassbookProject
                 }
         } // R
 
-        private void selectStudentComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            panel6.Visible = true;
-
-
-        }
-
         private void selectClassComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
 
@@ -347,6 +340,47 @@ namespace ClassbookProject
         private void addClassBtn_Click_1(object sender, EventArgs e)
         {
             AddClass();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void AddMark_Click(object sender, EventArgs e)
+        {   
+            mainPanel.Visible = true;
+            removeMarkPanel.Visible = false;
+            addMarkPanel.Visible = true ;
+
+        }
+
+        private void Remove_Click_1(object sender, EventArgs e)
+        {
+            mainPanel.Visible = true;
+            addMarkPanel.Visible = false;
+            removeMarkPanel.Visible = true;
+        }
+
+        private void RemoveList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void selectStudentComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (removeMarkPanel.Visible)
+            {
+                //List<string> Marks = teacherController.SetTeacherMarks(selectStudentComboBox.Text, egnPass);
+                teacherController.SetTeacherMarks(selectStudentComboBox.Text, egnPass).ForEach(w => RemoveList.Items.Add(w));
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            List<string> items = RemoveList.SelectedItem.ToString().Split(' ').ToList();
+            teacherController.DeleteMark(items[0]);
+            MessageBox.Show("Mark removed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

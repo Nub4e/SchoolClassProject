@@ -79,7 +79,7 @@ namespace Classbook.Tests
             string SubjectName = "Mat";
             teacher.SetCurrentSubjectName(SubjectName);
 
-            var result = teacher.CurrentName;
+            var result = teacher.CurrentSubjectName;
 
             Assert.AreEqual(SubjectName, result, "Correct set SubjectName");
         }
