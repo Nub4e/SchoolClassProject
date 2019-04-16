@@ -39,7 +39,7 @@ namespace ClassbookProject
         {
               // SetDefaultValueTeacherNonPrincipal();
              // SetDefaultValueStudent();
-           SetDefaultValueTeacher();
+             SetDefaultValueTeacher();
 
             // Проверка за избора на  teacher and student 
             LoginController loginController = new LoginController();

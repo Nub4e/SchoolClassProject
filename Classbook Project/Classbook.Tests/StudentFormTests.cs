@@ -86,12 +86,9 @@ namespace Classbook.Tests
             register.InitializeStudent(egnPass);
             string selectedSubjectName = "Health and hygiene";
             register.InitializeSubject(selectedSubjectName);
+            register.StudentMarksToInsert();
 
-            List<Mark> AllMarks = new List<Mark>();
-            register.AvarageMark();
-            AllMarks = register.AllStudentMarksForSubject;
-
-            var action = Math.Round(AllMarks.Select(w => w.Number).ToList().Average(), 2).ToString();
+            var action = "3,32";
             string result = register.AvarageMark();
 
 

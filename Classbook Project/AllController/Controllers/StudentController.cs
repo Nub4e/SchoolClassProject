@@ -186,7 +186,7 @@ namespace AllController
         {
             this.allStudentMarksForSubject = AllStudentMarksForSubject;
         }
-        string CurrentAvarageMark = "";
+        string CurrentAvarageMark { get; set; }
         public string AvarageMark()
         {
             return CurrentAvarageMark;

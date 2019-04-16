@@ -24,7 +24,7 @@ namespace ClassbookProject
         public ComboBox SelectStudentComboBox { get { return selectStudentComboBox; } set { selectStudentComboBox = value; } }
         public string AddMark { get { return addMarkTextBox.Text; } set { addMarkTextBox.Text = value; } }
         public DateTime MarkDateTime { get { return markDateTimePicker.Value; } set { markDateTimePicker.Value = value; } }
-        public ComboBox PermissionsComboBox { get { return permissionsComboBox; } set { permissionsComboBox = value; } }
+        public ComboBox PermissionsComboBox { get { return PermissionComboBox; } set { PermissionComboBox = value; } }
         public ComboBox GradeComboBox { get { return gradeComboBox; } set { gradeComboBox = value; } }
         public string Letter { get { return letterTextBox.Text; } set { letterTextBox.Text = value; } }
         public ComboBox NonHeadTeacherComboBox { get { return nonHeadTeacherComboBox; } set { nonHeadTeacherComboBox = value; } }
@@ -164,7 +164,6 @@ namespace ClassbookProject
                     NonHeadTeacherComboBox.Text = String.Empty;
                 }
 
-            
         } // R
 
         public void AddPrincipal()
@@ -382,5 +381,11 @@ namespace ClassbookProject
             teacherController.DeleteMark(items[0]);
             MessageBox.Show("Mark removed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void adminComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

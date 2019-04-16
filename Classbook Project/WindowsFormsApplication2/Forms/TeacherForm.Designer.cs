@@ -35,24 +35,25 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.Update = new System.Windows.Forms.Button();
-            this.Remove = new System.Windows.Forms.Button();
-            this.addMarkPanel = new System.Windows.Forms.Panel();
             this.removeMarkPanel = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.RemoveList = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.Update = new System.Windows.Forms.Button();
+            this.Remove = new System.Windows.Forms.Button();
+            this.addMarkPanel = new System.Windows.Forms.Panel();
             this.markDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.addMarkButton = new System.Windows.Forms.Button();
             this.addMarkTextBox = new System.Windows.Forms.TextBox();
             this.Add = new System.Windows.Forms.Button();
             this.principalPanel = new System.Windows.Forms.Panel();
-            this.addPrincipalPannel = new System.Windows.Forms.Panel();
+            this.PermissionComboBox = new System.Windows.Forms.ComboBox();
             this.addSubjectPanel = new System.Windows.Forms.Panel();
             this.addSubjectBtn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.subjectNameTxtBox = new System.Windows.Forms.TextBox();
+            this.addPrincipalPannel = new System.Windows.Forms.Panel();
             this.nonPrincipalTeacherComboBox = new System.Windows.Forms.ComboBox();
             this.addVicePrincipal = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -76,11 +77,11 @@
             this.dragControl2 = new ClassbookProject.DragControl();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.addMarkPanel.SuspendLayout();
             this.removeMarkPanel.SuspendLayout();
+            this.addMarkPanel.SuspendLayout();
             this.principalPanel.SuspendLayout();
-            this.addPrincipalPannel.SuspendLayout();
             this.addSubjectPanel.SuspendLayout();
+            this.addPrincipalPannel.SuspendLayout();
             this.addClassPanel.SuspendLayout();
             this.mainPanel.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -166,6 +167,53 @@
             this.panel3.TabIndex = 3;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
+            // removeMarkPanel
+            // 
+            this.removeMarkPanel.Controls.Add(this.button2);
+            this.removeMarkPanel.Controls.Add(this.RemoveList);
+            this.removeMarkPanel.Controls.Add(this.label9);
+            this.removeMarkPanel.Location = new System.Drawing.Point(39, 269);
+            this.removeMarkPanel.Name = "removeMarkPanel";
+            this.removeMarkPanel.Size = new System.Drawing.Size(200, 149);
+            this.removeMarkPanel.TabIndex = 12;
+            this.removeMarkPanel.Visible = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(50, 80);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(94, 37);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Remove Mark";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // RemoveList
+            // 
+            this.RemoveList.FormattingEnabled = true;
+            this.RemoveList.Location = new System.Drawing.Point(38, 42);
+            this.RemoveList.Name = "RemoveList";
+            this.RemoveList.Size = new System.Drawing.Size(121, 21);
+            this.RemoveList.TabIndex = 1;
+            this.RemoveList.SelectedIndexChanged += new System.EventHandler(this.RemoveList_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(50, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(95, 15);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Remove Mark";
+            // 
             // Update
             // 
             this.Update.Location = new System.Drawing.Point(219, 66);
@@ -197,51 +245,6 @@
             this.addMarkPanel.TabIndex = 11;
             this.addMarkPanel.Visible = false;
             // 
-            // removeMarkPanel
-            // 
-            this.removeMarkPanel.Controls.Add(this.button2);
-            this.removeMarkPanel.Controls.Add(this.RemoveList);
-            this.removeMarkPanel.Controls.Add(this.label9);
-            this.removeMarkPanel.Location = new System.Drawing.Point(39, 259);
-            this.removeMarkPanel.Name = "removeMarkPanel";
-            this.removeMarkPanel.Size = new System.Drawing.Size(200, 149);
-            this.removeMarkPanel.TabIndex = 12;
-            this.removeMarkPanel.Visible = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(44, 79);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 37);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Remove Mark";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // RemoveList
-            // 
-            this.RemoveList.FormattingEnabled = true;
-            this.RemoveList.Location = new System.Drawing.Point(38, 42);
-            this.RemoveList.Name = "RemoveList";
-            this.RemoveList.Size = new System.Drawing.Size(121, 21);
-            this.RemoveList.TabIndex = 1;
-            this.RemoveList.SelectedIndexChanged += new System.EventHandler(this.RemoveList_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(50, 11);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(95, 15);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Remove Mark";
-            // 
             // markDateTimePicker
             // 
             this.markDateTimePicker.Location = new System.Drawing.Point(3, 60);
@@ -255,7 +258,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label3.Location = new System.Drawing.Point(56, 15);
+            this.label3.Location = new System.Drawing.Point(64, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 16);
             this.label3.TabIndex = 10;
@@ -282,7 +285,7 @@
             // 
             this.addMarkTextBox.Location = new System.Drawing.Point(44, 34);
             this.addMarkTextBox.Name = "addMarkTextBox";
-            this.addMarkTextBox.Size = new System.Drawing.Size(100, 20);
+            this.addMarkTextBox.Size = new System.Drawing.Size(115, 20);
             this.addMarkTextBox.TabIndex = 9;
             // 
             // Add
@@ -297,33 +300,37 @@
             // 
             // principalPanel
             // 
+            this.principalPanel.Controls.Add(this.PermissionComboBox);
+            this.principalPanel.Controls.Add(this.addSubjectPanel);
             this.principalPanel.Controls.Add(this.addPrincipalPannel);
             this.principalPanel.Controls.Add(this.addClassPanel);
             this.principalPanel.Controls.Add(this.permissionsComboBox);
-            this.principalPanel.Location = new System.Drawing.Point(327, 47);
+            this.principalPanel.Location = new System.Drawing.Point(327, 95);
             this.principalPanel.Name = "principalPanel";
             this.principalPanel.Size = new System.Drawing.Size(244, 300);
             this.principalPanel.TabIndex = 13;
             this.principalPanel.Visible = false;
             // 
-            // addPrincipalPannel
+            // PermissionComboBox
             // 
-            this.addPrincipalPannel.Controls.Add(this.addSubjectPanel);
-            this.addPrincipalPannel.Controls.Add(this.nonPrincipalTeacherComboBox);
-            this.addPrincipalPannel.Controls.Add(this.addVicePrincipal);
-            this.addPrincipalPannel.Controls.Add(this.label8);
-            this.addPrincipalPannel.Location = new System.Drawing.Point(29, 51);
-            this.addPrincipalPannel.Name = "addPrincipalPannel";
-            this.addPrincipalPannel.Size = new System.Drawing.Size(200, 129);
-            this.addPrincipalPannel.TabIndex = 14;
-            this.addPrincipalPannel.Visible = false;
+            this.PermissionComboBox.FormattingEnabled = true;
+            this.PermissionComboBox.Items.AddRange(new object[] {
+            "Add a class",
+            "Add a subject",
+            "Add a vice-principal"});
+            this.PermissionComboBox.Location = new System.Drawing.Point(64, 15);
+            this.PermissionComboBox.Name = "PermissionComboBox";
+            this.PermissionComboBox.Size = new System.Drawing.Size(121, 21);
+            this.PermissionComboBox.TabIndex = 14;
+            this.PermissionComboBox.SelectedIndexChanged += new System.EventHandler(this.adminComboBox_SelectedIndexChanged);
+            this.PermissionComboBox.SelectedValueChanged += new System.EventHandler(this.permissionsComboBox_SelectedValueChanged);
             // 
             // addSubjectPanel
             // 
             this.addSubjectPanel.Controls.Add(this.addSubjectBtn);
             this.addSubjectPanel.Controls.Add(this.label7);
             this.addSubjectPanel.Controls.Add(this.subjectNameTxtBox);
-            this.addSubjectPanel.Location = new System.Drawing.Point(12, 38);
+            this.addSubjectPanel.Location = new System.Drawing.Point(29, 47);
             this.addSubjectPanel.Name = "addSubjectPanel";
             this.addSubjectPanel.Size = new System.Drawing.Size(200, 164);
             this.addSubjectPanel.TabIndex = 13;
@@ -363,6 +370,17 @@
             this.subjectNameTxtBox.Name = "subjectNameTxtBox";
             this.subjectNameTxtBox.Size = new System.Drawing.Size(123, 20);
             this.subjectNameTxtBox.TabIndex = 0;
+            // 
+            // addPrincipalPannel
+            // 
+            this.addPrincipalPannel.Controls.Add(this.nonPrincipalTeacherComboBox);
+            this.addPrincipalPannel.Controls.Add(this.addVicePrincipal);
+            this.addPrincipalPannel.Controls.Add(this.label8);
+            this.addPrincipalPannel.Location = new System.Drawing.Point(29, 48);
+            this.addPrincipalPannel.Name = "addPrincipalPannel";
+            this.addPrincipalPannel.Size = new System.Drawing.Size(200, 129);
+            this.addPrincipalPannel.TabIndex = 14;
+            this.addPrincipalPannel.Visible = false;
             // 
             // nonPrincipalTeacherComboBox
             // 
@@ -409,7 +427,7 @@
             this.addClassPanel.Controls.Add(this.nonHeadTeacherComboBox);
             this.addClassPanel.Controls.Add(this.letterTextBox);
             this.addClassPanel.Controls.Add(this.gradeComboBox);
-            this.addClassPanel.Location = new System.Drawing.Point(23, 69);
+            this.addClassPanel.Location = new System.Drawing.Point(29, 47);
             this.addClassPanel.Name = "addClassPanel";
             this.addClassPanel.Size = new System.Drawing.Size(200, 206);
             this.addClassPanel.TabIndex = 1;
@@ -567,7 +585,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.label2.Location = new System.Drawing.Point(50, 29);
+            this.label2.Location = new System.Drawing.Point(47, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 16);
             this.label2.TabIndex = 8;
@@ -617,15 +635,15 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.addMarkPanel.ResumeLayout(false);
-            this.addMarkPanel.PerformLayout();
             this.removeMarkPanel.ResumeLayout(false);
             this.removeMarkPanel.PerformLayout();
+            this.addMarkPanel.ResumeLayout(false);
+            this.addMarkPanel.PerformLayout();
             this.principalPanel.ResumeLayout(false);
-            this.addPrincipalPannel.ResumeLayout(false);
-            this.addPrincipalPannel.PerformLayout();
             this.addSubjectPanel.ResumeLayout(false);
             this.addSubjectPanel.PerformLayout();
+            this.addPrincipalPannel.ResumeLayout(false);
+            this.addPrincipalPannel.PerformLayout();
             this.addClassPanel.ResumeLayout(false);
             this.addClassPanel.PerformLayout();
             this.mainPanel.ResumeLayout(false);
@@ -682,5 +700,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox RemoveList;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox PermissionComboBox;
     }
 }
