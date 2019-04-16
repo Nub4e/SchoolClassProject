@@ -1,6 +1,6 @@
 ﻿namespace ClassbookProject
 {
-    partial class StudentsForm
+    partial class ParentForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.studentNameLabel = new System.Windows.Forms.Label();
+            this.parentNameLabel = new System.Windows.Forms.Label();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -40,9 +40,8 @@
             this.selectedMarksListBox = new System.Windows.Forms.ListBox();
             this.AllMarksLabel = new System.Windows.Forms.Label();
             this.averageMark = new System.Windows.Forms.Label();
-            this.classContactInfoListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.headTeacherTextBox = new System.Windows.Forms.TextBox();
+            this.studentNameLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -62,6 +61,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(30)))), ((int)(((byte)(40)))));
             this.panel3.Controls.Add(this.studentNameLabel);
+            this.panel3.Controls.Add(this.parentNameLabel);
             this.panel3.Controls.Add(this.welcomeLabel);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 51);
@@ -69,16 +69,16 @@
             this.panel3.Size = new System.Drawing.Size(138, 349);
             this.panel3.TabIndex = 3;
             // 
-            // studentNameLabel
+            // parentNameLabel
             // 
-            this.studentNameLabel.AutoSize = true;
-            this.studentNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.studentNameLabel.ForeColor = System.Drawing.Color.LightPink;
-            this.studentNameLabel.Location = new System.Drawing.Point(3, 49);
-            this.studentNameLabel.Name = "studentNameLabel";
-            this.studentNameLabel.Size = new System.Drawing.Size(101, 16);
-            this.studentNameLabel.TabIndex = 12;
-            this.studentNameLabel.Text = "StudentName";
+            this.parentNameLabel.AutoSize = true;
+            this.parentNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.parentNameLabel.ForeColor = System.Drawing.Color.LightPink;
+            this.parentNameLabel.Location = new System.Drawing.Point(3, 49);
+            this.parentNameLabel.Name = "parentNameLabel";
+            this.parentNameLabel.Size = new System.Drawing.Size(94, 16);
+            this.parentNameLabel.TabIndex = 12;
+            this.parentNameLabel.Text = "ParentName";
             // 
             // welcomeLabel
             // 
@@ -176,15 +176,6 @@
             this.averageMark.Text = "averageMark";
             this.averageMark.Visible = false;
             // 
-            // classContactInfoListBox
-            // 
-            this.classContactInfoListBox.FormattingEnabled = true;
-            this.classContactInfoListBox.HorizontalScrollbar = true;
-            this.classContactInfoListBox.Location = new System.Drawing.Point(549, 196);
-            this.classContactInfoListBox.Name = "classContactInfoListBox";
-            this.classContactInfoListBox.Size = new System.Drawing.Size(371, 108);
-            this.classContactInfoListBox.TabIndex = 8;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -193,23 +184,24 @@
             this.label3.Size = new System.Drawing.Size(0, 13);
             this.label3.TabIndex = 9;
             // 
-            // headTeacherTextBox
+            // studentNameLabel
             // 
-            this.headTeacherTextBox.Location = new System.Drawing.Point(549, 170);
-            this.headTeacherTextBox.Name = "headTeacherTextBox";
-            this.headTeacherTextBox.ReadOnly = true;
-            this.headTeacherTextBox.Size = new System.Drawing.Size(371, 20);
-            this.headTeacherTextBox.TabIndex = 10;
+            this.studentNameLabel.AutoSize = true;
+            this.studentNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studentNameLabel.ForeColor = System.Drawing.Color.LightPink;
+            this.studentNameLabel.Location = new System.Drawing.Point(3, 100);
+            this.studentNameLabel.Name = "studentNameLabel";
+            this.studentNameLabel.Size = new System.Drawing.Size(101, 16);
+            this.studentNameLabel.TabIndex = 13;
+            this.studentNameLabel.Text = "StudentName";
             // 
-            // StudentsForm
+            // ParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(950, 400);
-            this.Controls.Add(this.headTeacherTextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.classContactInfoListBox);
             this.Controls.Add(this.averageMark);
             this.Controls.Add(this.AllMarksLabel);
             this.Controls.Add(this.selectedMarksListBox);
@@ -218,7 +210,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "StudentsForm";
+            this.Name = "ParentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
@@ -240,11 +232,10 @@
         private System.Windows.Forms.ListBox selectedMarksListBox;
         private System.Windows.Forms.Label AllMarksLabel;
         private System.Windows.Forms.Label averageMark;
-        private System.Windows.Forms.ListBox classContactInfoListBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox headTeacherTextBox;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label studentNameLabel;
+        private System.Windows.Forms.Label parentNameLabel;
         private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.Label studentNameLabel;
     }
 }

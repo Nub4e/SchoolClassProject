@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ClassbookProject;
-using AllController;
+﻿using AllController;
+using AllController.Controllers;
 using ClassbookProject.View;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ClassbookProject
 {
@@ -18,9 +12,11 @@ namespace ClassbookProject
     {
         bool isStudent;
         bool isTeacher;
+        bool isParent;
 
         TeacherRegisterController teacherRegisterController = new TeacherRegisterController();
         StudentRegisterController studentRegisterController = new StudentRegisterController();
+        ParentRegisterController parentRegisterController = new ParentRegisterController();
 
         public string FullName { get { return nameBox.Text; } set { nameBox.Text = value; } }
         public DateTime Date { get { return dateTimeBox.Value; } set { dateTimeBox.Value = value; } }
@@ -31,6 +27,9 @@ namespace ClassbookProject
         public ComboBox Subject { get { return subjectCombBox; } set { subjectCombBox = value; } }
         public string Class { get { return classBox.Text; } set { classBox.Text = value; } }
 
+        public string StudentName { get { return NameStudentTBX.Text; } set { NameStudentTBX.Text = value; } }
+        public string StudentEGN { get { return EGNStudetnTXB.Text; } set { EGNStudetnTXB.Text = value; } }
+
         public RegisterForm()
         {
             InitializeComponent();
@@ -40,6 +39,7 @@ namespace ClassbookProject
         {
             isStudent = false;
             isTeacher = false;
+            isParent = false;
             //Add subjects collection to subjectComboBox
             List<string> subjects = teacherRegisterController.GetAllSubjects();
 
@@ -54,22 +54,39 @@ namespace ClassbookProject
         {
 
 
-            if (RegisterStudentTeacherIndex == 0) //0 - Student ; 1-Teacher
+            if (RegisterStudentTeacherIndex == 0) //0 - Student ; 1-Teacher // 2-Parent
             {
+                contactInfoPanel.Visible = true;
+                parentPanel.Visible = false;
                 panel1.Visible = true;
                 panel2.Visible = false;
                 isStudent = true;
                 isTeacher = false;
+                isParent = false;
             }
             else
             {
                 if (RegisterStudentTeacherIndex == 1)
                 {
+                    parentPanel.Visible = false;
+                    contactInfoPanel.Visible = true;
                     panel1.Visible = false;
                     panel2.Visible = true;
                     isTeacher = true;
+                    isParent = false;
                     isStudent = false;
                     //void method for teacher
+                }else
+                //
+                    if (RegisterStudentTeacherIndex==2)
+                {
+                    contactInfoPanel.Visible = false;
+                    parentPanel.Visible = true;
+                    panel1.Visible = false;
+                    panel2.Visible = false;
+                    isTeacher = false;
+                    isParent = true;
+                    isStudent = false;
                 }
             }
         }
@@ -81,13 +98,20 @@ namespace ClassbookProject
         {
             if (isStudent)
             {
-                AddStudentInBD();
+                AddStudentInDb();
             }
             else
             {
                 if (isTeacher)
                 {
-                    AddTeacherInBd();
+                    AddTeacherInDb();
+                }
+                else
+
+                if (isParent)
+                {
+                    AddParentInDb();
+                    parentRegisterController.EndConnection();
                 }
                 else
                 {
@@ -96,8 +120,98 @@ namespace ClassbookProject
             }
         }
 
+        private void AddParentInDb()
+        { 
+            // NAME
+            try
+            {
+                parentRegisterController.SetName(FullName);
+                if (FullName.Split(' ').ToList().Count > 3)
+                {
+                    throw new Exception();
+                }
+                if (parentRegisterController.ParentNameExists(FullName))
+                {
+                    MessageBox.Show("Parent already exists!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Wrong Name Format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // EGN
+            if (parentRegisterController.IsValidEGN(EGN))
+            {
+                if (parentRegisterController.CheckEGNExists(EGN) == false)
+                {
+                    parentRegisterController.SetEGN(EGN);
+                }
+                else
+                {
+                    MessageBox.Show("EGN is already used!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("EGN is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // Lydia Gilmore Kelley
+            // 3376299241
+            // STUDENT EGN
+            if (parentRegisterController.IsValidEGN(StudentEGN))
+            {
+                if (parentRegisterController.CheckStudentEGNExists(StudentEGN))
+                {
+                    parentRegisterController.SetStudentEGN(StudentEGN);
+                }
+                else
+                {
+                    MessageBox.Show("No such student EGN!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Student EGN is not valid!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            // STUDENT NAME
+            try
+            {
+                var test = StudentName.Split(' ').ToList();
+                if (test.Count!=3 )
+                {
+                    throw new Exception();
+                }
+                else 
+                if (parentRegisterController.StudentNameIsCorrect(StudentName, StudentEGN))
+                {
+                    parentRegisterController.SetStudentName(StudentName);
+                }
+                else
+                {
+                    MessageBox.Show("No such student!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Wrong student name format!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            parentRegisterController.AddParent();
+            MessageBox.Show("Success!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         //add  teacher in db and checks if info is correct
-        void AddTeacherInBd()
+        void AddTeacherInDb()
         {
             //NAME
             try
@@ -205,7 +319,7 @@ namespace ClassbookProject
 
         }
         //add student in db and checks if info is correct
-        void AddStudentInBD()
+        void AddStudentInDb()
         {
 
 
@@ -321,6 +435,11 @@ namespace ClassbookProject
         private void ReturnButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void egnStudentTBX_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

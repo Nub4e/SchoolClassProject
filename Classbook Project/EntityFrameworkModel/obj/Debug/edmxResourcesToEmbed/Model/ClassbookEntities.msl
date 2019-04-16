@@ -24,6 +24,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Parents">
+      <EntityTypeMapping TypeName="ClassbookModel.Parent">
+        <MappingFragment StoreEntitySet="Parents">
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PersonalNumber" ColumnName="PersonalNumber" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="StudentContactInfoes">
       <EntityTypeMapping TypeName="ClassbookModel.StudentContactInfo">
         <MappingFragment StoreEntitySet="StudentContactInfo">

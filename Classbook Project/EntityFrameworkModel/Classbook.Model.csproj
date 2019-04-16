@@ -71,6 +71,9 @@
     <Compile Include="Model\Mark.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Parent.cs">
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Student.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>

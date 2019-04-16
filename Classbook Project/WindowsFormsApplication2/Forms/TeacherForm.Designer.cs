@@ -48,6 +48,7 @@
             this.addMarkTextBox = new System.Windows.Forms.TextBox();
             this.Add = new System.Windows.Forms.Button();
             this.principalPanel = new System.Windows.Forms.Panel();
+            this.OptionsLabel = new System.Windows.Forms.Label();
             this.PermissionComboBox = new System.Windows.Forms.ComboBox();
             this.addSubjectPanel = new System.Windows.Forms.Panel();
             this.addSubjectBtn = new System.Windows.Forms.Button();
@@ -73,8 +74,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.selectClassComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dragControl1 = new ClassbookProject.DragControl();
-            this.dragControl2 = new ClassbookProject.DragControl();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.removeMarkPanel.SuspendLayout();
@@ -300,16 +300,29 @@
             // 
             // principalPanel
             // 
+            this.principalPanel.Controls.Add(this.OptionsLabel);
             this.principalPanel.Controls.Add(this.PermissionComboBox);
             this.principalPanel.Controls.Add(this.addSubjectPanel);
             this.principalPanel.Controls.Add(this.addPrincipalPannel);
             this.principalPanel.Controls.Add(this.addClassPanel);
             this.principalPanel.Controls.Add(this.permissionsComboBox);
-            this.principalPanel.Location = new System.Drawing.Point(327, 95);
+            this.principalPanel.Location = new System.Drawing.Point(327, 87);
             this.principalPanel.Name = "principalPanel";
-            this.principalPanel.Size = new System.Drawing.Size(244, 300);
+            this.principalPanel.Size = new System.Drawing.Size(244, 308);
             this.principalPanel.TabIndex = 13;
             this.principalPanel.Visible = false;
+            // 
+            // OptionsLabel
+            // 
+            this.OptionsLabel.AutoSize = true;
+            this.OptionsLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.OptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OptionsLabel.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.OptionsLabel.Location = new System.Drawing.Point(92, 0);
+            this.OptionsLabel.Name = "OptionsLabel";
+            this.OptionsLabel.Size = new System.Drawing.Size(61, 16);
+            this.OptionsLabel.TabIndex = 18;
+            this.OptionsLabel.Text = "Options";
             // 
             // PermissionComboBox
             // 
@@ -318,7 +331,7 @@
             "Add a class",
             "Add a subject",
             "Add a vice-principal"});
-            this.PermissionComboBox.Location = new System.Drawing.Point(64, 15);
+            this.PermissionComboBox.Location = new System.Drawing.Point(64, 21);
             this.PermissionComboBox.Name = "PermissionComboBox";
             this.PermissionComboBox.Size = new System.Drawing.Size(121, 21);
             this.PermissionComboBox.TabIndex = 14;
@@ -612,19 +625,21 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Select class:";
             // 
-            // dragControl1
+            // label10
             // 
-            this.dragControl1.SelectControl = this.panel2;
-            // 
-            // dragControl2
-            // 
-            this.dragControl2.SelectControl = this.panel1;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(0, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 4;
+            this.label10.Text = "label10";
             // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 477);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -640,6 +655,7 @@
             this.addMarkPanel.ResumeLayout(false);
             this.addMarkPanel.PerformLayout();
             this.principalPanel.ResumeLayout(false);
+            this.principalPanel.PerformLayout();
             this.addSubjectPanel.ResumeLayout(false);
             this.addSubjectPanel.PerformLayout();
             this.addPrincipalPannel.ResumeLayout(false);
@@ -651,6 +667,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -661,8 +678,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox selectClassComboBox;
-        private DragControl dragControl1;
-        private DragControl dragControl2;
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox addMarkTextBox;
@@ -701,5 +716,7 @@
         private System.Windows.Forms.ComboBox RemoveList;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox PermissionComboBox;
+        private System.Windows.Forms.Label OptionsLabel;
+        private System.Windows.Forms.Label label10;
     }
 }

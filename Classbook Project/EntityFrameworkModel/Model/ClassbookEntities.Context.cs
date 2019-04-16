@@ -27,6 +27,7 @@ namespace EntityFrameworkModel.Model
     
         public virtual DbSet<Class> Classes { get; set; }
         public virtual DbSet<Mark> Marks { get; set; }
+        public virtual DbSet<Parent> Parents { get; set; }
         public virtual DbSet<StudentContactInfo> StudentContactInfoes { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }

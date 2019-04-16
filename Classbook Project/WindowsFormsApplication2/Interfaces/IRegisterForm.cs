@@ -17,6 +17,7 @@ namespace ClassbookProject.View
         int RegisterStudentTeacherIndex { get; set; }   // studentOrTeacherComboBox
         ComboBox Subject { get; set; }                  // subjectCombBox
         string Class { get; set; }                      // classBox
-
+        string StudentName { get; set; }
+        string StudentEGN { get; set; }
     }
 }

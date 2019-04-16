@@ -26,7 +26,7 @@ namespace AllController
             {
                 
                 Student student = context.Students.FirstOrDefault(c => c.PersonalNumber == EGN);
-                if (student.FirstName + student.MiddleName + student.LastName == FullName.Replace(" ", string.Empty))// да се погледне
+                if (student.FirstName + student.MiddleName + student.LastName == FullName.Replace(" ", string.Empty))
                 {
                     return true;
                 }
@@ -58,6 +58,49 @@ namespace AllController
                 
                 Teacher teacher = context.Teachers.FirstOrDefault(c => c.PersonalNumber == EGN);
                 return teacher.PersonalNumber;
+            }
+        }
+
+        public bool ParentNameIsCorrect(string EGN, string FullName)
+        {
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+
+                Parent parent = context.Parents.FirstOrDefault(c => c.PersonalNumber == EGN);
+                if (parent.FirstName + parent.MiddleName + parent.LastName == FullName.Replace(" ", string.Empty))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public bool ParentExists(string EGN)
+        {
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+
+                if (context.Parents.Any(c => c.PersonalNumber == EGN))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public string EgnPassSetForParent(string EGN)
+        {
+            using (ClassbookEntities context = new ClassbookEntities())
+            {
+
+                Parent parent = context.Parents.FirstOrDefault(c => c.PersonalNumber == EGN);
+                return parent.PersonalNumber;
             }
         }
 

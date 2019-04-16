@@ -21,6 +21,17 @@
     <Property Name="TeacherId" Type="int" Nullable="false" />
     <Property Name="Date" Type="date" Nullable="false" />
   </EntityType>
+  <EntityType Name="Parents">
+    <Key>
+      <PropertyRef Name="ParentId" />
+    </Key>
+    <Property Name="ParentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="PersonalNumber" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="StudentId" Type="int" Nullable="false" />
+  </EntityType>
   <EntityType Name="StudentContactInfo">
     <Key>
       <PropertyRef Name="ContactInfoId" />
@@ -80,6 +91,18 @@
       </Principal>
       <Dependent Role="Classes">
         <PropertyRef Name="HeadTeacherId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_parnets_students">
+    <End Role="Students" Type="Self.Students" Multiplicity="1" />
+    <End Role="Parents" Type="Self.Parents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Parents">
+        <PropertyRef Name="StudentId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -170,6 +193,7 @@
   <EntityContainer Name="ClassbookModelStoreContainer">
     <EntitySet Name="Classes" EntityType="Self.Classes" Schema="classbook" store:Type="Tables" />
     <EntitySet Name="Marks" EntityType="Self.Marks" Schema="classbook" store:Type="Tables" />
+    <EntitySet Name="Parents" EntityType="Self.Parents" Schema="classbook" store:Type="Tables" />
     <EntitySet Name="StudentContactInfo" EntityType="Self.StudentContactInfo" Schema="classbook" store:Type="Tables" />
     <EntitySet Name="Students" EntityType="Self.Students" Schema="classbook" store:Type="Tables" />
     <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="classbook" store:Type="Tables" />
@@ -178,6 +202,10 @@
     <AssociationSet Name="classes$fk_classes_teachers" Association="Self.classes$fk_classes_teachers">
       <End Role="Teachers" EntitySet="Teachers" />
       <End Role="Classes" EntitySet="Classes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_parnets_students" Association="Self.FK_parnets_students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Parents" EntitySet="Parents" />
     </AssociationSet>
     <AssociationSet Name="marks$fk_marks_students" Association="Self.marks$fk_marks_students">
       <End Role="Students" EntitySet="Students" />

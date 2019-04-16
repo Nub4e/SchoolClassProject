@@ -35,10 +35,10 @@
             this.Register = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dragControl2 = new ClassbookProject.DragControl();
+    
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dragControl3 = new ClassbookProject.DragControl();
+
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -152,7 +152,7 @@
             // 
             // dragControl2
             // 
-            this.dragControl2.SelectControl = this.panel1;
+         
             // 
             // pictureBox1
             // 
@@ -181,7 +181,7 @@
             // 
             // dragControl3
             // 
-            this.dragControl3.SelectControl = this.pictureBox2;
+      
             // 
             // MainForm
             // 
@@ -209,13 +209,13 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private DragControl dragControl2;
+       
         private System.Windows.Forms.Button Login;
         private System.Windows.Forms.Button Register;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private DragControl dragControl3;
+  
     }
 }
 

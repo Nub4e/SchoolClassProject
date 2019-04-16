@@ -52,11 +52,17 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.ReturnButton = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dragControl1 = new ClassbookProject.DragControl();
-            this.dragControl2 = new ClassbookProject.DragControl();
+            this.parentPanel = new System.Windows.Forms.Panel();
+            this.EGNStudetnTXB = new System.Windows.Forms.TextBox();
+            this.egnStudentTBX = new System.Windows.Forms.Label();
+            this.NameStudentTBX = new System.Windows.Forms.TextBox();
+            this.studentLabelName = new System.Windows.Forms.Label();
+            this.contactInfoPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.parentPanel.SuspendLayout();
+            this.contactInfoPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // registerButton
@@ -91,7 +97,7 @@
             this.RegisterDateLabel.AutoSize = true;
             this.RegisterDateLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegisterDateLabel.ForeColor = System.Drawing.Color.White;
-            this.RegisterDateLabel.Location = new System.Drawing.Point(134, 242);
+            this.RegisterDateLabel.Location = new System.Drawing.Point(44, 60);
             this.RegisterDateLabel.Name = "RegisterDateLabel";
             this.RegisterDateLabel.Size = new System.Drawing.Size(58, 13);
             this.RegisterDateLabel.TabIndex = 2;
@@ -102,7 +108,7 @@
             this.RegisterEmailLabel.AutoSize = true;
             this.RegisterEmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.RegisterEmailLabel.ForeColor = System.Drawing.Color.White;
-            this.RegisterEmailLabel.Location = new System.Drawing.Point(155, 188);
+            this.RegisterEmailLabel.Location = new System.Drawing.Point(62, 4);
             this.RegisterEmailLabel.Name = "RegisterEmailLabel";
             this.RegisterEmailLabel.Size = new System.Drawing.Size(37, 13);
             this.RegisterEmailLabel.TabIndex = 3;
@@ -113,7 +119,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(104, 215);
+            this.label4.Location = new System.Drawing.Point(14, 31);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 13);
             this.label4.TabIndex = 4;
@@ -135,8 +141,9 @@
             this.studentOrTeacherComboBox.FormattingEnabled = true;
             this.studentOrTeacherComboBox.Items.AddRange(new object[] {
             "Student",
-            "Teacher"});
-            this.studentOrTeacherComboBox.Location = new System.Drawing.Point(206, 102);
+            "Teacher",
+            "Parent"});
+            this.studentOrTeacherComboBox.Location = new System.Drawing.Point(203, 102);
             this.studentOrTeacherComboBox.Name = "studentOrTeacherComboBox";
             this.studentOrTeacherComboBox.Size = new System.Drawing.Size(100, 21);
             this.studentOrTeacherComboBox.TabIndex = 6;
@@ -155,7 +162,7 @@
             // 
             // classBox
             // 
-            this.classBox.Location = new System.Drawing.Point(92, 3);
+            this.classBox.Location = new System.Drawing.Point(97, 5);
             this.classBox.Name = "classBox";
             this.classBox.Size = new System.Drawing.Size(100, 20);
             this.classBox.TabIndex = 8;
@@ -166,7 +173,7 @@
             // 
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.classBox);
-            this.panel1.Location = new System.Drawing.Point(107, 259);
+            this.panel1.Location = new System.Drawing.Point(106, 259);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(201, 44);
             this.panel1.TabIndex = 9;
@@ -176,7 +183,7 @@
             // 
             this.panel2.Controls.Add(this.subjectCombBox);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(106, 259);
+            this.panel2.Location = new System.Drawing.Point(105, 258);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 44);
             this.panel2.TabIndex = 9;
@@ -203,28 +210,28 @@
             // 
             // phoneNumberBox
             // 
-            this.phoneNumberBox.Location = new System.Drawing.Point(205, 212);
+            this.phoneNumberBox.Location = new System.Drawing.Point(108, 28);
             this.phoneNumberBox.Name = "phoneNumberBox";
             this.phoneNumberBox.Size = new System.Drawing.Size(100, 20);
             this.phoneNumberBox.TabIndex = 10;
             // 
             // emailBox
             // 
-            this.emailBox.Location = new System.Drawing.Point(204, 185);
+            this.emailBox.Location = new System.Drawing.Point(108, 0);
             this.emailBox.Name = "emailBox";
             this.emailBox.Size = new System.Drawing.Size(100, 20);
             this.emailBox.TabIndex = 11;
             // 
             // nameBox
             // 
-            this.nameBox.Location = new System.Drawing.Point(205, 129);
+            this.nameBox.Location = new System.Drawing.Point(203, 129);
             this.nameBox.Name = "nameBox";
             this.nameBox.Size = new System.Drawing.Size(100, 20);
             this.nameBox.TabIndex = 13;
             // 
             // egnBox
             // 
-            this.egnBox.Location = new System.Drawing.Point(205, 156);
+            this.egnBox.Location = new System.Drawing.Point(203, 156);
             this.egnBox.Name = "egnBox";
             this.egnBox.Size = new System.Drawing.Size(100, 20);
             this.egnBox.TabIndex = 14;
@@ -253,7 +260,7 @@
             // 
             // dateTimeBox
             // 
-            this.dateTimeBox.Location = new System.Drawing.Point(204, 238);
+            this.dateTimeBox.Location = new System.Drawing.Point(108, 54);
             this.dateTimeBox.Name = "dateTimeBox";
             this.dateTimeBox.Size = new System.Drawing.Size(100, 20);
             this.dateTimeBox.TabIndex = 18;
@@ -265,7 +272,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(433, 40);
+            this.panel3.Size = new System.Drawing.Size(449, 40);
             this.panel3.TabIndex = 19;
             // 
             // ReturnButton
@@ -296,36 +303,87 @@
             this.panel4.Size = new System.Drawing.Size(90, 315);
             this.panel4.TabIndex = 20;
             // 
-            // dragControl1
+            // parentPanel
             // 
-            this.dragControl1.SelectControl = this.panel3;
+            this.parentPanel.Controls.Add(this.EGNStudetnTXB);
+            this.parentPanel.Controls.Add(this.egnStudentTBX);
+            this.parentPanel.Controls.Add(this.NameStudentTBX);
+            this.parentPanel.Controls.Add(this.studentLabelName);
+            this.parentPanel.Location = new System.Drawing.Point(113, 175);
+            this.parentPanel.Name = "parentPanel";
+            this.parentPanel.Size = new System.Drawing.Size(198, 70);
+            this.parentPanel.TabIndex = 3;
+            this.parentPanel.Visible = false;
             // 
-            // dragControl2
+            // EGNStudetnTXB
             // 
-            this.dragControl2.SelectControl = this.panel4;
+            this.EGNStudetnTXB.Location = new System.Drawing.Point(90, 9);
+            this.EGNStudetnTXB.Name = "EGNStudetnTXB";
+            this.EGNStudetnTXB.Size = new System.Drawing.Size(100, 20);
+            this.EGNStudetnTXB.TabIndex = 4;
+            // 
+            // egnStudentTBX
+            // 
+            this.egnStudentTBX.AutoSize = true;
+            this.egnStudentTBX.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.egnStudentTBX.ForeColor = System.Drawing.Color.White;
+            this.egnStudentTBX.Location = new System.Drawing.Point(3, 11);
+            this.egnStudentTBX.Name = "egnStudentTBX";
+            this.egnStudentTBX.Size = new System.Drawing.Size(81, 13);
+            this.egnStudentTBX.TabIndex = 3;
+            this.egnStudentTBX.Text = "Student EGN";
+            this.egnStudentTBX.Click += new System.EventHandler(this.egnStudentTBX_Click);
+            // 
+            // NameStudentTBX
+            // 
+            this.NameStudentTBX.Location = new System.Drawing.Point(90, 35);
+            this.NameStudentTBX.Name = "NameStudentTBX";
+            this.NameStudentTBX.Size = new System.Drawing.Size(100, 20);
+            this.NameStudentTBX.TabIndex = 2;
+            // 
+            // studentLabelName
+            // 
+            this.studentLabelName.AutoSize = true;
+            this.studentLabelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.studentLabelName.ForeColor = System.Drawing.SystemColors.Window;
+            this.studentLabelName.Location = new System.Drawing.Point(-3, 38);
+            this.studentLabelName.Name = "studentLabelName";
+            this.studentLabelName.Size = new System.Drawing.Size(87, 13);
+            this.studentLabelName.TabIndex = 0;
+            this.studentLabelName.Text = "Student Name";
+            // 
+            // contactInfoPanel
+            // 
+            this.contactInfoPanel.Controls.Add(this.RegisterEmailLabel);
+            this.contactInfoPanel.Controls.Add(this.emailBox);
+            this.contactInfoPanel.Controls.Add(this.label4);
+            this.contactInfoPanel.Controls.Add(this.phoneNumberBox);
+            this.contactInfoPanel.Controls.Add(this.RegisterDateLabel);
+            this.contactInfoPanel.Controls.Add(this.dateTimeBox);
+            this.contactInfoPanel.Location = new System.Drawing.Point(95, 182);
+            this.contactInfoPanel.Name = "contactInfoPanel";
+            this.contactInfoPanel.Size = new System.Drawing.Size(212, 76);
+            this.contactInfoPanel.TabIndex = 4;
+            this.contactInfoPanel.Visible = false;
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
-            this.ClientSize = new System.Drawing.Size(433, 355);
+            this.ClientSize = new System.Drawing.Size(449, 355);
+            this.Controls.Add(this.contactInfoPanel);
+            this.Controls.Add(this.parentPanel);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.dateTimeBox);
             this.Controls.Add(this.PersonalInformationLabel);
             this.Controls.Add(this.SelectPerson);
             this.Controls.Add(this.egnBox);
             this.Controls.Add(this.nameBox);
-            this.Controls.Add(this.emailBox);
-            this.Controls.Add(this.phoneNumberBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.studentOrTeacherComboBox);
             this.Controls.Add(this.RegisterEgnLabel);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.RegisterEmailLabel);
-            this.Controls.Add(this.RegisterDateLabel);
             this.Controls.Add(this.RegisterNameLabel);
             this.Controls.Add(this.registerButton);
             this.ForeColor = System.Drawing.SystemColors.Desktop;
@@ -339,6 +397,10 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
+            this.parentPanel.ResumeLayout(false);
+            this.parentPanel.PerformLayout();
+            this.contactInfoPanel.ResumeLayout(false);
+            this.contactInfoPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -369,7 +431,11 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button ReturnButton;
         private System.Windows.Forms.Panel panel4;
-        private DragControl dragControl1;
-        private DragControl dragControl2;
+        private System.Windows.Forms.Panel parentPanel;
+        private System.Windows.Forms.Label egnStudentTBX;
+        private System.Windows.Forms.TextBox NameStudentTBX;
+        private System.Windows.Forms.Label studentLabelName;
+        private System.Windows.Forms.Panel contactInfoPanel;
+        private System.Windows.Forms.TextBox EGNStudetnTXB;
     }
 }

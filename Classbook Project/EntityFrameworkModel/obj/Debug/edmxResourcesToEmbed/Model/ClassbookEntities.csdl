@@ -26,6 +26,18 @@
     <NavigationProperty Name="Subject" Relationship="Self.marks_fk_marks_subjects" FromRole="Marks" ToRole="Subjects" />
     <NavigationProperty Name="Teacher" Relationship="Self.marks_fk_marks_teachers" FromRole="Marks" ToRole="Teachers" />
   </EntityType>
+  <EntityType Name="Parent">
+    <Key>
+      <PropertyRef Name="ParentId" />
+    </Key>
+    <Property Name="ParentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PersonalNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="StudentId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Student" Relationship="Self.FK_parnets_students" FromRole="Parents" ToRole="Students" />
+  </EntityType>
   <EntityType Name="StudentContactInfo">
     <Key>
       <PropertyRef Name="ContactInfoId" />
@@ -49,6 +61,7 @@
     <Property Name="ClassId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Class" Relationship="Self.students_fk_students_classes" FromRole="Students" ToRole="Classes" />
     <NavigationProperty Name="Marks" Relationship="Self.marks_fk_marks_students" FromRole="Students" ToRole="Marks" />
+    <NavigationProperty Name="Parents" Relationship="Self.FK_parnets_students" FromRole="Students" ToRole="Parents" />
     <NavigationProperty Name="StudentContactInfoes" Relationship="Self.student_contact_info_fk_student_contact_info" FromRole="Students" ToRole="StudentContactInfo" />
   </EntityType>
   <EntityType Name="Subject">
@@ -147,6 +160,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_parnets_students">
+    <End Role="Students" Type="Self.Student" Multiplicity="1" />
+    <End Role="Parents" Type="Self.Parent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentId" />
+      </Principal>
+      <Dependent Role="Parents">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="student_contact_info_fk_student_contact_info">
     <End Role="Students" Type="Self.Student" Multiplicity="1" />
     <End Role="StudentContactInfo" Type="Self.StudentContactInfo" Multiplicity="*" />
@@ -186,6 +211,7 @@
   <EntityContainer Name="ClassbookEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Classes" EntityType="Self.Class" />
     <EntitySet Name="Marks" EntityType="Self.Mark" />
+    <EntitySet Name="Parents" EntityType="Self.Parent" />
     <EntitySet Name="StudentContactInfoes" EntityType="Self.StudentContactInfo" />
     <EntitySet Name="Students" EntityType="Self.Student" />
     <EntitySet Name="Subjects" EntityType="Self.Subject" />
@@ -210,6 +236,10 @@
     <AssociationSet Name="marks_fk_marks_teachers" Association="Self.marks_fk_marks_teachers">
       <End Role="Teachers" EntitySet="Teachers" />
       <End Role="Marks" EntitySet="Marks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_parnets_students" Association="Self.FK_parnets_students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Parents" EntitySet="Parents" />
     </AssociationSet>
     <AssociationSet Name="student_contact_info_fk_student_contact_info" Association="Self.student_contact_info_fk_student_contact_info">
       <End Role="Students" EntitySet="Students" />

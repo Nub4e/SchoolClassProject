@@ -28,22 +28,48 @@ namespace ClassbookProject
             insertEGNTxtBox.Text = "6561865618";
             loginSelectComboBox.SelectedIndex = 0;
         }
-      void SetDefaultValueTeacherNonPrincipal()
-      {
-          insertNameTxtBox.Text = "CarlHardingGrimes";
-          insertEGNTxtBox.Text = "4873648736";
-          loginSelectComboBox.SelectedIndex = 0;
-       }
+        void SetDefaultValueTeacherNonPrincipal()
+        {
+            insertNameTxtBox.Text = "CarlHardingGrimes";
+            insertEGNTxtBox.Text = "4873648736";
+            loginSelectComboBox.SelectedIndex = 0;
+        }
+        void SetDefaultValueParent()
+        {
+            insertNameTxtBox.Text = "MitkoMitkovMinkov";
+            insertEGNTxtBox.Text = "1234567891";
+            loginSelectComboBox.SelectedIndex = 2;
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
+               // SetDefaultValueParent();
               // SetDefaultValueTeacherNonPrincipal();
              // SetDefaultValueStudent();
-             SetDefaultValueTeacher();
+            SetDefaultValueTeacher();
 
             // Проверка за избора на  teacher and student 
             LoginController loginController = new LoginController();
             // Checks if student option is sellected in combo box
+            if (Index==2)
+            {
+                string egnPass = String.Empty;
+                if (loginController.ParentExists(EGN) && loginController.ParentNameIsCorrect(EGN, FullName))
+                {
+                    egnPass = loginController.EgnPassSetForParent(EGN);
+                    this.Hide();
+                    ParentForm parentForm = new ParentForm(egnPass);
+                    parentForm.Show();
+                    parentForm.Closed += (s, args) => this.Show();
+                    insertEGNTxtBox.Clear();
+                    insertNameTxtBox.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("No such parent", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
             if (Index == 1)
             {
                 string egnPass = String.Empty;

@@ -42,8 +42,6 @@
             this.ReturnButton = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.dragControl1 = new ClassbookProject.DragControl();
-            this.dragControl2 = new ClassbookProject.DragControl();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -122,7 +120,8 @@
             this.loginSelectComboBox.FormattingEnabled = true;
             this.loginSelectComboBox.Items.AddRange(new object[] {
             "Teacher",
-            "Student"});
+            "Student",
+            "Parent"});
             this.loginSelectComboBox.Location = new System.Drawing.Point(188, 167);
             this.loginSelectComboBox.Name = "loginSelectComboBox";
             this.loginSelectComboBox.Size = new System.Drawing.Size(100, 21);
@@ -199,14 +198,6 @@
             this.panel4.Size = new System.Drawing.Size(320, 32);
             this.panel4.TabIndex = 11;
             // 
-            // dragControl1
-            // 
-            this.dragControl1.SelectControl = this.panel2;
-            // 
-            // dragControl2
-            // 
-            this.dragControl2.SelectControl = this.panel4;
-            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -250,7 +241,5 @@
         private System.Windows.Forms.Button ReturnButton;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private DragControl dragControl1;
-        private DragControl dragControl2;
     }
 }
