@@ -64,6 +64,7 @@
     <Compile Include="TeacherRegisterTests.cs" />
     <Compile Include="StudentFormTests.cs" />
     <Compile Include="TeacherFormTests.cs" />
+    <Compile Include="ParentFormTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

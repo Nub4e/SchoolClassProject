@@ -134,7 +134,7 @@ namespace AllController.Controllers
             context.Parents.Add(currentParent);
             context.SaveChanges();
         }
-
+      
         public void EndConnection()
         {
             context.Database.Connection.Close();
@@ -150,6 +150,10 @@ namespace AllController.Controllers
             {
                 return false;
             }
+        }
+        ~ParentRegisterController()
+        {
+            context.Database.Connection.Close();
         }
     }
 }

@@ -11,6 +11,17 @@
     <NavigationProperty Name="Teacher" Relationship="Self.classes_fk_classes_teachers" FromRole="Classes" ToRole="Teachers" />
     <NavigationProperty Name="Students" Relationship="Self.students_fk_students_classes" FromRole="Classes" ToRole="Students" />
   </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="TeacherId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK_events_teachers" FromRole="Events" ToRole="Teachers" />
+  </EntityType>
   <EntityType Name="Mark">
     <Key>
       <PropertyRef Name="MarkId" />
@@ -96,6 +107,7 @@
     <Property Name="SubjectId" Type="Int32" Nullable="false" />
     <Property Name="ExtendedPermissions" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Classes" Relationship="Self.classes_fk_classes_teachers" FromRole="Teachers" ToRole="Classes" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_events_teachers" FromRole="Teachers" ToRole="Events" />
     <NavigationProperty Name="Marks" Relationship="Self.marks_fk_marks_teachers" FromRole="Teachers" ToRole="Marks" />
     <NavigationProperty Name="Subject" Relationship="Self.teachers_fk_teachers_subjects" FromRole="Teachers" ToRole="Subjects" />
     <NavigationProperty Name="TeacherContactInfoes" Relationship="Self.teacher_contact_info_fk_teacher_contact_info_teachers" FromRole="Teachers" ToRole="TeacherContactInfo" />
@@ -121,6 +133,18 @@
       </Principal>
       <Dependent Role="Students">
         <PropertyRef Name="ClassId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_events_teachers">
+    <End Role="Teachers" Type="Self.Teacher" Multiplicity="1" />
+    <End Role="Events" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teachers">
+        <PropertyRef Name="TeacherId" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="TeacherId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -210,6 +234,7 @@
   </Association>
   <EntityContainer Name="ClassbookEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
     <EntitySet Name="Marks" EntityType="Self.Mark" />
     <EntitySet Name="Parents" EntityType="Self.Parent" />
     <EntitySet Name="StudentContactInfoes" EntityType="Self.StudentContactInfo" />
@@ -224,6 +249,10 @@
     <AssociationSet Name="students_fk_students_classes" Association="Self.students_fk_students_classes">
       <End Role="Classes" EntitySet="Classes" />
       <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK_events_teachers" Association="Self.FK_events_teachers">
+      <End Role="Teachers" EntitySet="Teachers" />
+      <End Role="Events" EntitySet="Events" />
     </AssociationSet>
     <AssociationSet Name="marks_fk_marks_students" Association="Self.marks_fk_marks_students">
       <End Role="Students" EntitySet="Students" />

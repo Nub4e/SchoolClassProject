@@ -11,12 +11,14 @@ using ClassbookProject;
 using ClassbookProject.View;
 using AllController;
 using AllController.Controllers;
+using System.Drawing.Drawing2D;
 
 namespace ClassbookProject
 {
     public partial class TeacherForm : Form, ITeacherForm
     {
         TeacherController teacherController = new TeacherController();
+        EventController eventController = new EventController();
 
         string egnPass;
 
@@ -35,7 +37,7 @@ namespace ClassbookProject
         {
             InitializeComponent();
             egnPass = egn;
-
+           
             teacherName.Text = teacherController.SetFirstLastName(egnPass);
             // Loads all classes into SelectedClassComboBox
             List<string> classes = teacherController.LoadClasses();
@@ -43,11 +45,36 @@ namespace ClassbookProject
             {
                 SelectedClassComboBox.Items.Add(classes[i]);
             }
+            ShowEventBar();
 
+
+        }
+        private bool CheckForEvent()
+        {
+            if (eventController.HasEvents()==false)
+            {
+                return false ;
+            }
+            var showdate =  eventController.ClosestDate().Date.AddDays(-2);
+            if (showdate == DateTime.Today || showdate.AddDays(1)==DateTime.Today || showdate.AddDays(2) == DateTime.Today)
+            {
+                return true;
+            }
+           
+            return false;
+        }
+        private void ShowEventBar()
+        {
+            if (CheckForEvent() == true)
+            {
+                EventDescriptionLabel.Text = eventController.SetDescription();
+                EventBar.Visible = true;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            eventController.EndConnection();
             this.Close();
         }
 
@@ -282,6 +309,8 @@ namespace ClassbookProject
             {
                 addClassPanel.Visible = true;
                 addSubjectPanel.Visible = false;
+                EventPanel.Visible = false;
+
                 addPrincipalPannel.Visible = false;
                 {
                     {
@@ -301,6 +330,8 @@ namespace ClassbookProject
                     addSubjectPanel.Visible = true;
                     addClassPanel.Visible = false;
                     addPrincipalPannel.Visible = false;
+                    EventPanel.Visible = false;
+
                 }
                 else
                 {
@@ -309,12 +340,23 @@ namespace ClassbookProject
                         addSubjectPanel.Visible = false;
                         addClassPanel.Visible = false;
                         addPrincipalPannel.Visible = true;
+                        EventPanel.Visible = false ;
                         // Load nonPrincipalTeacherComboBox
                         {
                             teacherController.NonPrincipalTeachers().ForEach(w => nonPrincipalTeacherComboBox.Items.Add(w));
                         }
                     }
                 }
+
+            }
+            if (PermissionsComboBox.SelectedItem.ToString() == "Add an event")
+            {
+                addSubjectPanel.Visible = false;
+                addClassPanel.Visible = false;
+                addPrincipalPannel.Visible = false;
+                EventPanel.Visible = true;
+                EventNameTXT.Clear();
+                DescriptionText.Clear();
             }
         } //R
 
@@ -382,6 +424,70 @@ namespace ClassbookProject
             MessageBox.Show("Mark removed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-       
+        private void EventBarForTeacher_Paint(object sender, PaintEventArgs e)
+        {
+
+            Graphics v = e.Graphics;
+            DrawRoundRect(v, Pens.Blue, e.ClipRectangle.Left, e.ClipRectangle.Top, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1, 10);
+            //Without rounded corners
+            //e.Graphics.DrawRectangle(Pens.Blue, e.ClipRectangle.Left, e.ClipRectangle.Top, e.ClipRectangle.Width - 1, e.ClipRectangle.Height - 1);
+            base.OnPaint(e);
+        }
+        public void DrawRoundRect(Graphics g, Pen p, float X, float Y, float width, float height, float radius)
+        {
+            GraphicsPath gp = new GraphicsPath();
+            gp.AddLine(X + radius, Y, X + width - (radius * 2), Y);
+            gp.AddArc(X + width - (radius * 2), Y, radius * 2, radius * 2, 270, 90);
+            gp.AddLine(X + width, Y + radius, X + width, Y + height - (radius * 2));
+            gp.AddArc(X + width - (radius * 2), Y + height - (radius * 2), radius * 2, radius * 2, 0, 90);
+            gp.AddLine(X + width - (radius * 2), Y + height, X + radius, Y + height);
+            gp.AddArc(X, Y + height - (radius * 2), radius * 2, radius * 2, 90, 90);
+            gp.AddLine(X, Y + height - (radius * 2), X, Y + radius);
+            gp.AddArc(X, Y, radius * 2, radius * 2, 180, 90);
+            gp.CloseFigure();
+            g.DrawPath(p, gp);
+            gp.Dispose();
+        }
+
+        private void eventAddBTN_Click(object sender, EventArgs e)
+        {
+            if (EventNameTXT.Text==string.Empty)
+            {
+                MessageBox.Show("Add valid event name", "Error",MessageBoxButtons.OKCancel,MessageBoxIcon.Error);
+                return;
+            }
+            if (DescriptionText.Text == string.Empty)
+            {
+                MessageBox.Show("Add description for event", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                return;
+            }
+            if (eventController.InvalidEventName(EventNameTXT.Text))
+            {
+                MessageBox.Show("Event name already exists", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                return;
+            }
+            if (eventController.DateExists(dateTimeEventBox.Value))
+            {
+                MessageBox.Show("Date is incorrect", "Error", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                return;
+            }
+            else
+            {
+                var Description = DescriptionText.Text;
+                var Date = dateTimeEventBox.Value;
+                var Name = EventNameTXT.Text;
+
+
+                eventController.SetEvent(Name, Date, Description, egnPass);
+                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
+            
+        }
+
+        private void closeEventBarBtn_Click(object sender, EventArgs e)
+        {
+            EventBar.Visible = false;
+        }
     }
 }

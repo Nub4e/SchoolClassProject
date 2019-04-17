@@ -4,17 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="11c1ee683e1a40639c6f404060c3c6a7" Name="Diagram1">
-        <EntityTypeShape EntityType="ClassbookModel.Class" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassbookModel.Mark" Width="1.5" PointX="12.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassbookModel.Parent" Width="1.5" PointX="9.75" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassbookModel.StudentContactInfo" Width="1.5" PointX="9.75" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassbookModel.Student" Width="1.5" PointX="7.5" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassbookModel.Subject" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassbookModel.TeacherContactInfo" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClassbookModel.Teacher" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+      <Diagram DiagramId="498f0cd0f2ed4cac9c1c238de001d63c" Name="Diagram1">
+        <EntityTypeShape EntityType="ClassbookModel.Class" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Event" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Mark" Width="1.5" PointX="12.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Parent" Width="1.5" PointX="9.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.StudentContactInfo" Width="1.5" PointX="9.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Student" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Subject" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.TeacherContactInfo" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClassbookModel.Teacher" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
         <AssociationConnector Association="ClassbookModel.classes_fk_classes_teachers" ManuallyRouted="false" />
         <AssociationConnector Association="ClassbookModel.students_fk_students_classes" ManuallyRouted="false" />
+        <AssociationConnector Association="ClassbookModel.FK_events_teachers" ManuallyRouted="false" />
         <AssociationConnector Association="ClassbookModel.marks_fk_marks_students" ManuallyRouted="false" />
         <AssociationConnector Association="ClassbookModel.marks_fk_marks_subjects" ManuallyRouted="false" />
         <AssociationConnector Association="ClassbookModel.marks_fk_marks_teachers" ManuallyRouted="false" />

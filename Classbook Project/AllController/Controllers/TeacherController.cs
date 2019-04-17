@@ -12,6 +12,7 @@ namespace AllController.Controllers
     {
         Subject currentSubject = new Subject();
         public string CurrentSubjectName { get; set; }
+        Event CurrentEvent = new Event();
 
 
 

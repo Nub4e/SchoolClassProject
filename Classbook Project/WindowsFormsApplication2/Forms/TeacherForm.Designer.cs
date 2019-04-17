@@ -35,11 +35,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.EventBar = new System.Windows.Forms.Panel();
+            this.EventDescriptionLabel = new System.Windows.Forms.Label();
             this.removeMarkPanel = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.RemoveList = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.Update = new System.Windows.Forms.Button();
             this.Remove = new System.Windows.Forms.Button();
             this.addMarkPanel = new System.Windows.Forms.Panel();
             this.markDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -48,6 +49,14 @@
             this.addMarkTextBox = new System.Windows.Forms.TextBox();
             this.Add = new System.Windows.Forms.Button();
             this.principalPanel = new System.Windows.Forms.Panel();
+            this.EventPanel = new System.Windows.Forms.Panel();
+            this.eventAddBTN = new System.Windows.Forms.Button();
+            this.eventAddButton = new System.Windows.Forms.Label();
+            this.dateTimeEventBox = new System.Windows.Forms.DateTimePicker();
+            this.EventNameTXT = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.DescriptionText = new System.Windows.Forms.RichTextBox();
             this.OptionsLabel = new System.Windows.Forms.Label();
             this.PermissionComboBox = new System.Windows.Forms.ComboBox();
             this.addSubjectPanel = new System.Windows.Forms.Panel();
@@ -74,11 +83,14 @@
             this.label2 = new System.Windows.Forms.Label();
             this.selectClassComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.closeEventBarBtn = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.EventBar.SuspendLayout();
             this.removeMarkPanel.SuspendLayout();
             this.addMarkPanel.SuspendLayout();
             this.principalPanel.SuspendLayout();
+            this.EventPanel.SuspendLayout();
             this.addSubjectPanel.SuspendLayout();
             this.addPrincipalPannel.SuspendLayout();
             this.addClassPanel.SuspendLayout();
@@ -151,8 +163,8 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel3.Controls.Add(this.EventBar);
             this.panel3.Controls.Add(this.removeMarkPanel);
-            this.panel3.Controls.Add(this.Update);
             this.panel3.Controls.Add(this.Remove);
             this.panel3.Controls.Add(this.addMarkPanel);
             this.panel3.Controls.Add(this.Add);
@@ -165,6 +177,30 @@
             this.panel3.Size = new System.Drawing.Size(589, 436);
             this.panel3.TabIndex = 3;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // EventBar
+            // 
+            this.EventBar.BackColor = System.Drawing.Color.Bisque;
+            this.EventBar.Controls.Add(this.closeEventBarBtn);
+            this.EventBar.Controls.Add(this.EventDescriptionLabel);
+            this.EventBar.Location = new System.Drawing.Point(0, 0);
+            this.EventBar.Name = "EventBar";
+            this.EventBar.Size = new System.Drawing.Size(589, 61);
+            this.EventBar.TabIndex = 18;
+            this.EventBar.Visible = false;
+            this.EventBar.Paint += new System.Windows.Forms.PaintEventHandler(this.EventBarForTeacher_Paint);
+            // 
+            // EventDescriptionLabel
+            // 
+            this.EventDescriptionLabel.AutoSize = true;
+            this.EventDescriptionLabel.BackColor = System.Drawing.Color.Bisque;
+            this.EventDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EventDescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.EventDescriptionLabel.Location = new System.Drawing.Point(36, 15);
+            this.EventDescriptionLabel.Name = "EventDescriptionLabel";
+            this.EventDescriptionLabel.Size = new System.Drawing.Size(126, 16);
+            this.EventDescriptionLabel.TabIndex = 20;
+            this.EventDescriptionLabel.Text = "EventDescription";
             // 
             // removeMarkPanel
             // 
@@ -213,18 +249,10 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Remove Mark";
             // 
-            // Update
-            // 
-            this.Update.Location = new System.Drawing.Point(219, 66);
-            this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(75, 23);
-            this.Update.TabIndex = 17;
-            this.Update.Text = "button4";
-            this.Update.UseVisualStyleBackColor = true;
-            // 
             // Remove
             // 
             this.Remove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
+            this.Remove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Remove.ForeColor = System.Drawing.Color.White;
             this.Remove.Location = new System.Drawing.Point(107, 66);
@@ -293,6 +321,7 @@
             // Add
             // 
             this.Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
+            this.Add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Add.ForeColor = System.Drawing.Color.White;
             this.Add.Location = new System.Drawing.Point(24, 66);
@@ -305,6 +334,7 @@
             // 
             // principalPanel
             // 
+            this.principalPanel.Controls.Add(this.EventPanel);
             this.principalPanel.Controls.Add(this.OptionsLabel);
             this.principalPanel.Controls.Add(this.PermissionComboBox);
             this.principalPanel.Controls.Add(this.addSubjectPanel);
@@ -313,9 +343,93 @@
             this.principalPanel.Controls.Add(this.permissionsComboBox);
             this.principalPanel.Location = new System.Drawing.Point(327, 87);
             this.principalPanel.Name = "principalPanel";
-            this.principalPanel.Size = new System.Drawing.Size(244, 308);
+            this.principalPanel.Size = new System.Drawing.Size(244, 337);
             this.principalPanel.TabIndex = 13;
             this.principalPanel.Visible = false;
+            // 
+            // EventPanel
+            // 
+            this.EventPanel.Controls.Add(this.eventAddBTN);
+            this.EventPanel.Controls.Add(this.eventAddButton);
+            this.EventPanel.Controls.Add(this.dateTimeEventBox);
+            this.EventPanel.Controls.Add(this.EventNameTXT);
+            this.EventPanel.Controls.Add(this.label11);
+            this.EventPanel.Controls.Add(this.label10);
+            this.EventPanel.Controls.Add(this.DescriptionText);
+            this.EventPanel.Location = new System.Drawing.Point(25, 57);
+            this.EventPanel.Name = "EventPanel";
+            this.EventPanel.Size = new System.Drawing.Size(206, 264);
+            this.EventPanel.TabIndex = 19;
+            this.EventPanel.Visible = false;
+            // 
+            // eventAddBTN
+            // 
+            this.eventAddBTN.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
+            this.eventAddBTN.FlatAppearance.BorderSize = 0;
+            this.eventAddBTN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eventAddBTN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.eventAddBTN.ForeColor = System.Drawing.Color.White;
+            this.eventAddBTN.Location = new System.Drawing.Point(44, 218);
+            this.eventAddBTN.Name = "eventAddBTN";
+            this.eventAddBTN.Size = new System.Drawing.Size(94, 37);
+            this.eventAddBTN.TabIndex = 23;
+            this.eventAddBTN.Text = "Add Event";
+            this.eventAddBTN.UseVisualStyleBackColor = false;
+            this.eventAddBTN.Click += new System.EventHandler(this.eventAddBTN_Click);
+            // 
+            // eventAddButton
+            // 
+            this.eventAddButton.AutoSize = true;
+            this.eventAddButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.eventAddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.eventAddButton.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.eventAddButton.Location = new System.Drawing.Point(55, 90);
+            this.eventAddButton.Name = "eventAddButton";
+            this.eventAddButton.Size = new System.Drawing.Size(91, 16);
+            this.eventAddButton.TabIndex = 22;
+            this.eventAddButton.Text = "Description:";
+            // 
+            // dateTimeEventBox
+            // 
+            this.dateTimeEventBox.Location = new System.Drawing.Point(16, 57);
+            this.dateTimeEventBox.Name = "dateTimeEventBox";
+            this.dateTimeEventBox.Size = new System.Drawing.Size(166, 20);
+            this.dateTimeEventBox.TabIndex = 21;
+            // 
+            // EventNameTXT
+            // 
+            this.EventNameTXT.Location = new System.Drawing.Point(16, 27);
+            this.EventNameTXT.Name = "EventNameTXT";
+            this.EventNameTXT.Size = new System.Drawing.Size(166, 20);
+            this.EventNameTXT.TabIndex = 20;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.label11.Location = new System.Drawing.Point(55, 8);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(97, 16);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "Event name: ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(63, 8);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(0, 13);
+            this.label10.TabIndex = 1;
+            // 
+            // DescriptionText
+            // 
+            this.DescriptionText.Location = new System.Drawing.Point(6, 116);
+            this.DescriptionText.Name = "DescriptionText";
+            this.DescriptionText.Size = new System.Drawing.Size(194, 96);
+            this.DescriptionText.TabIndex = 0;
+            this.DescriptionText.Text = "";
             // 
             // OptionsLabel
             // 
@@ -335,7 +449,8 @@
             this.PermissionComboBox.Items.AddRange(new object[] {
             "Add a class",
             "Add a subject",
-            "Add a vice-principal"});
+            "Add a vice-principal",
+            "Add an event"});
             this.PermissionComboBox.Location = new System.Drawing.Point(64, 21);
             this.PermissionComboBox.Name = "PermissionComboBox";
             this.PermissionComboBox.Size = new System.Drawing.Size(121, 21);
@@ -558,7 +673,7 @@
             this.permissionsCheckBox.AutoSize = true;
             this.permissionsCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.permissionsCheckBox.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.permissionsCheckBox.Location = new System.Drawing.Point(327, 21);
+            this.permissionsCheckBox.Location = new System.Drawing.Point(347, 64);
             this.permissionsCheckBox.Name = "permissionsCheckBox";
             this.permissionsCheckBox.Size = new System.Drawing.Size(129, 20);
             this.permissionsCheckBox.TabIndex = 12;
@@ -629,6 +744,20 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Select class:";
             // 
+            // closeEventBarBtn
+            // 
+            this.closeEventBarBtn.FlatAppearance.BorderSize = 0;
+            this.closeEventBarBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeEventBarBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.closeEventBarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.closeEventBarBtn.Location = new System.Drawing.Point(564, 35);
+            this.closeEventBarBtn.Name = "closeEventBarBtn";
+            this.closeEventBarBtn.Size = new System.Drawing.Size(22, 23);
+            this.closeEventBarBtn.TabIndex = 23;
+            this.closeEventBarBtn.Text = "X";
+            this.closeEventBarBtn.UseVisualStyleBackColor = true;
+            this.closeEventBarBtn.Click += new System.EventHandler(this.closeEventBarBtn_Click);
+            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -644,12 +773,16 @@
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.EventBar.ResumeLayout(false);
+            this.EventBar.PerformLayout();
             this.removeMarkPanel.ResumeLayout(false);
             this.removeMarkPanel.PerformLayout();
             this.addMarkPanel.ResumeLayout(false);
             this.addMarkPanel.PerformLayout();
             this.principalPanel.ResumeLayout(false);
             this.principalPanel.PerformLayout();
+            this.EventPanel.ResumeLayout(false);
+            this.EventPanel.PerformLayout();
             this.addSubjectPanel.ResumeLayout(false);
             this.addSubjectPanel.PerformLayout();
             this.addPrincipalPannel.ResumeLayout(false);
@@ -701,7 +834,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label teacherName;
         private System.Windows.Forms.Label welcomeLabel;
-        private System.Windows.Forms.Button Update;
         private System.Windows.Forms.Button Remove;
         private System.Windows.Forms.Button Add;
         private System.Windows.Forms.Panel removeMarkPanel;
@@ -710,5 +842,16 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox PermissionComboBox;
         private System.Windows.Forms.Label OptionsLabel;
+        private System.Windows.Forms.Panel EventBar;
+        private System.Windows.Forms.Panel EventPanel;
+        private System.Windows.Forms.TextBox EventNameTXT;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.RichTextBox DescriptionText;
+        private System.Windows.Forms.Label EventDescriptionLabel;
+        private System.Windows.Forms.Label eventAddButton;
+        private System.Windows.Forms.DateTimePicker dateTimeEventBox;
+        private System.Windows.Forms.Button eventAddBTN;
+        private System.Windows.Forms.Button closeEventBarBtn;
     }
 }

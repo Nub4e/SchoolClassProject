@@ -68,6 +68,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ClassbookEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Event.cs">
+      <DependentUpon>ClassbookEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Mark.cs">
       <DependentUpon>ClassbookEntities.tt</DependentUpon>
     </Compile>

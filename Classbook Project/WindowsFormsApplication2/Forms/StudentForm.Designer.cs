@@ -43,8 +43,12 @@
             this.classContactInfoListBox = new System.Windows.Forms.ListBox();
             this.label3 = new System.Windows.Forms.Label();
             this.headTeacherTextBox = new System.Windows.Forms.TextBox();
+            this.EventBar = new System.Windows.Forms.Panel();
+            this.EventDescriptionLabel = new System.Windows.Forms.Label();
+            this.closeEventBarBtn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.EventBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -122,7 +126,7 @@
             // studentSubjectsComboBox
             // 
             this.studentSubjectsComboBox.FormattingEnabled = true;
-            this.studentSubjectsComboBox.Location = new System.Drawing.Point(181, 125);
+            this.studentSubjectsComboBox.Location = new System.Drawing.Point(181, 166);
             this.studentSubjectsComboBox.Name = "studentSubjectsComboBox";
             this.studentSubjectsComboBox.Size = new System.Drawing.Size(121, 21);
             this.studentSubjectsComboBox.TabIndex = 2;
@@ -134,7 +138,7 @@
             this.SelectSubjectLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.SelectSubjectLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SelectSubjectLabel.ForeColor = System.Drawing.Color.White;
-            this.SelectSubjectLabel.Location = new System.Drawing.Point(178, 100);
+            this.SelectSubjectLabel.Location = new System.Drawing.Point(180, 139);
             this.SelectSubjectLabel.Name = "SelectSubjectLabel";
             this.SelectSubjectLabel.Size = new System.Drawing.Size(88, 13);
             this.SelectSubjectLabel.TabIndex = 3;
@@ -146,7 +150,7 @@
             this.selectedMarksListBox.HorizontalScrollbar = true;
             this.selectedMarksListBox.Items.AddRange(new object[] {
             "No marks"});
-            this.selectedMarksListBox.Location = new System.Drawing.Point(181, 196);
+            this.selectedMarksListBox.Location = new System.Drawing.Point(181, 222);
             this.selectedMarksListBox.Name = "selectedMarksListBox";
             this.selectedMarksListBox.Size = new System.Drawing.Size(312, 108);
             this.selectedMarksListBox.TabIndex = 4;
@@ -157,7 +161,7 @@
             this.AllMarksLabel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.AllMarksLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.AllMarksLabel.ForeColor = System.Drawing.Color.White;
-            this.AllMarksLabel.Location = new System.Drawing.Point(178, 169);
+            this.AllMarksLabel.Location = new System.Drawing.Point(180, 196);
             this.AllMarksLabel.Name = "AllMarksLabel";
             this.AllMarksLabel.Size = new System.Drawing.Size(58, 13);
             this.AllMarksLabel.TabIndex = 5;
@@ -169,7 +173,7 @@
             this.averageMark.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
             this.averageMark.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.averageMark.ForeColor = System.Drawing.Color.White;
-            this.averageMark.Location = new System.Drawing.Point(178, 317);
+            this.averageMark.Location = new System.Drawing.Point(178, 333);
             this.averageMark.Name = "averageMark";
             this.averageMark.Size = new System.Drawing.Size(90, 15);
             this.averageMark.TabIndex = 6;
@@ -180,7 +184,7 @@
             // 
             this.classContactInfoListBox.FormattingEnabled = true;
             this.classContactInfoListBox.HorizontalScrollbar = true;
-            this.classContactInfoListBox.Location = new System.Drawing.Point(549, 196);
+            this.classContactInfoListBox.Location = new System.Drawing.Point(549, 222);
             this.classContactInfoListBox.Name = "classContactInfoListBox";
             this.classContactInfoListBox.Size = new System.Drawing.Size(371, 108);
             this.classContactInfoListBox.TabIndex = 8;
@@ -195,11 +199,49 @@
             // 
             // headTeacherTextBox
             // 
-            this.headTeacherTextBox.Location = new System.Drawing.Point(549, 170);
+            this.headTeacherTextBox.Location = new System.Drawing.Point(549, 185);
             this.headTeacherTextBox.Name = "headTeacherTextBox";
             this.headTeacherTextBox.ReadOnly = true;
             this.headTeacherTextBox.Size = new System.Drawing.Size(371, 20);
             this.headTeacherTextBox.TabIndex = 10;
+            // 
+            // EventBar
+            // 
+            this.EventBar.BackColor = System.Drawing.Color.Bisque;
+            this.EventBar.Controls.Add(this.closeEventBarBtn);
+            this.EventBar.Controls.Add(this.EventDescriptionLabel);
+            this.EventBar.Location = new System.Drawing.Point(138, 51);
+            this.EventBar.Name = "EventBar";
+            this.EventBar.Size = new System.Drawing.Size(812, 65);
+            this.EventBar.TabIndex = 11;
+            this.EventBar.Visible = false;
+            this.EventBar.Paint += new System.Windows.Forms.PaintEventHandler(this.EventBarForStudent_Paint);
+            // 
+            // EventDescriptionLabel
+            // 
+            this.EventDescriptionLabel.AutoSize = true;
+            this.EventDescriptionLabel.BackColor = System.Drawing.Color.Bisque;
+            this.EventDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EventDescriptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.EventDescriptionLabel.Location = new System.Drawing.Point(26, 20);
+            this.EventDescriptionLabel.Name = "EventDescriptionLabel";
+            this.EventDescriptionLabel.Size = new System.Drawing.Size(126, 16);
+            this.EventDescriptionLabel.TabIndex = 21;
+            this.EventDescriptionLabel.Text = "EventDescription";
+            // 
+            // closeEventBarBtn
+            // 
+            this.closeEventBarBtn.FlatAppearance.BorderSize = 0;
+            this.closeEventBarBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.closeEventBarBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.closeEventBarBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(8)))), ((int)(((byte)(55)))));
+            this.closeEventBarBtn.Location = new System.Drawing.Point(787, 39);
+            this.closeEventBarBtn.Name = "closeEventBarBtn";
+            this.closeEventBarBtn.Size = new System.Drawing.Size(22, 23);
+            this.closeEventBarBtn.TabIndex = 23;
+            this.closeEventBarBtn.Text = "X";
+            this.closeEventBarBtn.UseVisualStyleBackColor = true;
+            this.closeEventBarBtn.Click += new System.EventHandler(this.closeEventBarBtn_Click);
             // 
             // StudentsForm
             // 
@@ -207,6 +249,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(950, 400);
+            this.Controls.Add(this.EventBar);
             this.Controls.Add(this.headTeacherTextBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.classContactInfoListBox);
@@ -225,6 +268,8 @@
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.EventBar.ResumeLayout(false);
+            this.EventBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +291,8 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label studentNameLabel;
         private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.Panel EventBar;
+        private System.Windows.Forms.Label EventDescriptionLabel;
+        private System.Windows.Forms.Button closeEventBarBtn;
     }
 }

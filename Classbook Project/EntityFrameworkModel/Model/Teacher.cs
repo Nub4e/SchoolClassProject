@@ -18,6 +18,7 @@ namespace EntityFrameworkModel.Model
         public Teacher()
         {
             this.Classes = new HashSet<Class>();
+            this.Events = new HashSet<Event>();
             this.Marks = new HashSet<Mark>();
             this.TeacherContactInfoes = new HashSet<TeacherContactInfo>();
         }
@@ -33,6 +34,8 @@ namespace EntityFrameworkModel.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Class> Classes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Event> Events { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mark> Marks { get; set; }
         public virtual Subject Subject { get; set; }
