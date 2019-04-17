@@ -49,6 +49,7 @@ namespace AllController
                 StudentId = CurrentStudent.StudentId;
             }
         }
+
         public string SetFirstLastName(string egnPass)
         {
 

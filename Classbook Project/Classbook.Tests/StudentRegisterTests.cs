@@ -82,13 +82,13 @@ namespace Classbook.Tests
 
         }
         [TestMethod]
-        public void IfStudentNameExists()
+        public void TestIfStudentNameExistsInDb()
         {
             string FullName = "Julia Arias James ";
             var student = new StudentRegisterController();
             bool result = student.StudentNameExists(FullName);
 
-            Assert.IsTrue(result, "This name exists");
+            Assert.IsTrue(result, "Student FullName exists in Database");
         }
         [TestMethod]
         public void IfStudentNameNotExists()
@@ -97,7 +97,7 @@ namespace Classbook.Tests
             var student = new StudentRegisterController();
             bool result = student.StudentNameExists(FullName);
 
-            Assert.IsFalse(result, "This name not exists");
+            Assert.IsFalse(result, "Student FullName NOT exists in Database");
         }
 
         [TestMethod]
@@ -168,7 +168,7 @@ namespace Classbook.Tests
         }
        
         [TestMethod]
-        public void IfEgnIsIncorrect()
+        public void IfStudentEgnIsIncorrect()
         {
             var student = new StudentRegisterController();
             string EGN = "1234";
@@ -179,7 +179,7 @@ namespace Classbook.Tests
 
         }
         [TestMethod]
-        public void IfEgnIsCorrect()
+        public void IfStudentEgnIsCorrect()
         {
             var student = new StudentRegisterController();
             string EGN = "1234299241";
@@ -190,24 +190,24 @@ namespace Classbook.Tests
 
         }
         [TestMethod]
-        public void IfEgnExistsInDb()
+        public void IfStudentEgnExistsInDb()
         {
             var student = new StudentRegisterController();
             string EGN = "3376299241";
             bool result = student.CheckEGNExists(EGN);
 
-            Assert.IsTrue(result, "This EGN exists in Database");
+            Assert.IsTrue(result, "This Student EGN exists in Database");
 
 
         }
         [TestMethod]
-        public void IfEgnNotExistsInDb()
+        public void IfStudentEgnNotExistsInDb()
         {
             var student = new StudentRegisterController();
             string EGN = "3333333333";
             bool result = student.CheckEGNExists(EGN);
 
-            Assert.IsFalse(result, "This EGN not exists in Database");
+            Assert.IsFalse(result, "This Student EGN not exists in Database");
 
 
         }

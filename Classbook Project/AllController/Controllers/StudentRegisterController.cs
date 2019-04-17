@@ -50,23 +50,23 @@ namespace AllController
         {
             using (ClassbookEntities context = new ClassbookEntities())
             {
-                
-                StudentContactInfo studentContactInfo = new StudentContactInfo();
-                Student student = new Student();
 
-                {
-                    List<string> allName = FullName.Split(' ').ToList();
+                //                
+               // StudentContactInfo studentContactInfo = new StudentContactInfo();
+               // Student student = new Student();
+
+                List<string> allName = FullName.Split(' ').ToList();
                     StudentFirstName = allName[0];
                     StudentMiddleName = allName[1];
                     StudentLastName = allName[2];
 
-                    if (context.Students.Any(w => w.FirstName + w.MiddleName + w.LastName == StudentFirstName + StudentMiddleName + StudentLastName))
-                    {
-                        return true;
-                    }
-                    else
-                        return false;
+                if (context.Students.Any(w => w.FirstName + w.MiddleName + w.LastName == StudentFirstName + StudentMiddleName + StudentLastName))
+                {
+                    return true;
                 }
+                else
+                    return false;
+                
 
 
 

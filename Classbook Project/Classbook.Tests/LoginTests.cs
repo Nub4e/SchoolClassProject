@@ -8,22 +8,22 @@ namespace Classbook.Tests
     public class LoginTests
     {
         [TestMethod]
-        public void SetStudentEegnIfExistsInDb()
+        public void SetStudentEgnIfExistsInDb()
         {
             var student = new LoginController();
             string EGN = "3376299241";
             string result = student.EgnPassSetForStudent(EGN);
 
-            Assert.AreEqual(result, EGN ,"Correct set student EGN");
+            Assert.AreEqual(result, EGN ,"Student EGN exists in Database and correct set");
 
         }
-        public void SetTeacherEegnIfExistsInDb()
+        public void SetTeacherEgnIfExistsInDb()
         {
             var student = new LoginController();
             string EGN = "6561865618";
             string result = student.EgnPassSetForTeacher(EGN);
 
-            Assert.AreEqual(result, EGN, "Correct set teacher EGN");
+            Assert.AreEqual(result, EGN, "Teacher EGN exists in Database and correct set");
 
         }
 
@@ -65,7 +65,7 @@ namespace Classbook.Tests
             var loginController = new LoginController();
             bool result = loginController.StudentExists(EGN);
 
-            Assert.IsFalse(result, "Student EGN exists in Database");
+            Assert.IsFalse(result, "Student EGN not exists in Database");
         }
 
         [TestMethod]

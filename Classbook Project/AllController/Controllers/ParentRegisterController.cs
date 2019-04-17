@@ -30,7 +30,7 @@ namespace AllController.Controllers
         {
             currentParent.FirstName = ParentFirstName;
             currentParent.MiddleName = ParentMiddleName;
-            currentParent.LastName = ParentLastName;
+            currentParent.MiddleName = ParentLastName;
             currentParent.PersonalNumber = ParentPersonalNumber;
             currentParent.StudentId = StudentId;
         }
@@ -45,23 +45,26 @@ namespace AllController.Controllers
             ParentLastName = allName[2];
         }
 
-
+        // Check for ParentName exists in Database
         public bool ParentNameExists(string FullName)
         {
-            Parent teacher = new Parent();
+         
+                List<string> allName = FullName.Split(' ').ToList();
+                ParentFirstName = allName[0];
+                ParentMiddleName = allName[1];
+                ParentLastName = allName[2];
 
-            List<string> allName = FullName.Split(' ').ToList();
-            ParentFirstName = allName[0];
-            ParentMiddleName = allName[1];
-            ParentLastName = allName[2];
-
-            if (context.Parents.Any(w => w.FirstName + w.MiddleName + w.LastName == ParentFirstName + ParentMiddleName + ParentLastName))
-            {
-                return true;
-            }
-            else
-                return false;
+                if (context.Parents.Any(w => w.FirstName + w.MiddleName + w.LastName == ParentFirstName + ParentMiddleName + ParentLastName))
+                {
+                    return true;
+                }
+                else { return false; }
+            
+               
         }
+
+
+
         public void SetEGN(string EGN)
         {
             ParentPersonalNumber = EGN;
@@ -84,16 +87,19 @@ namespace AllController.Controllers
         }
         public bool CheckEGNExists(string EGN)
         {
-            if (context.Parents.Any(w => w.PersonalNumber == EGN))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+           
+            
+                if (context.Parents.Any(w => w.PersonalNumber == EGN))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            
         }
-        public bool StudentNameIsCorrect(string FullName, string EGN)
+        public bool ParentNameIsCorrect(string FullName, string EGN)
         {
 
 
@@ -108,19 +114,6 @@ namespace AllController.Controllers
                 return false;
             }
 
-        }
-        public bool StudentExists(string EGN)
-        {    
-
-                if (context.Students.Any(c => c.PersonalNumber == EGN))
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            
         }
 
         public void SetStudentName(string fullName)

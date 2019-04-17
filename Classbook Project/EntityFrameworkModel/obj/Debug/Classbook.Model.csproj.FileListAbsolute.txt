@@ -67,4 +67,3 @@ C:\SchoolClassProject-master\SchoolClassProject-master\SchoolClassProject\Classb
 C:\SchoolClassProject-master\SchoolClassProject-master\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csproj.CopyComplete
 C:\SchoolClassProject-master\SchoolClassProject-master\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.dll
 C:\SchoolClassProject-master\SchoolClassProject-master\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\EntityFrameworkModel.pdb
-C:\SchoolClassProject-master\SchoolClassProject-master\SchoolClassProject\Classbook Project\EntityFrameworkModel\obj\Debug\Classbook.Model.csprojAssemblyReference.cache

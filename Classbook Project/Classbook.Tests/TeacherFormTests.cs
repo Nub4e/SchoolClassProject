@@ -10,14 +10,24 @@ namespace Classbook.Tests
     public class TeacherFormTests
     {
         [TestMethod]
-        public void AllTestVisible()
+        public void TestForCorrectSetFirstAndLastNameInWelcomeTeacherForm()
+        {
+            var teacher = new TeacherController();
+            string egnPass = "4011740117";
+            string result = teacher.SetFirstLastName(egnPass);
+
+            string actions = "Joan Robles";
+            Assert.AreEqual(result, actions, "Correct set first and last name on Teacher");
+        }
+        [TestMethod]
+        public void AllClassesVisible()
         {
             var teacher = new TeacherController();
             List<string> allClasses = new List<string>();
 
 
             allClasses = teacher.LoadClasses();
-            var result = 51;
+            var result = 52;
             Assert.AreEqual(result, allClasses.Count, "All classes is visible");
         }
         [TestMethod]
@@ -39,7 +49,7 @@ namespace Classbook.Tests
 
 
             allClasses = teacher.LoadClasses();
-            var result = "12WP";
+            var result = "12VK";
             Assert.AreEqual(result, allClasses[50], "Last class is correct");
         }
         [TestMethod]

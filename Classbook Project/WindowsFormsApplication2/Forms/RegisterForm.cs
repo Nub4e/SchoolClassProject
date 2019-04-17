@@ -189,7 +189,7 @@ namespace ClassbookProject
                     throw new Exception();
                 }
                 else 
-                if (parentRegisterController.StudentNameIsCorrect(StudentName, StudentEGN))
+                if (parentRegisterController.ParentNameIsCorrect(StudentName, StudentEGN))
                 {
                     parentRegisterController.SetStudentName(StudentName);
                 }

@@ -382,11 +382,6 @@ namespace ClassbookProject
             MessageBox.Show("Mark removed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void adminComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
        
     }
 }

@@ -74,7 +74,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.selectClassComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.removeMarkPanel.SuspendLayout();
@@ -225,12 +224,15 @@
             // 
             // Remove
             // 
+            this.Remove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
+            this.Remove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Remove.ForeColor = System.Drawing.Color.White;
             this.Remove.Location = new System.Drawing.Point(107, 66);
             this.Remove.Name = "Remove";
             this.Remove.Size = new System.Drawing.Size(91, 23);
             this.Remove.TabIndex = 16;
             this.Remove.Text = "Remove Mark";
-            this.Remove.UseVisualStyleBackColor = true;
+            this.Remove.UseVisualStyleBackColor = false;
             this.Remove.Click += new System.EventHandler(this.Remove_Click_1);
             // 
             // addMarkPanel
@@ -290,12 +292,15 @@
             // 
             // Add
             // 
+            this.Add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(70)))), ((int)(((byte)(200)))));
+            this.Add.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Add.ForeColor = System.Drawing.Color.White;
             this.Add.Location = new System.Drawing.Point(24, 66);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(75, 23);
             this.Add.TabIndex = 15;
             this.Add.Text = "Add Mark";
-            this.Add.UseVisualStyleBackColor = true;
+            this.Add.UseVisualStyleBackColor = false;
             this.Add.Click += new System.EventHandler(this.AddMark_Click);
             // 
             // principalPanel
@@ -335,7 +340,6 @@
             this.PermissionComboBox.Name = "PermissionComboBox";
             this.PermissionComboBox.Size = new System.Drawing.Size(121, 21);
             this.PermissionComboBox.TabIndex = 14;
-            this.PermissionComboBox.SelectedIndexChanged += new System.EventHandler(this.adminComboBox_SelectedIndexChanged);
             this.PermissionComboBox.SelectedValueChanged += new System.EventHandler(this.permissionsComboBox_SelectedValueChanged);
             // 
             // addSubjectPanel
@@ -625,21 +629,11 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Select class:";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(0, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(41, 13);
-            this.label10.TabIndex = 4;
-            this.label10.Text = "label10";
-            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(727, 477);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -667,7 +661,6 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -717,6 +710,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox PermissionComboBox;
         private System.Windows.Forms.Label OptionsLabel;
-        private System.Windows.Forms.Label label10;
     }
 }

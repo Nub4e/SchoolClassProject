@@ -94,7 +94,16 @@ namespace Classbook.Tests
 
             Assert.AreEqual(action, result, "Correct calculated all marks ");
         }
+        [TestMethod]
+        public void TestForCorrectSetFirstAndLastNameInWelcomeStudentForm()
+        {
+            var register = new StudentFormController();
+            string egnPass = "0045577462";
+           string result =  register.SetFirstLastName(egnPass);
 
+            string actions = "Julia James";
+            Assert.AreEqual(result, actions, "Correct set first and last name on Student");
+        }
 
         [TestMethod]
         public void TestForCorrectHeadTeacherContactInfo()
