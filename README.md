@@ -5,11 +5,6 @@
 
 Credit
 
-Current developers:
-
-* Георги Кръстенов (https://github.com/haldenbg)
-* Pavlin Minkov (https://github.com/thealmostnooBBg) / (https://github.com/Nub4e)
-
 Originally developed by:
 
 * Георги Кръстенов (https://github.com/haldenbg)
